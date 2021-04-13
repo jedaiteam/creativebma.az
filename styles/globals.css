@@ -5,7 +5,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 a {
   color: inherit;
   text-decoration: none;
@@ -13,4 +13,77 @@ a {
 
 * {
   box-sizing: border-box;
+}
+#root
+{
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-y: hidden;
+  justify-content: space-between;
+}
+.title-big-desk
+{
+    font-family: 'Quicksand';
+    font-weight: 700;
+    font-size: 96px;
+    color: white
+}
+.title-big-mob
+{
+    font-family: 'Quicksand';
+    font-weight: 700;
+    font-size: 72px;
+    color: white
+}
+.title-w-desk
+{
+    font-family: 'Quicksand';
+    font-weight: 700;
+    font-size: 48px;
+    color: white
+
+}
+.title-b-desk
+{
+    font-family: 'Quicksand';
+    font-weight: 700;
+    font-size: 48px;
+    color: black
+}
+.text
+{
+    font-family: 'Quicksand';
+    font-size: 20px;
+    color: black;
+}
+.nav-text
+{
+    font-family: 'Quicksand';
+    font-size: 16px;
+    color: white;
+}
+.footer-text
+{
+    font-family: 'Quicksand';
+    font-size: 16px;
+    color: white;
+}
+.button-b-text
+{
+    color: white;
+    font-size: 24px;
+    font-family: 'Quicksand';
+}
+.button-text
+{
+    color: white;
+    font-size: 18px;
+    font-family: 'Quicksand';
+}
+.back 
+{
+    background-size: cover;
+    background-repeat: no-repeat;
 }
