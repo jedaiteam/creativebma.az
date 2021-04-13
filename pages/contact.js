@@ -1,11 +1,11 @@
 import React from 'react'
 
-function partners() {
+function contact() {
     return (
         <div>
-            Partners
+            Contact
         </div>
     )
 }
 
-export default partners
+export default contact
