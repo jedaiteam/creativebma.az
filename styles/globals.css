@@ -6,6 +6,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+h1 , p ,h2 , a 
+{
+    margin: 0px;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -23,19 +27,38 @@ a {
   overflow-y: hidden;
   justify-content: space-between;
 }
+
+.img
+{
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
 .title-big-desk
 {
     font-family: 'Quicksand';
     font-weight: 700;
     font-size: 96px;
-    color: white
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
 }
 .title-big-mob
 {
     font-family: 'Quicksand';
     font-weight: 700;
     font-size: 72px;
-    color: white
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+.top-title-w
+{
+    font-family: 'Quicksand';
+    font-weight: 700;
+    font-size: 24px;
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .title-w-desk
 {
@@ -43,7 +66,6 @@ a {
     font-weight: 700;
     font-size: 48px;
     color: white
-
 }
 .title-b-desk
 {
@@ -57,6 +79,7 @@ a {
     font-family: 'Quicksand';
     font-size: 20px;
     color: black;
+    line-height: 35px;
 }
 .nav-text
 {
@@ -70,17 +93,28 @@ a {
     font-size: 16px;
     color: white;
 }
-.button-b-text
+.button-b-design
 {
     color: white;
     font-size: 24px;
     font-family: 'Quicksand';
+    background: #FA7167;
+    border-radius: 50px;
+    border: none;
+    width: 290px;
+    height: 85px;
 }
+
 .button-text
 {
     color: white;
     font-size: 18px;
+    border-radius: 50px;
+    background: #FA7167;
     font-family: 'Quicksand';
+    width: 220px;
+    border: none;
+    height: 60px;
 }
 .back 
 {

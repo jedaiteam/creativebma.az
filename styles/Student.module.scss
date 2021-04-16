@@ -1,0 +1,20 @@
+.studentCont
+{
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    align-items: center;
+    .studentImgStyle
+    {
+        margin-top: 30px;
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+    }
+    .name
+    {
+        margin-top: 30px;
+        text-align: center;
+        font-weight: 700;
+    }
+}

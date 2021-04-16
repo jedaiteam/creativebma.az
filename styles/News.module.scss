@@ -1,0 +1,24 @@
+.newsCont
+{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    .newsImgStyle
+    {
+        margin-top: 30px;
+        width: 240px;
+        height: 240px;
+        border-radius: 30px;
+    }
+    .name
+    {
+        margin-top: 30px;
+        font-weight: 700;
+        width: 240px;
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

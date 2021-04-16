@@ -1,0 +1,130 @@
+.homepage
+{
+    display: flex;
+    flex-direction: column;
+    row-gap:80px;
+    width: 100%;
+    //Enterance
+    .enterance
+    {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        background-image: url('/navbar.svg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: 0px -80px;
+        height: 950px;
+
+        .enteranceText
+        {
+            display: flex;
+            flex-direction: column;
+            row-gap: 40px;
+            margin-top: 80px;
+            margin-left: 10%;
+        }
+        .enteranceSubTitle
+        {
+        }
+    }//Enterance
+
+    //About Part
+    .aboutPart
+    {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: 7%;
+        margin-top: -200px;
+        .aboutText
+        {
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+        }
+    }
+    //About Part
+
+    //PartnersPart
+    .partnersPart
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+        .partnersElements
+        {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            justify-content: space-around;
+            img 
+            {
+                transition: 0.5s;
+
+                &:hover 
+                {
+                    filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.57));
+                    transition: 0.5s;
+                }
+            }
+        }
+    } 
+    //PartnersPart
+
+    //Students
+    .studentsPart
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+        .studentsElements
+        {
+            display: flex;
+            width: 80%;
+            justify-content: space-around;
+        }
+    } 
+    //Students
+    
+
+    //BMA PART
+    .bmaPart
+    {
+        width: 95%;
+        margin-left: 5%;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        .bmaText
+        {
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+        }
+    }
+    //BMA PART
+
+
+
+    //news
+    .newsPart
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 30px;
+        .newsElements
+        {
+            display: flex;
+            width: 80%;
+            justify-content: space-around;
+        }
+    } 
+    //news
+
+
+
+}
