@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '../styles/Partners.module.scss'
 import Link from '../components/Link'
 
-function partners() {
+function partners() { 
     return (
         <div className={styles.partnersPage + " page "} >
             <Link link='Partnyorlar'/>
