@@ -19,8 +19,8 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 2%;
-    padding-right: 2%;
+    padding-left: 7%;
+    padding-right: 7%;
     padding-top: 30px;
     width: 100%;
 }
@@ -134,7 +134,22 @@ button:focus
     width: 290px;
     height: 85px;
 }
-
+.mt100
+{
+    margin-top: 100px;
+}
+.mt50
+{
+    margin-top: 50px;
+}
+.mt30
+{
+    margin-top: 30px;
+}
+.mt20
+{
+    margin-top: 20px;
+}
 .button-text
 {
     color: white;

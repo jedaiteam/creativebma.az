@@ -1,0 +1,17 @@
+.bmaPage
+{
+    .staffCont
+    {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        .staffs 
+        {
+            display: flex;
+            flex-wrap: wrap;
+            grid-gap:30px;
+            justify-content: space-around;
+            
+        }
+    }
+}

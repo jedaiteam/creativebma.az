@@ -1,11 +1,11 @@
 import React from 'react'
 
-function selectedstaff() {
+function index() {
     return (
         <div>
-            Selected Staff
+            Selected Bma
         </div>
     )
 }
 
-export default selectedstaff
+export default index

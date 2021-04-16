@@ -1,0 +1,60 @@
+.contactPage
+{
+    .links
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .part1
+        {
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 30px;
+            width: 100%;
+            justify-content: space-around;
+            a
+            {
+                width: 250px;
+                text-align: center;
+                align-items: center;
+            }
+        }
+        .part2
+        {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            row-gap: 30px;
+            img 
+            {
+                filter: invert(1);
+            }
+            a
+            {
+                width: 250px;
+                display: flex;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                column-gap: 10px;
+            }
+        }
+    }
+    .contactImg
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-around;
+        div 
+        {
+            width: 400px;
+            height: 300px;
+            background-color: gray;
+            border-radius: 40px;
+        }
+    }
+}
