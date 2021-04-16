@@ -1,0 +1,12 @@
+.studentsPage
+{
+    .studentsCont
+    {
+        width: 90%;
+        justify-content: space-around;
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 30px;
+        column-gap: 30px;
+    }
+}

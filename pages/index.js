@@ -2,6 +2,8 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import Student from '../components/Student'
 import News from '../components/News'
+import Link from 'next/link'
+
 export default function Home() {
   return (
     <div  className={styles.homepage} >
@@ -10,7 +12,7 @@ export default function Home() {
             <div className={styles.enteranceText}>
                 <h1 className="title-big-desk">Creative Spark</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının <br/> öyrədilməsi</h2>
-                <button className="button-b-design">Haqqımızda</button>
+                <Link href="/about"><button className="button-b-design">Haqqımızda</button></Link>
             </div>
             <div className={styles.enteranceImg}> <img src="/notes.svg" alt=""/> </div>
         </div>
@@ -26,7 +28,7 @@ export default function Home() {
               universitetlərarası və institusional əməkdaşlığı beynəlxalq               <br/>
               səviyyədə dəstəkləmək üçün nəzərdə tutulan beş illik təşəbbüsdür.         <br/>
             </p>
-            <button className='button-text'>Daha ətraflı</button>
+            <Link href="/about"><button className='button-text'>Daha ətraflı</button></Link>
           </div>
         </div>
         
@@ -38,7 +40,7 @@ export default function Home() {
               <img height='162' width='auto' src="/unec.svg" alt="azerbaijan-economy-university"/>
               <img src="/britishCouncil.svg" alt="british-council"/>
           </div>
-          <button className='button-text'>Daha ətraflı</button>
+          <Link href="/partners"><button className='button-text'>Daha ətraflı</button></Link>
         </div>
 
         <div className={styles.studentsPart}>
@@ -48,7 +50,7 @@ export default function Home() {
             <Student name='Ad Soyad'/>
             <Student name='Ad Soyad'/>
           </div>
-          <button className='button-text'>Daha ətraflı</button>
+          <Link href="/students"><button className='button-text'>Daha ətraflı</button></Link>
         </div>
 
         <div className={styles.bmaPart}>
@@ -63,7 +65,7 @@ export default function Home() {
                 turn ideas of young creative people into action providing             <br/>
                 motivation and support towards new career opportunities.              <br/>
             </p>
-            <button className='button-text'>Daha ətraflı</button>
+            <Link href="/staff"><button className='button-text'>Daha ətraflı</button></Link>
           </div>
           <div className={styles.bmaImg}><img src="/bma.svg" alt=""/></div>
         </div>
@@ -76,7 +78,7 @@ export default function Home() {
             <News name='Lorem  Ipsun Lorem  Ipsun '/>
             <News name='Lorem  Ipsun Lorem  Ipsun Lorem  Ipsun Lorem  Ipsun Lorem  Ipsun Lorem  Ipsun '/>
           </div>
-          <button className='button-text'>Daha ətraflı</button>
+          <Link href="/news"><button className='button-text'>Daha ətraflı</button></Link>
         </div>
 
     </div>

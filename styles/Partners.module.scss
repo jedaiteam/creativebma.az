@@ -1,0 +1,30 @@
+.partnersPage
+{
+    .partners
+    {
+        display: flex;
+        flex-direction: column;
+        row-gap: 115px;
+        .partner
+        {
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+            align-items: center;
+            .imgTitle
+            {
+                display: flex;
+                align-items: center;
+                column-gap: 30px;
+                align-self: flex-start;
+            }
+            .text
+            {
+                a
+                {
+                    color: rgb(62, 62, 207) !important;
+                }
+            }
+        }        
+    }
+}

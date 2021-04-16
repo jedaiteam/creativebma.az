@@ -1,0 +1,11 @@
+.link
+{
+    width: 100%;
+    display: flex;
+    column-gap: 20px;
+    z-index: 2;
+    .linkSelected
+    {
+        color: #FA7167;
+    }
+}
