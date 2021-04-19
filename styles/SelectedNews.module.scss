@@ -1,0 +1,62 @@
+.selectedNewsPage
+{
+    .imgAndTitle
+    {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .imgHandle
+        {
+            width: 432px ;
+            height: 432px ;
+            border-radius: 30px;
+        }
+        .titleAndDate
+        {
+            margin-left: 30px;
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            .date
+            {
+                display: flex;
+                margin-top: 20px;
+                align-items: center;
+                span 
+                {
+                    margin-left: 10px;
+                }
+            }
+        }
+        @media screen and (max-width:1200px) {
+            justify-content: flex-start;
+            .titleAndDate
+            {
+                margin-top: 50px;
+                margin-left: 0px;
+            }
+        }
+    }
+    .imgs
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-around;
+        @media screen and (max-width:1200px) {
+            justify-content: center;
+        }
+        .imgBottom 
+        {
+            width: 45%;
+            height: 260px;
+            background-repeat: no-repeat;
+            margin-top: 40px;
+            @media screen and (max-width:1200px) {
+                width: 100%;
+                background-position: center;
+            }
+        }
+    }
+}

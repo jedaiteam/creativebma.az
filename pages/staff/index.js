@@ -17,10 +17,10 @@ function index() {
             <div className={styles.staffCont + " mt50"}>
                 <h2 className={styles.aboutTitle + " title-b-desk  pageTitle "}>Əməkdaşlar </h2>
                 <div className={styles.staffs}>
-                    <Student name="Ad Soyad" job="Musiqiçi"/>
-                    <Student name="Ad Soyad" job="Musiqiçi"/>
-                    <Student name="Ad Soyad" job="Musiqiçi"/>
-                    <Student name="Ad Soyad" job="Musiqiçi"/>
+                    <Student id='1' name="Ad Soyad" job="Musiqiçi"/>
+                    <Student id='1' name="Ad Soyad" job="Musiqiçi"/>
+                    <Student id='1' name="Ad Soyad" job="Musiqiçi"/>
+                    <Student id='1' name="Ad Soyad" job="Musiqiçi"/>
                 </div>
             </div>
             <div className={styles.staffCont + " mt100"}>

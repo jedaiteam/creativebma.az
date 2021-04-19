@@ -1,0 +1,201 @@
+.modalHireWorker
+{
+    width: 856px;
+    height: auto;
+    margin: auto;
+    background-color: #FFFFFF;
+    margin-top: 140px;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.25);
+    border-radius: 45px;
+    padding: 70px;
+    z-index: 1;
+    padding-top: 35px;
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width:856px) {
+        width: 100%;
+        margin-top: 0px;
+        border-radius: 0px;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+    .closeButton
+    {
+        align-self: flex-end;
+        width: auto;
+        height: auto;
+        padding: 0px;
+        font-size: 30px;
+        background-color: transparent;
+        border: none;
+    }
+    .titleModal , .subTitleModal
+    {
+        text-align: center;
+        @media screen and (max-width:856px) {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+    .formCont
+    {
+        display: flex;
+        flex-wrap: wrap;
+        grid-gap: 3%;
+        row-gap: 20px;
+        .inputCont
+        {
+            display: flex;
+            flex-direction: column;
+            row-gap: 8px;
+            width: 48%;
+            @media screen and (max-width:856px) {
+                width: 100%;
+                margin-top: 0px;
+                border-radius: 0px;
+            }
+            .label
+            {
+                width: 320px;
+                margin-left: 10px;
+            }
+            .input
+            {
+                width: 100%;
+                padding-left: 20px;
+                height: 71px;
+                border: 1px solid #C4C4C4;
+                box-sizing: border-box;
+                border-radius: 20px;
+                &:focus 
+                {
+                    border-color: #2684FF;
+                }
+            }
+        }
+        .inputNotesCont
+        {
+            width: 100%;
+            .inputNotes
+            {
+                height: 81px !important;
+                width: 100%;
+                height: auto;
+                border: 1px solid #C4C4C4;
+                box-sizing: border-box;
+                border-radius: 20px;
+                padding-left: 20px;
+                padding-top: 20px;
+                &:focus 
+                {
+                    border-color: #2684FF;
+                }
+            }
+
+        }
+        .error
+        {
+            color: red;
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        .buttonSubmit
+        {
+            width: 100%;
+        }
+
+    }
+}
+
+.singleStudentPage
+{
+    .buttonsCont
+    {
+        display: flex;
+        flex-direction: column;
+        right: 0;
+        position: absolute;
+        margin-right: 10%;
+        z-index: 2;
+        @media screen and (max-width:1067px) {
+            position: relative;
+            margin-right: 0px;
+            margin-left: 30px;
+        }
+        @media screen and (max-width:721px) {
+            margin-top: 30px;
+            position: relative;
+            margin-left: 20px;
+        }
+        .button2
+        {
+            margin-top: 20px;
+        }
+    }
+    .imgAndAbout
+    {
+        display: flex;
+        width: 100%;
+        @media screen and (max-width:1067px) {
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        @media screen and (max-width:721px) {
+            justify-content: space-around;
+        }
+        .studentAvatar
+        {
+            width: 356px;
+            height: 356px;
+            @media screen and (max-width:721px) {
+                width: 240px;
+                height: 240px;
+            }
+        }
+        .titles
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .titleStudent , .subtitleStudent
+            {
+                @media screen and (max-width:721px) {
+                    text-align: center;
+                }
+            }
+        }
+        .textAbout
+        {
+            margin-left: 50px;
+            @media screen and (max-width:1067px) {
+                margin-left: 0px !important;      
+                margin-top: 10px;         
+            }
+            .titleStudent , .subtitleStudent
+            {
+                @media screen and (max-width:721px) {
+                    text-align: center;
+                }
+            }
+            .studentText
+            {
+                width: 790px;
+                @media screen and (max-width:1382px) {
+                    width: 650px ;                    
+                }
+                @media screen and (max-width:1227px) {
+                    width: 550px ;                    
+                }
+                @media screen and (max-width:1127px) {
+                    width: 450px ;                    
+                }
+                @media screen and (max-width:1067px) {
+                    width: 100%;     
+                    margin-left: 0px !important;               
+                }
+            }
+        }
+    }
+
+}

@@ -83,6 +83,13 @@ button:focus
     color: white;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.top-title-b
+{
+    font-family: 'Quicksand';
+    font-weight: 700;
+    font-size: 24px;
+    color: black;
+}
 .title-w-desk
 {
     font-family: 'Quicksand';
@@ -111,6 +118,13 @@ button:focus
     color: black;
     line-height: 35px;
 }
+.text16
+{
+    font-family: 'Quicksand';
+    font-size: 16px;
+    color: black;
+    line-height: 35px;
+}
 .nav-text
 {
     font-family: 'Quicksand';
@@ -134,6 +148,11 @@ button:focus
     width: 290px;
     height: 85px;
 }
+*
+{
+    outline: 0px;
+    outline: none;
+}
 .mt100
 {
     margin-top: 100px;
@@ -150,6 +169,10 @@ button:focus
 {
     margin-top: 20px;
 }
+.mt10
+{
+    margin-top: 10px;
+}
 .button-text
 {
     color: white;
@@ -161,8 +184,89 @@ button:focus
     border: none;
     height: 60px;
 }
+.button-blue-text
+{
+    color: #32448A;
+    font-size: 18px;
+    border-radius: 50px;
+    background: #B0D9F0;
+    font-family: 'Quicksand';
+    width: 220px;
+    border: none;
+    height: 60px;
+}
 .back 
 {
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.css-yk16xz-control
+{
+    width: 100% !important;
+    padding-left: 20px !important;
+    height: 71px !important;
+    border: 1px solid #C4C4C4 !important;
+    box-sizing: border-box !important;
+    border-radius: 20px !important; 
+}
+.css-g1d714-ValueContainer
+{
+    width: 100% !important;
+    padding-left: 5px !important;
+    height: 71px !important;
+    box-sizing: border-box !important;
+    border-radius: 20px !important; 
+}
+.css-yk16xz-control:focus
+{
+    outline: none !important;
+    border:none !important;
+}
+.css-1pahdxg-control 
+{
+    border-radius: 20px !important;
+    padding-left: 20px;
+    box-shadow: none !important;
+    min-height: 71px !important;
+}
+.css-1uccc91-singleValue , .css-1wa3eu0-placeholder
+{
+    font-family: 'Quicksand';
+    font-size: 20px;
+    color: black;
+    line-height: 35px;
+}
+.css-1jx2aec-MuiFormHelperText-root
+{
+    display: none;
+}
+.css-emi4wi-MuiFormLabel-root-MuiInputLabel-root
+{
+    font-family: 'Quicksand' !important;
+    font-size: 20px !important;
+    color: gray !important;
+    margin-top: -10px;
+    line-height: 35px !important;
+}
+.css-plngxy-MuiInputBase-root-MuiOutlinedInput-root
+{
+    width: 100%;
+    padding-left: 20px;
+    height: 71px;   
+    box-sizing: border-box;
+    border-radius: 20px !important;
+}
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input
+{
+    font-family: 'Quicksand' !important;
+    font-size: 20px !important;
+    color: black !important;
+    margin-top: -10px;
+    line-height: 35px !important;
+}
+
+.css-1okebmr-indicatorSeparator
+{
+    display: none;
 }

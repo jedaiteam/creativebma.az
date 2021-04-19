@@ -1,0 +1,46 @@
+.selectedStaffPage
+{
+    .imgAndAbout
+    {
+        width: 100%;
+        display: flex;
+        @media screen and (max-width:1200px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            h1
+            {
+                text-align: center;
+            }
+            .email
+            {
+                font-size: 24px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                @media screen and (max-width:550px) {
+                    font-size: 20px;
+                    color: blue;
+                }
+            }
+            .textAbout
+            {
+                margin-top: 30px;
+            }
+        }
+        .imgHandle
+        {
+            width: 356px;
+            height: 356px;
+            border-radius: 50%;
+        }
+        .textAbout
+        {
+            display: flex;
+            flex-direction: column ;
+            row-gap: 30px;
+            width: 800px;
+            @media screen and (max-width:1200px) {
+                width: 100%;
+            }
+        }
+    }
+}
