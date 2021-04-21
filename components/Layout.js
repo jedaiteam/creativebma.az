@@ -3,8 +3,8 @@ import Footer from './Footer'
 const  Layout = ({children}) => {
     return (
         <div id='root'>
+            <Navbar/>
             <div>
-                <Navbar/>
                 {children}
             </div>
             <Footer/>

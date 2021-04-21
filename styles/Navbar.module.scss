@@ -1,34 +1,102 @@
 .navbar 
 {
+    overflow: hidden;
+    height: 80px;
+    z-index: 1400;
+    position: fixed;
     width: 100%;
-    padding-left: 5%;
-    height: 80px ;
-    background-image: url('../public/navbar.svg');
-    background-position: top;
-    background-size: cover;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.links 
-{
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-    a
+    margin-bottom: 80px;
+    .logo
     {
+        margin-top: 7.5px;
+    }
+    nav 
+    {
+        width: 100%;
+        height: 950px;
+        padding-left: 5%;
+        background-image: url('../public/navbar.svg');
+        background-size: cover;
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: auto;
-        padding-bottom: 3px;
-        border-bottom: 2px solid transparent;
-        transition: 0.5s;
-
-        &:hover 
-        {
-            border-bottom: 2px solid #FA7167;
-            transition: 0.5s;
+        justify-content: space-between;
         }
+    .links 
+    {
+        width: 80%;
+        @media screen and (max-width:1500px) {
+            width: 75%;
+        }
+        @media screen and (max-width:1300px) {
+            width: 70%;
+        }
+        display: flex;
+        justify-content: space-around;
+        height: 80px;
+        align-items: center;
+        a
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            padding-bottom: 3px;
+            border-bottom: 2px solid transparent;
+            transition: 0.5s;
+    
+            &:hover 
+            {
+                border-bottom: 2px solid #FA7167;
+                transition: 0.5s;
+            }
+        }
+        .dropdown
+        {
+            display: flex;
+            flex-direction:column ;
+            .mainBtn
+            {
+                background-color: transparent;
+                border: none;
+                text-align: center;
+                width: auto;
+                height: 25px;
+                font-size: 16px;
+                color: white;
+                font-family: "Quicksand";
+            }
+            .dropdownContent
+            {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                margin-top: 25px;
+                row-gap: 5px;
+                background-color: #fff;
+                z-index: 2;
+                border: 1px solid #42539b;
+                border-radius: 5px;
+                overflow: hidden;
+                button 
+                {
+                    background-color: #fff;
+                    border: none;
+                    color: #FA7167;
+                    font-size: 16px;
+                    &:hover 
+                    {
+                        color: #42539b;
+                    }
+                    font-family: "Quicksand";
+                }
+            }
+        }
+    }
+    .hamburgerMenu
+    {
+        height: 80px;
+        display: flex; 
+        align-items: center;
     }
 }

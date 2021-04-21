@@ -1,0 +1,21 @@
+.paginationConts
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .elementsCont 
+    {
+        display: flex;
+        flex-wrap: wrap;
+        width: auto;
+        grid-gap: 40px;
+        margin-bottom: 0px;
+        min-height: 500px;
+        justify-content: center;
+    }
+    .pagination
+    {
+        margin-top: 80px !important;
+        justify-content: center !important;
+    }
+}

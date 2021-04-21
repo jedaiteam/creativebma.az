@@ -3,18 +3,22 @@ import styles from '../styles/Home.module.scss'
 import Student from '../components/Student'
 import News from '../components/News'
 import Link from 'next/link'
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 export default function Home() {
+  const mobileImg = useMediaQuery('(max-width:750px)');
+  const desktopImg = useMediaQuery('(min-width:750px)');
+
   return (
     <div  className={styles.homepage} >
 
         <div className={styles.enterance}>
             <div className={styles.enteranceText}>
-                <h1 className="title-big-desk">Creative Spark</h1>
+                <h1 className={styles.titleTop + " title-big-desk"}>Creative Spark</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının <br/> öyrədilməsi</h2>
                 <Link href="/about"><button className="button-b-design">Haqqımızda</button></Link>
             </div>
-            <div className={styles.enteranceImg}> <img src="/notes.svg" alt=""/> </div>
+            {desktopImg && <img className={styles.enteranceImg} src="/notes.svg" alt="notes"/>}
+           {mobileImg   && <img className={styles.enteranceImg} src="/mobileNotes.svg" alt="notes-mobile-version"/>}
         </div>
 
         <div className={styles.aboutPart}>

@@ -51,8 +51,8 @@ function index() {
     const studentImg = {
         backgroundImage:'url(/singleStudentAvatar.png)'
     }
-
-    //Modal
+//ModalsModals
+    //Modal1
         const classes = useStyles();
         const [open, setOpen] = useState(false);
 
@@ -63,14 +63,31 @@ function index() {
         const handleClose = () => {
             setOpen(false);
         };
-    //Modal
+    //Modal1
+    //Modal2
+        const classes2 = useStyles();
+        const [open2, setOpen2] = useState(false);
+
+        const handleOpen2 = () => {
+            setOpen2(true);
+        };
+
+        const handleClose2 = () => {
+            setOpen2(false);
+        };
+    //Modal2
+//ModalsModals
+
 
     //Notify
         const notifySend = () => toast.info("Sorğunuz müvəffəqiyyətlə göndərildi!");
     //Notify
 
 
-    //Formik
+
+
+
+    //Formik1
     //Onchange
         const optionsTypeOfEvent = [
             { value: 'wedding', label: 'Wedding' },
@@ -142,7 +159,34 @@ function index() {
             address: yup.string().required('Ünvanınızı daxil edin'),
             address: yup.string().required('Ünvanınızı daxil edin'),
         })
-    //Formik
+    //Formik1
+
+    //Formik2
+        const onSubmit2 =  (values) => {
+            setloader(true)
+            const dt = new FormData()
+            dt.append('name' , values.name)
+            dt.append('email' , values.email)
+            dt.append('phone' , values.phone.slice(1,14))
+            axios.post('https://nehra.az/public/api/login', dt , headers)
+            .then(res => (setloader(false) , console.log(res.data) ,  res.status === 200 && (localStorage.setItem("LoginUserData" , JSON.stringify(res.data)) ,  notify() ,  handleOpen() ) ) ) 
+            .catch(err => (setloader(false) , setError(true)) )
+        }
+        
+        const initialValues2 = {
+            name:'',
+            email:'',
+            phone:'',
+            work:'',
+        }
+
+        const validationSchema2 = yup.object({
+            name: yup.string().required('Ad, Soyad daxil edin'),
+            phone:  yup.string().matches(phoneRegExp, 'Telefon nömrəsini düzgün daxil edin').required('Telefon nömrənizi daxil edin'),
+            email: yup.string().email('Elektron poçtunuzu düzgün daxil edin').required('Elektron poçtunuzu daxil edin'),
+            work: yup.string().required('Dərsin növünü daxil edin'),
+        })
+    //Formik2
     return (
         <div className={styles.singleStudentPage + " page"}>
             <Link link='Tələbələr'/>
@@ -150,7 +194,7 @@ function index() {
                 buttonsMQ  &&
                 <div className={styles.buttonsCont}>
                     <button className="button-text" onClick={handleOpen}>İfaçı işə götür</button>
-                    <button className={" button-blue-text mt20"}>Şəxsi müəllim işə götür</button>
+                    <button className={" button-blue-text mt20"} onClick={handleOpen2}>Şəxsi müəllim işə götür</button>
                 </div>
             }
             <div className={styles.imgAndAbout + " mt20"}>
@@ -193,6 +237,12 @@ function index() {
             </div>
             
             
+
+
+
+{/* Modal and Forms */}{/* Modal and Forms */}{/* Modal and Forms */}
+
+        {/* Modal1 */}
             <Modal aria-labelledby="transition-modal-title"  aria-describedby="transition-modal-description" className={classes.modal} open={open} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{timeout: 500,}}>
                 <Fade in={open} >
                     <div className={styles.modalHireWorker}>
@@ -277,6 +327,51 @@ function index() {
                 </Fade>
             </Modal>
 
+        {/* Modal1 */}
+
+
+
+        {/* Modal2 */}
+            <Modal aria-labelledby="transition-modal-title"  aria-describedby="transition-modal-description" className={classes2.modal} open={open2} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{timeout: 500,}}>
+                <Fade in={open2} >
+                    <div className={styles.modalHireWorker}>
+                        <button className={styles.closeButton} onClick={handleClose2}>&#10006;</button>
+                        <h2 className={styles.titleModal + " title-e-desk "}>Hire a private teacher </h2>
+                        <h3 className={styles.subTitleModal + " top-title-b"}>If you want to hire a private teacher, please complete this form.</h3>
+                        <Formik initialValues={initialValues2} validationSchema={validationSchema2} onSubmit={onSubmit2} validateOnChange={true} validateOnBlur={false}>
+                            <Form  className={styles.formCont + ' mt20'} method="post" action="">
+                                <div className={styles.inputCont}>
+                                    <label htmlFor="name" className={styles.label + " text"}>Ad, Soyad*</label>
+                                    <Field className={styles.input + " text"} name='name' placeholder="Ad, Soyad" type="text"/>
+                                    <p className={styles.error + " text"}><ErrorMessage name='name'/></p>
+                                </div>
+                                
+                                <div className={styles.inputCont}>
+                                    <label  htmlFor="phone" className={styles.label + " text"}>Telefon*</label>
+                                    <Field className={styles.input + " text"} name='phone' placeholder="+99455-999-99-99" type="text"/>
+                                    <p className={styles.error + " text"}><ErrorMessage name='phone'/></p>
+                                </div>
+                                
+                                <div className={styles.inputCont}>
+                                    <label  htmlFor="email" className={styles.label + " text"}>Email*</label>
+                                    <Field className={styles.input + " text"} name='email' placeholder="creativespark@info.az" type="text"/>
+                                    <p className={styles.error + " text"}><ErrorMessage name='email'/></p>
+                                </div>
+                                
+                                <div className={styles.inputCont}>
+                                    <label  htmlFor="eventLocation" className={styles.label + " text"}>Tədbiri ünvanı*</label>
+                                    <Field className={styles.input + " text"}  name='address' placeholder="Dərsin növü" type="text"/>
+                                    <p className={styles.error + " text"}><ErrorMessage name='address'/></p>
+                                </div>
+                               
+                                <button className={styles.buttonSubmit + " button-text mt30"}>Göndər</button>
+                                <p className="text-bottom"> If you are a BMA student or alumni and you want to be in the list of teachers, please email zulfiyya.shafiyeva@musicacademy.edu.az to get more information</p>
+                            </Form>
+                        </Formik>
+                    </div>
+                </Fade>
+            </Modal>
+{/* Modal and Forms */}{/* Modal and Forms */}{/* Modal and Forms */}
         </div>
     )
 }
