@@ -81,7 +81,7 @@ function Navbar() {
 
     return (
         <header className={styles.navbar}>
-            <nav>
+            
                 <img className={styles.logo} src="/creative-spark-logo.png" width="140px" height='65.75px' alt="Creative Spark Logo"/>
                 {
                     DesktopNavbar &&
@@ -104,7 +104,7 @@ function Navbar() {
                     </div>
                 }
                 { 
-                    DesktopNavbar && 
+                    !DesktopNavbar && 
                     <div className={styles.hamburgerMenu}>
                         {
                             <React.Fragment key={'left'}>
@@ -116,6 +116,8 @@ function Navbar() {
                         }
                     </div>
                 }
+            <nav>
+                <div></div>
             </nav>
         </header>
     )

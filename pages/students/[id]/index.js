@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from '../../../styles/SelectedStudent.module.scss'
+import stylesBtn from '../../../styles/Button.module.scss'
+
 import Link from '../../../components/Link'
+import { useRouter } from 'next/router'
 
 //Formik
 import {Formik , Form , Field, ErrorMessage} from "formik"
@@ -26,6 +29,7 @@ import TextField from '@material-ui/core/TextField';
 import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import DatePicker from '@material-ui/lab/DatePicker';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -44,13 +48,20 @@ const useStyles = makeStyles((theme) => ({
   
 //Material UI 
 
-function index() {
+function index({student}) {
     const buttonsMQ = useMediaQuery('(min-width:1067px)');
     const titleMQ = useMediaQuery('(min-width:557px)');
-
+    
+    
+    const router = useRouter()
+    const { id } = router.query
+    const [studentData, setstudentData] = useState(student)
     const studentImg = {
-        backgroundImage:'url(/singleStudentAvatar.png)'
+        backgroundImage:`url(http://creativespark.testjed.me${studentData?.image})`
     }
+
+
+
 //ModalsModals
     //Modal1
         const classes = useStyles();
@@ -187,14 +198,16 @@ function index() {
             work: yup.string().required('Dərsin növünü daxil edin'),
         })
     //Formik2
+
+
     return (
         <div className={styles.singleStudentPage + " page"}>
-            <Link link='Tələbələr'/>
+            <Link link='Tələbələr' href='/students'/>
             {
                 buttonsMQ  &&
                 <div className={styles.buttonsCont}>
-                    <button className="button-text" onClick={handleOpen}>İfaçı işə götür</button>
-                    <button className={" button-blue-text mt20"} onClick={handleOpen2}>Şəxsi müəllim işə götür</button>
+                    <button className={stylesBtn.buttonEffect + " button-text"} onClick={handleOpen}>İfaçı işə götür</button>
+                    <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>Şəxsi müəllim işə götür</button>
                 </div>
             }
             <div className={styles.imgAndAbout + " mt20"}>
@@ -202,37 +215,33 @@ function index() {
                 {
                         !titleMQ && 
                         <div className={styles.titles}>
-                            <h1 className={styles.titleStudent + " title title-e-desk mt20"}>Ulkar Gudratli </h1>
-                            <h2 className={styles.subtitleStudent + " title top-title-b mt10"}>Flutist</h2>
+                            <h1 className={styles.titleStudent + " title title-e-desk mt20"}>{studentData?.name_surname} </h1>
+                            <h2 className={styles.subtitleStudent + " title top-title-b mt10"}>{studentData?.position}</h2>
                         </div>
                 }
                 {
                     !buttonsMQ  &&
                     <div className={styles.buttonsCont}>
-                        <button className="button-text">İfaçı işə götür</button>
-                        <button className={" button-blue-text mt20"}>Şəxsi müəllim işə götür</button>
+                        <button className={stylesBtn.buttonEffect + " button-text"}>İfaçı işə götür</button>
+                        <button className={stylesBtn.buttonEffect + " button-text"}>Şəxsi müəllim işə götür </button>
                     </div>
                 }
                 <div className={styles.textAbout}>
                     {
                         titleMQ && 
                         <>
-                            <h1 className={styles.titleStudent + " title title-e-desk mt20"}>Ulkar Gudratli </h1>
-                            <h2 className={styles.subtitleStudent + " title top-title-b mt10"}>Flutist</h2>
+                            <h1 className={styles.titleStudent + " title title-e-desk mt20"}>{studentData?.name_surname}  </h1>
+                            <h2 className={styles.subtitleStudent + " title top-title-b mt10"}>{studentData?.position}</h2>
                         </>
                     }
                     <p className={styles.studentText + " text mt20"}>
-                        My name is Ulkar Gudratli. I graduated as a Master from Baku Music Academy in  2020. My faculty is flute performance. As a performer, I had experience of performing in different orchestras. During my bachelor’s years, I was part of Youth Symphonic Orchestra, Chamber orchestra of Baku Music Academy. We participated in festivals and concerts in a number of Concert Halls of Europe, Arabian Emirates and Russia. I love orchestra music. 
+                        {studentData?.content?.replace(/(<([^>]+)>)/gi, "")}
                     </p>
                 </div>
             </div>
             <div className={styles.studentText2 + " text mt30"}>
                 <p className="text">
-                    Besides, teaching children inspired me and I have experience as a flute teacher. To be a
-                    teacher gives me opportunity to me to growth new generation of high quality musicians. I
-                    hope I can use my teaching skills in international area. I had a chance to study at University of Bergen as an exchange student for the Master Program at the Grieg Academy within the framework of the project Artistic Research Knowledge Network EURASIA financed by the Norwegian Centre for the International Cooperation in Education. It was great experience for me as a musician .So I have improved my playing skills, took the lessons from the foreign
-                    teachers, I became acquainted with modern and local music, also Norwegian culture life.
-                    I had a pleasure to participate in Creative Spark Idea Challenge. My idea named Online Music Education. I would like to create a platform where people of different ages can improve their music skills. The online music platform could help adults or teenagers to begin their music education.
+                {studentData?.content2?.replace(/(<([^>]+)>)/gi, "")}
                 </p>
             </div>
             
@@ -377,3 +386,12 @@ function index() {
 }
 
 export default index
+
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(`http://creativespark.testjed.me/api/musicians-api/${context.params.id}`)
+    const student = await res.json()
+    return {
+        props:{student}
+    }
+}

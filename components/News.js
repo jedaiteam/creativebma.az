@@ -4,13 +4,13 @@ import Link from 'next/link'
 
 function News(props) {
     const newsImg = {
-        backgroundImage: `url(/newsAvatar.png)`
+        backgroundImage: `url(http://creativespark.testjed.me/${props.image})`
     }
     return (
         <Link href={`/news/${props.id}`}> 
             <div className={styles.newsCont}>
                 <div style={newsImg} className={styles.newsImgStyle + ' img'}></div>
-                <p className={styles.name + " text"}>{props.name}</p>
+                <p className={styles.name + " text"}>{props?.content?.replace(/(<([^>]+)>)/gi, "")}</p>
             </div>
         </Link>
     )

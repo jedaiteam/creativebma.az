@@ -67,6 +67,8 @@
             flex-direction: column;
             align-items: center;
             row-gap: 30px;
+            width: 600px;
+            margin-left: 100px;
             @media screen and (max-width:1292px) {
                 width: 90%;
                 margin-top: 30px;
@@ -145,12 +147,20 @@
     //BMA PART
     .bmaPart
     {
-        width: 95%;
-        margin-left: 5%;
+        width: 80%;
+        margin-left: 20% !important;
         align-items: center;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        @media screen and (max-width:1583px) {
+            width: 90% !important;
+            margin-left: 10% !important;
+        }
+        @media screen and (max-width:1416px) {
+            width: 95% !important;
+            margin-left: 5% !important;
+        }
         .bmaText
         {
             display: flex;
@@ -166,6 +176,13 @@
             {
                 @media screen and (max-width:1292px) {
                     text-align: center;
+                }
+            }
+            .bmaSubText
+            {
+                width: 650px;
+                @media screen and (max-width:736px) {
+                    width: 100% !important;
                 }
             }
         }

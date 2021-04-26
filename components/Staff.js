@@ -7,7 +7,7 @@ function Student(props) {
         backgroundImage: `url(http://creativespark.testjed.me/${props.image})`
     }
     return (
-        <Link href={`/students/${props.id}`}> 
+        <Link href={`/staff/${props.id}`}> 
             <div className={styles.studentCont}>
                 <div style={studentImg} className={styles.studentImgStyle + ' img'}></div>
                 <p className={styles.name + " text"}>{props.name}</p>

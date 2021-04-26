@@ -20,6 +20,7 @@
                 .text
                 {
                     font-size: 18px;
+                    
                 }
             }   
         }
@@ -38,6 +39,7 @@
             }
             .text
             {
+                transition: 0.5s;
                 a
                 {
                     color: rgb(62, 62, 207) !important;

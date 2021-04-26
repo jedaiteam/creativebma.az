@@ -8,11 +8,11 @@ function PaginationCont(props) {
     const [numberOfVacancy] = useState(16)
     
     if(props.student === 1){
-        var elements = [props?.Pagination?.data?.map((element ,index) => <Student name='Ad Soyad' type='musiqiçi'/>)] 
+        var elements = [props?.Pagination?.data?.map((student ,index) => <Student id={student.id} image={student.image} name={student.name_surname}/>)] 
     }
     else if(props.news === 1)
     {
-        var elements = [props?.Pagination?.data?.map((element ,index) => <News id='1' name='Ad Soyad' type='musiqiçi'/>)] 
+        var elements = [props?.Pagination?.data?.map((news ,index) => <News id={news.id} image={news.img} title={news.title} content={news.content} />)] 
     }
     
     var count = Math.ceil(props?.Pagination?.meta?.total / numberOfVacancy)

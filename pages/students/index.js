@@ -5,28 +5,24 @@ import Student from '../../components/Student'
 import PaginationCont from '../../components/PaginationCont'
 import axios from 'axios'
 
-function index() {
-    const [Pagination, setPagination] = useState()
+function index({student}) {
+    const [Pagination, setPagination] = useState(student)
     const [page, setPage] = React.useState(1);
-    const [url, seturl] = useState(`http://jobday.testjed.me/api/vacancies-api?page=${page}`) 
+    const [url, seturl] = useState(`http://creativespark.testjed.me/api/musicians-api?page=${page}`) 
     
     const handleChange = (event, value) => {
         setPage(value);
-        seturl(`http://jobday.testjed.me/api/vacancies-api?page=${value}`)
-        axios.get(`http://jobday.testjed.me/api/vacancies-api?page=${value}`)
+        seturl(`http://creativespark.testjed.me/api/musicians-api?page=${value}`)
+        axios.get(`http://creativespark.testjed.me/api/musicians-api?page=${value}`)
             .then(res =>(setPagination(res.data)))    
     };
 
-    useEffect(() => {
-        axios.get(url)
-            .then(res =>(setPagination(res.data)))    
-    }, [])
-    
-
+    var lang = ["AZ" , "EN" , "RU"]
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
         <div className={styles.studentsPage + " page "}>
             <Link link='Tələbələr'/>
-            <h1 className={styles.aboutTitle + " title-b-desk  pageTitle"} >Tələbələr</h1>
+            <h1 className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</h1>
             <div className={styles.studentsCont}>
                 <PaginationCont student={1} handleChange={handleChange}  page={page}    Pagination={Pagination} />
             </div>
@@ -35,3 +31,13 @@ function index() {
 }
 
 export default index
+
+
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(`http://creativespark.testjed.me/api/musicians-api?page=1`)
+    const student = await res.json()
+    return {
+        props:{student}
+    }
+}
