@@ -23,11 +23,11 @@ function Navbar() {
     const [drop2, setdrop2] = useState(false)
     const [drop1, setdrop1] = useState(false)
     var lang = ["AZ" , "EN" , "RU"]
-    const [langM, setlangM] = useState(typeof window !== "undefined" && (localStorage.getItem('lang') === null ? lang[0] : localStorage.getItem('lang')))
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     const languageChanger = (lang) => {
         setlangM(lang)
         if (typeof window !== "undefined") {
-            localStorage.setItem('lang' , lang)
+            sessionStorage.setItem('lang' , lang)
         }
         window.location.reload()
     }
@@ -66,12 +66,13 @@ function Navbar() {
             </div>
 
             <div className="links">
-                <Link href="/" id="vacancies">Əsas səhifə</Link>
-                <Link href="/about"  id="cv">Haqqımızda</Link>
-                <Link href="/partners" id="about">Partnyorlar</Link>
-                <Link href="/students" id="contact">Tələbələr</Link>
-                <Link href="/staff" id="blog">BMA sahibkarlıq mərkəzi</Link>
-                <Link href="/contact" id="blog">Əlaqə</Link>
+                <Link href="/" id="vacancies">{langM === "AZ" && `Əsas səhifə` || langM === "EN" && `Homepage` || langM === "RU" && `Главная страница`}</Link>
+                <Link href="/about"  id="cv">{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</Link>
+                <Link href="/partners" id="about">{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</Link>
+                <Link href="/students" id="contact">{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</Link>
+                <Link href="/news"  id="blog">{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</Link>
+                <Link href="/staff"  id="blog">{langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`}</Link>
+                <Link href="/contact" id="blog">{langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`}</Link>
             </div>
         </div>
     );
@@ -85,15 +86,15 @@ function Navbar() {
                 {
                     DesktopNavbar &&
                     <div className={styles.links}>
-                        <Link href="/"><a className={'nav-text'}>Əsas səhifə</a></Link>
-                        <Link href="/about"><a className={'nav-text'}>Haqqımızda</a></Link>
-                        <Link href="/partners"><a className={'nav-text'}>Partnyorlar</a></Link>
-                        <Link href="/students"><a className={'nav-text'}>Tələbələr</a></Link>
-                        <Link href="/news"><a className={'nav-text'}>Xəbərlər</a></Link>
-                        <Link href="/staff"><a className={'nav-text'}>BMA sahibkarlıq mərkəzi</a></Link>
-                        <Link href="/contact"><a className={'nav-text'}>Əlaqə</a></Link>
+                        <Link href="/"><a className={'nav-text'}>{langM === "AZ" && `Əsas səhifə` || langM === "EN" && `Homepage` || langM === "RU" && `Главная страница`}</a></Link>
+                        <Link href="/about"><a className={'nav-text'}>{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
+                        <Link href="/partners"><a className={'nav-text'}>{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</a></Link>
+                        <Link href="/students"><a className={'nav-text'}>{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</a></Link>
+                        <Link href="/news"><a className={'nav-text'}>{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</a></Link>
+                        <Link href="/staff"><a className={'nav-text'}>{langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`}</a></Link>
+                        <Link href="/contact"><a className={'nav-text'}>{langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`}</a></Link>
                         <div className={styles.dropdown} onMouseLeave={() => langChangerMouseLeave2()}>
-                            <button onClick={() => myFunction2(drop2)} onBlur={() => myFunctionBlur2(drop1)} className={styles.mainBtn}>{langM}</button>
+                            <button onClick={() => myFunction2(drop2)}  className={styles.mainBtn}>{langM}</button>
                             {drop2 && <div id="drop-inside" className={styles.dropdownContent}>
                                 {langM == "AZ" ? "" : <button onClick={() => languageChanger(lang[0])}>{lang[0]}</button>}
                                 {langM == "EN" ? "" : <button onClick={() => languageChanger(lang[1])}>{lang[1]}</button>}
@@ -103,7 +104,7 @@ function Navbar() {
                     </div>
                 }
                 { 
-                    !DesktopNavbar && 
+                    DesktopNavbar && 
                     <div className={styles.hamburgerMenu}>
                         {
                             <React.Fragment key={'left'}>

@@ -4,16 +4,39 @@ import Student from '../components/Student'
 import News from '../components/News'
 import Link from 'next/link'
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useEffect, useState } from 'react'
 export default function Home() {
   const mobileImg = useMediaQuery('(max-width:750px)');
   const desktopImg = useMediaQuery('(min-width:750px)');
+  const getStudents3 = async () => {
+    try {
+        const resp = await axios.get('http://creativespark.testjed.me/');
+        console.log(resp.data);
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+    }
+  }
+  useEffect(() => {
+    getStudents3()
+  }, [])
+  if (typeof window !== "undefined") {
+    var lang = sessionStorage.getItem('lang')
+  }
+  var lang = ["AZ" , "EN" , "RU"]
+  const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+  
+
+  
+
+
 
   return (
     <div  className={styles.homepage} >
 
         <div className={styles.enterance}>
             <div className={styles.enteranceText}>
-                <h1 className={styles.titleTop + " title-big-desk"}>Creative Spark</h1>
+                <h1 className={styles.titleTop + " title-big-desk"}>{lang === "AZ" && `Creative Spark` || lang && `Creative Spark` || lang === "RU" && `Креативе Спарк`}</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının <br/> öyrədilməsi</h2>
                 <Link href="/about"><button className="button-b-design">Haqqımızda</button></Link>
             </div>
