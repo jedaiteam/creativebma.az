@@ -41,18 +41,18 @@ function selectednews({news}) {
 
 export default selectednews
 
-export async function getStaticPaths() {
-    const res = await fetch('http://creativespark.testjed.me/api/blog-api/')
-    const users = await res.json()
-    console.log(users)
-    const paths = users.data.map((user) => ({
-      params: { id: user.id.toString() },
-    }))
+// export async function getStaticPaths() {
+//     const res = await fetch('http://creativespark.testjed.me/api/blog-api/')
+//     const users = await res.json()
+//     console.log(users)
+//     const paths = users.data.map((user) => ({
+//       params: { id: user.id.toString() },
+//     }))
   
-    return { paths, fallback: false }
-  }
+//     return { paths, fallback: false }
+//   }
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const res = await fetch(`http://creativespark.testjed.me/api/blog-api/${context.params.id}`)
     const news = await res.json()
     return {

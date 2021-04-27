@@ -387,19 +387,19 @@ function index({student}) {
 
 export default index
 
-export async function getStaticPaths() {
-    const res = await fetch('http://creativespark.testjed.me/api/musicians-api/')
-    const users = await res.json()
-    console.log(users)
-    const paths = users.data.map((user) => ({
-      params: { id: user.id.toString() },
-    }))
+// export async function getStaticPaths() {
+//     const res = await fetch('http://creativespark.testjed.me/api/musicians-api/')
+//     const users = await res.json()
+//     console.log(users)
+//     const paths = users.data.map((user) => ({
+//       params: { id: user.id.toString() },
+//     }))
   
-    return { paths, fallback: false }
-  }
+//     return { paths, fallback: false }
+//   }
 
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     const res = await fetch(`http://creativespark.testjed.me/api/musicians-api/${context.params.id}`)
     const student = await res.json()
     return {
