@@ -34,7 +34,7 @@ export default news
 
 
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
     const res = await fetch(`http://creativespark.testjed.me/api/blog-api?page=1`)
     const news = await res.json()
     return {

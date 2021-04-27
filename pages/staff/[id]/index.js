@@ -29,9 +29,19 @@ function index({staff}) {
 
 export default index
 
+export async function getStaticPaths() {
+    const res = await fetch('http://creativespark.testjed.me/public/api/team-api/')
+    const users = await res.json()
+    console.log(users)
+    const paths = users.map((user) => ({
+      params: { id: user.id.toString() },
+    }))
+  
+    return { paths, fallback: false }
+  }
 
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
     const res = await fetch(`http://creativespark.testjed.me/public/api/team-api/${context.params.id}`)
     console.log(res)
     const staff = await res.json()

@@ -35,7 +35,7 @@ export default index
 
 
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
     const res = await fetch(`http://creativespark.testjed.me/api/team-api`)
     const teams = await res.json()
     const res1 = await fetch(`http://creativespark.testjed.me/api/blog-tedbirler-take-3-api`)
