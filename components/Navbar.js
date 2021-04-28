@@ -32,6 +32,7 @@ function Navbar() {
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     const languageChanger = (lang) => {
         setlangM(lang)
+        // axios.get(`http://creativespark.testjed.me/locale/${lang.trasformLowerCase}`)
         if (typeof window !== "undefined") {
             sessionStorage.setItem('lang' , lang)
         }
@@ -66,9 +67,9 @@ function Navbar() {
     const list = (anchor) => (
         <div className="swiperCont">
             <div className="lang"> 
-                <button onClick={() => languageChanger(lang[0])}>AZ</button>
-                <button onClick={() => languageChanger(lang[1])}>EN</button>
-                <button onClick={() => languageChanger(lang[2])}>RU</button>
+                <a href='http://creativespark.testjed.me/locale/az' onClick={() => languageChanger(lang[0])}>AZ</a>
+                <a href='http://creativespark.testjed.me/locale/en' onClick={() => languageChanger(lang[1])}>EN</a>
+                <a href='http://creativespark.testjed.me/locale/ru' onClick={() => languageChanger(lang[2])}>RU</a>
             </div>
 
             <div className="links">
@@ -116,9 +117,9 @@ function Navbar() {
                         <div className={styles.dropdown} onMouseLeave={() => langChangerMouseLeave2()}>
                             <button onClick={() => myFunction2(drop2)}  className={styles.mainBtn}>{langM} <ArrowLeftIcon/></button>
                             {drop2 && <div id="drop-inside" className={styles.dropdownContent}>
-                                {langM == "AZ" ? "" : <button onClick={() => languageChanger(lang[0])}>{lang[0]}</button>}
-                                {langM == "EN" ? "" : <button onClick={() => languageChanger(lang[1])}>{lang[1]}</button>}
-                                {langM == "RU" ? "" : <button onClick={() => languageChanger(lang[2])}> {lang[2]}</button>}
+                                {langM == "AZ" ? "" : <a href='https://creativespark.testjed.me/locale/az' onClick={() => languageChanger(lang[0])}>{lang[0]}</a>}
+                                {langM == "EN" ? "" : <a href='https://creativespark.testjed.me/locale/en' onClick={() => languageChanger(lang[1])}>{lang[1]}</a>}
+                                {langM == "RU" ? "" : <a href='https://creativespark.testjed.me/locale/ru' onClick={() => languageChanger(lang[2])}> {lang[2]}</a>}
                             </div>}
                         </div>
                     </div>

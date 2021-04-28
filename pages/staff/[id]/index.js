@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from '../../../components/Link'
 import styles from '../../../styles/SelectedStaff.module.scss'
 import AOS from "aos";
@@ -13,9 +13,12 @@ function index({staff}) {
     const imgHandle = {
         backgroundImage: `url('http://creativespark.testjed.me${staff.image}')`
     }
+
+    var lang = ["AZ" , "EN" , "RU"]
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
         <div className={styles.selectedStaffPage + " page"}>
-            <Link link='Əməkdaşlar'/>
+            <Link link={langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`}/>
             <div className={styles.imgAndAbout + " mt50"}>
                 <div  data-aos="fade-right"   className={styles.imgHandle + " img"} style={imgHandle}></div>
                 <div  data-aos="fade-right"   className={styles.textAbout + " text"}>

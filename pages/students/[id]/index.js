@@ -208,10 +208,11 @@ function index({student}) {
         })
     //Formik2
 
-
+    var lang = ["AZ" , "EN" , "RU"]
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
         <div className={styles.singleStudentPage + " page"}>
-            <Link link='Tələbələr' href='/students'/>
+            <Link link={langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`} href='/students'/>
             {
                 buttonsMQ  &&
                 <div data-aos="fade-right" className={styles.buttonsCont}>

@@ -29,7 +29,7 @@ function index({student}) {
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
         <div className={styles.studentsPage + " page "}>
-            <Link link='Tələbələr'/>
+            <Link link={langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}/>
             <h1 data-aos="fade-up" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</h1>
             <div data-aos="fade-up"  className={styles.studentsCont}>
                 <PaginationCont student={1} handleChange={handleChange}  page={page}    Pagination={Pagination} />

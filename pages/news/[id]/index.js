@@ -20,9 +20,11 @@ function selectednews({news}) {
     const imgHandle3 = {
         backgroundImage:'url(/singleNewsAvatar2.png)'
     }
+    var lang = ["AZ" , "EN" , "RU"]
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
         <div className={styles.selectedNewsPage + " page"}>
-            <Link link='Seçilmiş Xəbər'/>
+            <Link link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}/>
             <div className={styles.imgAndTitle + " mt30"}>
                 <div data-aos="fade-right"  style={imgHandle} className={styles.imgHandle + " img"}></div>
                 <div data-aos="fade-right" className={styles.titleAndDate}>

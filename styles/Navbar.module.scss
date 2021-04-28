@@ -89,11 +89,12 @@
                 border: 1px solid #42539b;
                 border-radius: 5px;
                 overflow: hidden;
-                button 
+                a 
                 {
                     background-color: #fff;
                     border: none;
                     color: #FA7167;
+                    width: 35px;
                     font-size: 16px;
                     &:hover 
                     {

@@ -14,7 +14,7 @@ function about() {
     
     return (
         <div className={styles.aboutPage + " page"}>
-            <Link link='Haqqımızda'/>
+            <Link link={langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}/>
             <h1 className={styles.aboutTitle + " title-b-desk pageTitle"} data-aos="fade-up">{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</h1>
             <div className={styles.aboutPart1}  data-aos="fade-up">
                 <p className={styles.text + ' text'}> 

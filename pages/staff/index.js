@@ -17,7 +17,7 @@ function index({teams , events}) {
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
         <div className={styles.bmaPage + " page "}>
-            <Link link='BMA sahibkarlıq mərkəzi'/>
+            <Link link={langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`}/>
             <h1 data-aos="fade-up"  className={styles.bmaTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</h1>
             <p data-aos="fade-up"  className="text mt30">
                 {langM === "AZ" && `Bakı Musiqi Akademiyasının Sahibkarlıq Mərkəzi, British Council tərəfindən maliyyələşdirilən Creative Spark: Ali Təhsil Müəssisə Proqramı çərçivəsində tələbə və məzunlar arasında yaradıcılıq və musiqi sahibkarlığının artırılması məqsədi ilə hazırlanmış yeni bir proqramdır. Hədəf gənc yaradıcı insanların fikirlərini yeni karyera imkanlarına doğru motivasiya və dəstək verən fəaliyyətə çevirməkdir. ` 

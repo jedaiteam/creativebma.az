@@ -12,7 +12,7 @@ function contact() {
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
         <div className={styles.contactPage + " page "}>
-            <Link link='Əlaqə' />
+            <Link link={langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`} />
             <h1 className={styles.bmaTitle + " title-b-desk  pageTitle"} data-aos="fade-up">{langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`}</h1>
             <div className={styles.links}>
                 <div className={styles.part1 + " mt30 text"}>
