@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect , useState } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../../styles/SelectedNews.module.scss'
 import Link from '../../../components/Link'
