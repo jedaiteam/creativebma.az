@@ -16,12 +16,12 @@ function index({student}) {
 
     const [Pagination, setPagination] = useState(student)
     const [page, setPage] = React.useState(1);
-    const [url, seturl] = useState(`http://creativespark.testjed.me/api/musicians-api?page=${page}`) 
+    const [url, seturl] = useState(`https://creativespark.testjed.me/api/musicians-api?page=${page}`) 
     
     const handleChange = (event, value) => {
         setPage(value);
-        seturl(`http://creativespark.testjed.me/api/musicians-api?page=${value}`)
-        axios.get(`http://creativespark.testjed.me/api/musicians-api?page=${value}`)
+        seturl(`https://creativespark.testjed.me/api/musicians-api?page=${value}`)
+        axios.get(`https://creativespark.testjed.me/api/musicians-api?page=${value}`)
             .then(res =>(setPagination(res.data)))    
     };
 

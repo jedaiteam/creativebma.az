@@ -66,7 +66,7 @@ function index({student}) {
     const { id } = router.query
     const [studentData, setstudentData] = useState(student)
     const studentImg = {
-        backgroundImage:`url(http://creativespark.testjed.me${studentData?.image})`
+        backgroundImage:`url(https://creativespark.testjed.me${studentData?.image})`
     }
 
 

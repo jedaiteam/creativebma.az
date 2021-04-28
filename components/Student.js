@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function Student(props) {
     const studentImg = {
-        backgroundImage: `url(http://creativespark.testjed.me/${props.image})`
+        backgroundImage: `url(https://creativespark.testjed.me/${props.image})`
     }
     return (
         <Link href={`/students/${props.id}`}> 
