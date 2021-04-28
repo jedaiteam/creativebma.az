@@ -57,7 +57,7 @@ export default function Home({students , news}) {
 
         <div className={styles.enterance} >
             <div className={styles.enteranceText} data-aos="fade-left">
-                <h1 className={styles.titleTop + " title-big-desk mt50"}>{langM === "AZ" && `Creative Spark` || langM === "EN" && `Creative Spark` || langM === "RU" && `Креативе Спарк`}</h1>
+                <h1 className={styles.titleTop + " title-big-desk mt50"}>{langM === "AZ" && `Creative Spark` || langM === "EN" && `Creative Spark` || langM === "RU" && `Креатив Спарк`}</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>{langM === "AZ" && `Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının  öyrədilməsi` || langM === 'EN' && `Teaching business skills to students and creative entrepreneurs` || langM === "RU" && `Обучение бизнес-навыкам студентов и творческих предпринимателей`}</h2>
                 <Link href="/about"><a className={stylesBtn.buttonEffect + " button-b-design"}>Haqqımızda</a></Link>
                 

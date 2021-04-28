@@ -5,7 +5,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 h1 , p ,h2 , a 
 {
     margin: 0px;
@@ -68,7 +68,7 @@ button:focus
 }
 .title-big-desk
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-weight: 700;
     font-size: 96px;
     color: white;
@@ -77,7 +77,7 @@ button:focus
 
 .title-big-mob
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-weight: 700;
     font-size: 72px;
     color: white;
@@ -86,7 +86,7 @@ button:focus
 }
 .top-title-w
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-weight: 700;
     font-size: 24px;
     color: white;
@@ -94,42 +94,42 @@ button:focus
 }
 .top-title-b
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-weight: 700;
     font-size: 24px;
     color: black;
 }
 .title-w-desk
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-weight: 700;
     font-size: 48px;
     color: white
 }
 .title-b-desk
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-weight: 700;
     font-size: 48px;
     color: black
 }
 .title-e-desk
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-weight: 700;
     font-size: 36px;
     color: black
 }
 .text
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-size: 20px;
     color: black;
     line-height: 35px;
 }
 .text-bottom 
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-size: 14px;
     color: #707070;
     line-height: 17px;
@@ -137,20 +137,20 @@ button:focus
 }
 .text16
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-size: 16px;
     color: black;
     line-height: 35px;
 }
 .nav-text
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-size: 16px;
     color: white;
 }
 .footer-text
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-size: 16px;
     color: white;
 }
@@ -158,7 +158,7 @@ button:focus
 {
     color: white;
     font-size: 24px;
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     background: #FA7167;
     border-radius: 50px;
     border: none;
@@ -196,7 +196,7 @@ button:focus
     font-size: 18px;
     border-radius: 50px;
     background: #FA7167;
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     width: 220px;
     border: none;
     height: 60px;
@@ -207,7 +207,7 @@ button:focus
     font-size: 18px;
     border-radius: 50px;
     background: #B0D9F0;
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     width: 220px;
     border: none;
     height: 60px;
@@ -249,7 +249,7 @@ button:focus
 }
 .css-1uccc91-singleValue , .css-1wa3eu0-placeholder
 {
-    font-family: 'Quicksand';
+    font-family: 'Nunito';
     font-size: 20px;
     color: black;
     line-height: 35px;
@@ -260,7 +260,7 @@ button:focus
 }
 .css-emi4wi-MuiFormLabel-root-MuiInputLabel-root
 {
-    font-family: 'Quicksand' !important;
+    font-family: 'Nunito' !important;
     font-size: 20px !important;
     color: gray !important;
     margin-top: -10px;
@@ -276,7 +276,7 @@ button:focus
 }
 .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input
 {
-    font-family: 'Quicksand' !important;
+    font-family: 'Nunito' !important;
     font-size: 20px !important;
     color: black !important;
     margin-top: -10px;
@@ -293,7 +293,7 @@ button:focus
 {
     width: 100% ;
     justify-content: center ;
-    font-family: "Quicksand" ;
+    font-family: "Nunito" ;
 
 }
 .MuiPagination-ul li button
@@ -303,7 +303,7 @@ button:focus
     width: 27px ;
     color: white;
     height: 30px ;
-    font-family: "Quicksand" ;
+    font-family: "Nunito" ;
 }
 .css-19xm0h7-MuiButtonBase-root-MuiPaginationItem-root:hover
 {
@@ -313,7 +313,7 @@ button:focus
 {
     background: #FA7167 !important;
     color: white ;
-    font-family: "Quicksand" ;
+    font-family: "Nunito" ;
 }
 
 .css-4t3x6l-MuiPaper-root-MuiDrawer-paper
@@ -340,7 +340,7 @@ button:focus
 }
 .swiperCont .lang button 
 {
-    font-family: "Quicksand";
+    font-family: "Nunito";
     font-size: 18px;
     border: none;
     background-color: transparent;
@@ -360,7 +360,7 @@ button:focus
 {
     font-size: 16px;
     color: #000000;
-    font-family: "Quicksand";
+    font-family: "Nunito";
     width: 191px;
     text-align: center;
     padding-bottom: 5px;
