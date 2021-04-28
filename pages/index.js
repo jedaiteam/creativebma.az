@@ -59,7 +59,7 @@ export default function Home({students , news}) {
             <div className={styles.enteranceText} data-aos="fade-left">
                 <h1 className={styles.titleTop + " title-big-desk mt50"}>{langM === "AZ" && `Creative Spark` || langM === "EN" && `Creative Spark` || langM === "RU" && `Creative Spark`}</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>{langM === "AZ" && `Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının  öyrədilməsi` || langM === 'EN' && `Teaching business skills to students and creative entrepreneurs` || langM === "RU" && `Обучение бизнес-навыкам студентов и творческих предпринимателей`}</h2>
-                <Link href="/about"><a className={stylesBtn.buttonEffect + " button-b-design"}>Haqqımızda</a></Link>
+                <Link href="/about"><a className={stylesBtn.buttonEffect + " button-b-design"}>{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
                 
             </div>
             {desktopImg && <img  data-aos="fade-right" className={styles.enteranceImg} src="/notes.svg" alt="notes"/>}
