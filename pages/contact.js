@@ -10,6 +10,16 @@ function contact() {
       }, [])
     var lang = ["AZ" , "EN" , "RU"]
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+    
+    const ImageBg1 = {
+        backgroundImage: 'url(/contact1.jpg)'
+    }
+    const ImageBg2 = {
+        backgroundImage: 'url(/contact2.jpg)'
+    }
+    const ImageBg3 = {
+        backgroundImage: 'url(/contact3.jpg)'
+    }
     return (
         <div className={styles.contactPage + " page "}>
             <Link link={langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`} />
@@ -28,9 +38,9 @@ function contact() {
             </div>
 
             <div className={styles.contactImg + " mt50"}>
-                <div className="img" data-aos="fade-right"></div>
-                <div className="img" data-aos="fade-up"></div>
-                <div className="img" data-aos="fade-left"></div>
+                <div style={ImageBg1} className="img" data-aos="fade-right"></div>
+                <div style={ImageBg2} className="img" data-aos="fade-up"></div>
+                <div style={ImageBg3} className="img" data-aos="fade-left"></div>
             </div>
         </div>
     )
