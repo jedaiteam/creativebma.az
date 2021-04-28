@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../../styles/SelectedNews.module.scss'
 import Link from '../../../components/Link'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function selectednews({news}) {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, [])
 
     const imgHandle = {
         backgroundImage:`url(http://creativespark.testjed.me/${news.img})`
@@ -18,22 +24,22 @@ function selectednews({news}) {
         <div className={styles.selectedNewsPage + " page"}>
             <Link link='Seçilmiş Xəbər'/>
             <div className={styles.imgAndTitle + " mt30"}>
-                <div  style={imgHandle} className={styles.imgHandle + " img"}></div>
-                <div className={styles.titleAndDate}>
+                <div data-aos="fade-right"  style={imgHandle} className={styles.imgHandle + " img"}></div>
+                <div data-aos="fade-right" className={styles.titleAndDate}>
                     <h1 className={styles.title + " title-e-desk"}> {news.title.replace(/(<([^>]+)>)/gi, "")}</h1>
                     <p className={styles.date + " text"}> <img src="/calendar.svg" alt=""/> <span>{news.created_at.slice(0,10)}</span> </p>
                 </div>
             </div>
 
-            <div className="text mt50">
+            <div data-aos="fade-up" className="text mt50">
                 <p className="text">
                     {news.content.replace(/(<([^>]+)>)/gi, "")}
                 </p>
             </div>
 
             <div className={styles.imgs + " mt50 img"} >
-                <div className={styles.imgBottom} style={imgHandle2}></div>
-                <div className={styles.imgBottom} style={imgHandle3}></div>
+                <div data-aos="fade-up"  className={styles.imgBottom} style={imgHandle2}></div>
+                <div data-aos="fade-up"  className={styles.imgBottom} style={imgHandle3}></div>
             </div>
         </div>
     )

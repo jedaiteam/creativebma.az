@@ -4,8 +4,16 @@ import Link from '../../components/Link'
 import Student from '../../components/Student'
 import PaginationCont from '../../components/PaginationCont'
 import axios from 'axios'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 function index({student}) {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, [])
+
     const [Pagination, setPagination] = useState(student)
     const [page, setPage] = React.useState(1);
     const [url, seturl] = useState(`http://creativespark.testjed.me/api/musicians-api?page=${page}`) 
@@ -22,8 +30,8 @@ function index({student}) {
     return (
         <div className={styles.studentsPage + " page "}>
             <Link link='Tələbələr'/>
-            <h1 className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</h1>
-            <div className={styles.studentsCont}>
+            <h1 data-aos="fade-up" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</h1>
+            <div data-aos="fade-up"  className={styles.studentsCont}>
                 <PaginationCont student={1} handleChange={handleChange}  page={page}    Pagination={Pagination} />
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React , {useEffect, useState} from 'react'
 import Link from 'next/link'
 import styles from '../styles/Navbar.module.scss'
 import { Sling as Hamburger } from 'hamburger-react'
@@ -6,6 +6,10 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Router from 'next/router'
+import { useRouter } from 'next/router'
+import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+
 const stylesForSwiper = makeStyles({
     list: {
       width: "100%",
@@ -15,10 +19,12 @@ const stylesForSwiper = makeStyles({
     },
 }); 
 
+
+
 function Navbar() {
     const DesktopNavbar = useMediaQuery('(min-width:1178px)');
-
-
+    const router = useRouter()
+    const { pathname } = router.query
     //LangThings
     const [drop2, setdrop2] = useState(false)
     const [drop1, setdrop1] = useState(false)
@@ -78,23 +84,37 @@ function Navbar() {
     );
     //SwiperThings
 
+    const borderStyle = {
+        borderBottom: "2px solid #FA7167"
+    }
+    const borderStyle1 = {
+        borderBottom: "0px solid #FA7167"
+    }
+    const [url, seturl] = useState()
+    useEffect(() => {
+       seturl(router.pathname)
+    }, [router])
+    console.log(url)
 
+    const zindexNavbar = {
+        zIndex:1400
+    }
     return (
-        <header className={styles.navbar}>
+        <header style={zindexNavbar} className={styles.navbar}>
             
-                <img className={styles.logo} src="/creative-spark-logo.png" width="140px" height='65.75px' alt="Creative Spark Logo"/>
+                <Link href="/"><img className={styles.logo} src="/creative-spark-logo.png" width="140px" height='65.75px' alt="Creative Spark Logo"/></Link>
                 {
                     DesktopNavbar &&
                     <div className={styles.links}>
-                        <Link href="/"><a className={'nav-text'}>{langM === "AZ" && `Əsas səhifə` || langM === "EN" && `Homepage` || langM === "RU" && `Главная страница`}</a></Link>
-                        <Link href="/about"><a className={'nav-text'}>{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
-                        <Link href="/partners"><a className={'nav-text'}>{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</a></Link>
-                        <Link href="/students"><a className={'nav-text'}>{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</a></Link>
-                        <Link href="/news"><a className={'nav-text'}>{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</a></Link>
-                        <Link href="/staff"><a className={'nav-text'}>{langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`}</a></Link>
-                        <Link href="/contact"><a className={'nav-text'}>{langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`}</a></Link>
+                        <Link href="/"><a id='home' style={ url === '/' ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `Əsas səhifə` || langM === "EN" && `Homepage` || langM === "RU" && `Главная страница`}</a></Link>
+                        <Link href="/about"><a id='about' style={ url === '/about' ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
+                        <Link href="/partners"><a id='partners' style={ url === '/partners' ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</a></Link>
+                        <Link href="/students"><a id='students' style={ (url === '/students' || url === '/students/[id]') ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</a></Link>
+                        <Link href="/news"><a id='news' style={ (url === '/news' || url === '/news/[id]') ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</a></Link>
+                        <Link href="/staff"><a id='staff' style={ (url === '/staff' || url === '/staff/[id]') ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`}</a></Link>
+                        <Link href="/contact"><a id='contact' style={ url === '/contact' ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`}</a></Link>
                         <div className={styles.dropdown} onMouseLeave={() => langChangerMouseLeave2()}>
-                            <button onClick={() => myFunction2(drop2)}  className={styles.mainBtn}>{langM}</button>
+                            <button onClick={() => myFunction2(drop2)}  className={styles.mainBtn}>{langM} <ArrowLeftIcon/></button>
                             {drop2 && <div id="drop-inside" className={styles.dropdownContent}>
                                 {langM == "AZ" ? "" : <button onClick={() => languageChanger(lang[0])}>{lang[0]}</button>}
                                 {langM == "EN" ? "" : <button onClick={() => languageChanger(lang[1])}>{lang[1]}</button>}

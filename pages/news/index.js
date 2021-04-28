@@ -4,7 +4,16 @@ import Link1 from '../../components/Link'
 import News from '../../components/News'
 import PaginationCont from '../../components/PaginationCont'
 import axios from 'axios'
+import AOS from "aos";
+import "aos/dist/aos.css";
+
+
 function news({news}) {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, [])
+
     const [Pagination, setPagination] = useState(news)
     const [page, setPage] = React.useState(1);
     const [url, seturl] = useState(`http://jobday.testjed.me/api/vacancies-api?page=${page}`) 
@@ -21,9 +30,9 @@ function news({news}) {
     
     return (
         <div className={styles.newsPage + " page "}>
-            <Link1 link='Xəbərlər' href='/news'/>
-            <h1 className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</h1>
-            <div className={styles.newsCont}>
+            <Link1 link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} href='/news'/>
+            <h1 data-aos="fade-right" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</h1>
+            <div data-aos="fade-up"  className={styles.newsCont}>
                 <PaginationCont news={1} handleChange={handleChange}  page={page}  Pagination={Pagination} />
             </div>
         </div>

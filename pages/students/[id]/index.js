@@ -30,8 +30,12 @@ import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import DatePicker from '@material-ui/lab/DatePicker';
 import axios from 'axios';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const useStyles = makeStyles((theme) => ({
+    
+
     modal: {
       display: 'flex',
       alignItems: 'center',
@@ -49,6 +53,11 @@ const useStyles = makeStyles((theme) => ({
 //Material UI 
 
 function index({student}) {
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+    }, [])
+
     const buttonsMQ = useMediaQuery('(min-width:1067px)');
     const titleMQ = useMediaQuery('(min-width:557px)');
     
@@ -205,43 +214,43 @@ function index({student}) {
             <Link link='Tələbələr' href='/students'/>
             {
                 buttonsMQ  &&
-                <div className={styles.buttonsCont}>
+                <div data-aos="fade-right" className={styles.buttonsCont}>
                     <button className={stylesBtn.buttonEffect + " button-text"} onClick={handleOpen}>İfaçı işə götür</button>
                     <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>Şəxsi müəllim işə götür</button>
                 </div>
             }
             <div className={styles.imgAndAbout + " mt20"}>
-                <div className={styles.studentAvatar + " img"} style={studentImg}></div>
+                <div data-aos="fade-right" className={styles.studentAvatar + " img"} style={studentImg}></div>
                 {
                         !titleMQ && 
-                        <div className={styles.titles}>
+                        <div data-aos="fade-right" className={styles.titles}>
                             <h1 className={styles.titleStudent + " title title-e-desk mt20"}>{studentData?.name_surname} </h1>
                             <h2 className={styles.subtitleStudent + " title top-title-b mt10"}>{studentData?.position}</h2>
                         </div>
                 }
                 {
                     !buttonsMQ  &&
-                    <div className={styles.buttonsCont}>
-                        <button className={stylesBtn.buttonEffect + " button-text"}>İfaçı işə götür</button>
-                        <button className={stylesBtn.buttonEffect + " button-text"}>Şəxsi müəllim işə götür </button>
+                    <div data-aos="fade-down" className={styles.buttonsCont}>
+                        <button className={stylesBtn.buttonEffect + " button-text"} onClick={handleOpen}>İfaçı işə götür</button>
+                        <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>Şəxsi müəllim işə götür</button>
                     </div>
                 }
                 <div className={styles.textAbout}>
                     {
                         titleMQ && 
                         <>
-                            <h1 className={styles.titleStudent + " title title-e-desk mt20"}>{studentData?.name_surname}  </h1>
-                            <h2 className={styles.subtitleStudent + " title top-title-b mt10"}>{studentData?.position}</h2>
+                            <h1  data-aos="fade-right"   className={styles.titleStudent + " title title-e-desk mt20"}>{studentData?.name_surname}  </h1>
+                            <h2  data-aos="fade-right"   className={styles.subtitleStudent + " title top-title-b mt10"}>{studentData?.position}</h2>
                         </>
                     }
-                    <p className={styles.studentText + " text mt20"}>
+                    <p  data-aos="fade-right"   className={styles.studentText + " text mt20"}>
                         {studentData?.content?.replace(/(<([^>]+)>)/gi, "")}
                     </p>
                 </div>
             </div>
-            <div className={styles.studentText2 + " text mt30"}>
-                <p className="text">
-                {studentData?.content2?.replace(/(<([^>]+)>)/gi, "")}
+            <div   className={styles.studentText2 + " text mt30"}>
+                <p className="text" data-aos="fade-up">
+                    {studentData?.content2?.replace(/(<([^>]+)>)/gi, "")}
                 </p>
             </div>
             

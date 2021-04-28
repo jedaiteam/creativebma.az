@@ -14,13 +14,21 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.pageProgress
+{
+    z-index: 500000;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+}
 .page
 {
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 7%;
-    padding-right: 7%;
+    padding-left: 9%;
+    padding-right: 9%;
     padding-top: 30px;
     width: 100%;
     margin-top: 80px;

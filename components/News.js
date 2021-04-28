@@ -8,9 +8,9 @@ function News(props) {
     }
     return (
         <Link href={`/news/${props.id}`}> 
-            <div className={styles.newsCont}>
+            <div key={props.id} className={styles.newsCont}>
                 <div style={newsImg} className={styles.newsImgStyle + ' img'}></div>
-                <p className={styles.name + " text"}>{props?.content?.replace(/(<([^>]+)>)/gi, "")}</p>
+                <p className={styles.name + " text"}>{props?.title}</p>
             </div>
         </Link>
     )
