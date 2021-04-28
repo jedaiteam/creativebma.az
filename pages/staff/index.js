@@ -36,9 +36,9 @@ export default index
 
 
 export const getServerSideProps = async (context) => {
-    const res = await fetch(`http://creativespark.testjed.me/api/team-api`)
+    const res = await fetch(`https://creativespark.testjed.me/api/team-api`)
     const teams = await res.json()
-    const res1 = await fetch(`http://creativespark.testjed.me/api/blog-tedbirler-take-3-api`)
+    const res1 = await fetch(`https://creativespark.testjed.me/api/blog-tedbirler-take-3-api`)
     const events = await res1.json()
     return {
         props:{teams , events}

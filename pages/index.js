@@ -9,7 +9,9 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Button from '../components/Button'
-export default function Home() {
+
+
+export default function Home({students , news}) {
   const mobileImg = useMediaQuery('(max-width:750px)');
   const desktopImg = useMediaQuery('(min-width:750px)');
   const getStudents3 = async () => {
@@ -30,11 +32,11 @@ export default function Home() {
   var lang = ["AZ" , "EN" , "RU"]
   const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
   
-  const [news3, setnews3] = useState([])
-  const [students3, setstudents3] = useState([])
+  const [students3, setstudents3] = useState([students])
+  const [news3, setnews3] = useState([news])
   const getDatas = async () => {
-    const response1 = await axios.get('http://creativespark.testjed.me/api/musicians-api-take-3')
-    const response2 = await axios.get('http://creativespark.testjed.me/api/blog-xeberler-take-3-api')
+    const response1 = await axios.get('https://creativespark.testjed.me/api/musicians-api-take-3')
+    const response2 = await axios.get('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
     setstudents3(response1.data)
     setnews3(response2.data)
   }
@@ -116,3 +118,16 @@ export default function Home() {
     </div>
   )
 }
+
+
+
+export const getServerSideProps = async (context) => {
+  const res1 = await fetch('https://creativespark.testjed.me/api/musicians-api-take-3')
+  const res2 = await fetch('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
+  const students = await res1.json()
+  const news = await res2.json()
+  return {
+      props:{students , news}
+  }
+}
+

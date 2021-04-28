@@ -53,7 +53,7 @@ export default selectednews
 //   }
 
 export const getServerSideProps = async (context) => {
-    const res = await fetch(`http://creativespark.testjed.me/api/blog-api/${context.params.id}`)
+    const res = await fetch(`https://creativespark.testjed.me/api/blog-api/${context.params.id}`)
     const news = await res.json()
     return {
         props:{news}
