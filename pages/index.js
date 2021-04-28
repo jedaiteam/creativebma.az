@@ -129,7 +129,7 @@ export default function Home({students , news}) {
 
 
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const res1 = await fetch('https://creativespark.testjed.me/api/musicians-api-take-3')
   const res2 = await fetch('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
   const students = await res1.json()

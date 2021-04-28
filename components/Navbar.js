@@ -67,9 +67,9 @@ function Navbar() {
     const list = (anchor) => (
         <div className="swiperCont">
             <div className="lang"> 
-                <a href='http://creativespark.testjed.me/locale/az' onClick={() => languageChanger(lang[0])}>AZ</a>
-                <a href='http://creativespark.testjed.me/locale/en' onClick={() => languageChanger(lang[1])}>EN</a>
-                <a href='http://creativespark.testjed.me/locale/ru' onClick={() => languageChanger(lang[2])}>RU</a>
+                <a href='https://creativespark.testjed.me/locale/az' onClick={() => languageChanger(lang[0])}>AZ</a>
+                <a href='https://creativespark.testjed.me/locale/en' onClick={() => languageChanger(lang[1])}>EN</a>
+                <a href='https://creativespark.testjed.me/locale/ru' onClick={() => languageChanger(lang[2])}>RU</a>
             </div>
 
             <div className="links">
