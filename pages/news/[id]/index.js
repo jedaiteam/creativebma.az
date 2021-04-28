@@ -12,13 +12,13 @@ function selectednews({news}) {
       }, [])
 
     const imgHandle = {
-        backgroundImage:`url(http://creativespark.testjed.me/${news.img})`
+        backgroundImage:`url(https://creativespark.testjed.me/${news.img})`
     }
     const imgHandle2 = {
-        backgroundImage:'url(/singleNewsAvatar2.png)'
+        backgroundImage:`url(https://creativespark.testjed.me/${news.image_1})`
     }
     const imgHandle3 = {
-        backgroundImage:'url(/singleNewsAvatar2.png)'
+        backgroundImage:`url(https://creativespark.testjed.me/${news.image_2})`
     }
     var lang = ["AZ" , "EN" , "RU"]
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
@@ -40,8 +40,8 @@ function selectednews({news}) {
             </div>
 
             <div className={styles.imgs + " mt50 img"} >
-                <div data-aos="fade-up"  className={styles.imgBottom} style={imgHandle2}></div>
-                <div data-aos="fade-up"  className={styles.imgBottom} style={imgHandle3}></div>
+                <div data-aos="fade-up"  className={styles.imgBottom + " img"} style={imgHandle2}></div>
+                <div data-aos="fade-up"  className={styles.imgBottom + " img"} style={imgHandle3}></div>
             </div>
         </div>
     )
