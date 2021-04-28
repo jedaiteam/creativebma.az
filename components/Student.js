@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from '../styles/Student.module.scss'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function Student(props) {
     const studentImg = {
