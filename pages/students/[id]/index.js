@@ -410,7 +410,7 @@ export default index
 
 
 export const getServerSideProps = async (context) => {
-    const res = await fetch(`http://creativespark.testjed.me/api/musicians-api/${context.params.id}`)
+    const res = await fetch(`https://creativespark.testjed.me/api/musicians-api/${context.params.id}`)
     const student = await res.json()
     return {
         props:{student}
