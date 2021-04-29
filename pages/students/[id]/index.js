@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import Link from '../../../components/Link'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-
+import MaskedInput from "react-text-mask";
 //Formik
 import {Formik , Form , Field, ErrorMessage} from "formik"
 import * as yup from 'yup';
@@ -35,11 +35,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 const useStyles = makeStyles((theme) => ({
-    
-
     modal: {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       justifyContent: 'center',
       overflow:'auto',
     },
@@ -52,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 //Material UI 
+const phoneNumberMask = ["(","+","9","9","4",")"," ","0",/\d/,/\d/,"-",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,];
 
 function index({student}) {
     useEffect(() => {
@@ -118,7 +117,7 @@ function index({student}) {
             { value: 'recital', label: 'Recital' },
             { value: 'other', label: 'Other' },
         ]
-        const [eventType, seteventType] = useState(optionsTypeOfEvent[0].value)
+        const [eventType, seteventType] = useState(optionsTypeOfEvent[1].value)
         const eventTypeChange = (value) => {
             seteventType(value.value)
         }
@@ -155,14 +154,20 @@ function index({student}) {
             dt.append('email' , values.email)
             dt.append('phone' , values.phone.slice(1,14))
             dt.append('password' , values.password)
-            dt.append('birthdate' , selectedDate)
+            dt.append('birthdate' , eventDate)
+            dt.append('birthdate' , eventTime)
+            dt.append('musicType' , musicType)
+            dt.append('eventType' , eventType)
+            dt.append('address' , values.address)
+            dt.append('company' , values.company)
             if (profilePhoto !== null) {
                 dt.append('profilePhoto' , profilePhoto)
             }
             dt.append('auth_type' , authT)
-            axios.post('https://nehra.az/public/api/login', dt , headers)
-            .then(res => (setloader(false) , console.log(res.data) ,  res.status === 200 && (localStorage.setItem("LoginUserData" , JSON.stringify(res.data)) ,  notify() ,  handleOpen() ) ) ) 
-            .catch(err => (setloader(false) , setError(true)) )
+            axios.post('https://jsonplaceholder.typicode.com/posts', dt , headers)
+            // .then(res => (setloader(false) , console.log(res.data) ,  res.status === 200 && (localStorage.setItem("LoginUserData" , JSON.stringify(res.data)) ,  notify() ,  handleOpen() ) ) ) 
+            // .catch(err => (setloader(false) , setError(true)) )
+            .then(res => console.log(res.data))
         }
         
         const initialValues = {
@@ -171,6 +176,7 @@ function index({student}) {
             phone:'',
             address:'',
             company:'',
+            eventTime:'',
         }
 
         const validationSchema = yup.object({
@@ -178,7 +184,7 @@ function index({student}) {
             phone:  yup.string().matches(phoneRegExp, 'Telefon nömrəsini düzgün daxil edin').required('Telefon nömrənizi daxil edin'),
             email: yup.string().email('Elektron poçtunuzu düzgün daxil edin').required('Elektron poçtunuzu daxil edin'),
             address: yup.string().required('Ünvanınızı daxil edin'),
-            address: yup.string().required('Ünvanınızı daxil edin'),
+            eventTime: yup.string().required('Tədbir saatını daxil edin'),
         })
     //Formik1
 
@@ -256,7 +262,7 @@ function index({student}) {
                 </div>
                 <div   className={styles.studentText2 + " text mt30"}>
                     <p className="text" data-aos="fade-up">
-                        {parse(`<div>${studentData?.content2}</div>`)}
+                        {parse(`${studentData?.content2}`)}
                     </p>
                 </div>
                 
@@ -283,7 +289,7 @@ function index({student}) {
                                     
                                     <div className={styles.inputCont}>
                                         <label  htmlFor="phone" className={styles.label + " text"}>Telefon*</label>
-                                        <Field className={styles.input + " text"} name='phone' placeholder="+99455-999-99-99" type="text"/>
+                                        <Field className={styles.input + " text"} name="phone" render={({ field }) => ( <MaskedInput className={styles.input + " text"} {...field} mask={phoneNumberMask} id="phone" placeholder="Enter phone number" type="text" />)}/>
                                         <p className={styles.error + " text"}><ErrorMessage name='phone'/></p>
                                     </div>
                                     
@@ -310,11 +316,11 @@ function index({student}) {
                                     <div className={styles.inputCont}>
                                         <label  htmlFor="eventTime" className={styles.label + " text"}>Tədbir saatı*</label>
                                         <Field className={styles.input + " text"} name='eventTime' placeholder="Tədbir Saatı" type="text"/>
-                                        <p className={styles.error + " text"}></p>
+                                        <p className={styles.error + " text"}><ErrorMessage name='eventTime'/></p>
                                     </div>
                                     <div className={styles.inputCont}>
                                         <label  htmlFor="eventType" className={styles.label + " text"}>Tədbirin növü*</label>
-                                        <Select options={optionsTypeOfEvent} defaultValue={eventType} onChange={eventTypeChange} placeholder='Tədbirin növü seçin'/> 
+                                        <Select options={optionsTypeOfEvent} defaultValue={optionsTypeOfEvent[0]} onChange={eventTypeChange} placeholder='Tədbirin növü seçin'/> 
                                         {/* <Field className={styles.input + " text"} placeholder="Ad, Soyad" type="text"/> */}
                                         <p className={styles.error + " text"}></p>
                                     </div>
@@ -325,12 +331,12 @@ function index({student}) {
                                     </div>
                                     <div className={styles.inputCont}>
                                         <label  htmlFor="musicType" className={styles.label + " text"}>Musiqi janrı*</label>
-                                        <Select options={optionsTypeOfMusic} defaultValue={musicType} onChange={musicTypeChange} placeholder='Musiqi növü seçin'/>
+                                        <Select options={optionsTypeOfMusic} defaultValue={optionsTypeOfMusic[0]} onChange={musicTypeChange} />
                                         <p className={styles.error + " text"}></p>
                                     </div>
                                     <div className={styles.inputCont}>
                                         <label  htmlFor="musicianType" className={styles.label + " text"}>Musiqiçilərin növləri*</label>
-                                        <Select options={optionsTypeOfMusician} defaultValue={musicianType} onChange={musicianTypeChange} placeholder='Musiqiçi növü seçin'/>
+                                        <Select options={optionsTypeOfMusician} defaultValue={optionsTypeOfMusician[0]} onChange={musicianTypeChange} placeholder='Musiqiçi növü seçin'/>
                                         <p className={styles.error + " text"}></p>
                                     </div>
                                     <div className={styles.inputCont}>
@@ -344,7 +350,7 @@ function index({student}) {
                                         <textarea className={styles.inputNotes  + " text"} placeholder="Ad, Soyad" type="text"/>
                                         <p className={styles.error + " text"}></p>
                                     </div>
-                                    <button className={styles.buttonSubmit + " button-text mt30"}>Göndər</button>
+                                    <button type='submit' className={styles.buttonSubmit + " button-text mt30"}>Göndər</button>
                                 </Form>
                             </Formik>
                         </div>

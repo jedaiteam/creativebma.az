@@ -23,6 +23,7 @@ const stylesForSwiper = makeStyles({
 
 function Navbar() {
     const DesktopNavbar = useMediaQuery('(min-width:1178px)');
+    const zindex = useMediaQuery('(min-width:1100px)');
     const router = useRouter()
     const { pathname } = router.query
     //LangThings
@@ -97,7 +98,7 @@ function Navbar() {
     }, [router])
 
     const zindexNavbar = {
-        zIndex:1400
+        zIndex: zindex ? 1 : 1400
     }
     return (
         <header style={zindexNavbar} className={styles.navbar}>

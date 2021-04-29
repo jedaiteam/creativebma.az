@@ -10,11 +10,13 @@
     padding: 70px;
     z-index: 1;
     padding-top: 35px;
+    align-self: flex-start !important;
     display: flex;
     flex-direction: column;
     @media screen and (max-width:856px) {
         width: 100%;
         margin-top: 0px;
+        padding-top: 90px;
         border-radius: 0px;
         padding-left: 3%;
         padding-right: 3%;
