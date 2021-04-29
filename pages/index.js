@@ -93,7 +93,7 @@ export default function Home({students , news}) {
               <img data-aos="fade-up" src="/eastLondon.svg" alt="east-london-logo"/>
               <img data-aos="fade-up" src="/bakimusicacademy.svg" alt="baki-music-academy"/>
               <img data-aos="fade-up" height='162' width='auto' src="/unec.svg" alt="azerbaijan-economy-university"/>
-              <img data-aos="fade-up" src="/britishCouncil.svg" alt="british-council"/>
+              <img data-aos="fade-up" src="/britishCouncil.png" alt="british-council"/>
           </div>
           <Link href="/partners"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
         </div>
