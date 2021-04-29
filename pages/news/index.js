@@ -6,6 +6,7 @@ import PaginationCont from '../../components/PaginationCont'
 import axios from 'axios'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Head from 'next/head'
 
 
 function news({news}) {
@@ -29,13 +30,18 @@ function news({news}) {
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     
     return (
-        <div className={styles.newsPage + " page "}>
-            <Link1 link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} href='/news'/>
-            <h1 data-aos="fade-right" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</h1>
-            <div data-aos="fade-up"  className={styles.newsCont}>
-                <PaginationCont news={1} handleChange={handleChange}  page={page}  Pagination={Pagination} />
+        <>
+            <Head>
+                <title> {langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} </title>    
+            </Head>
+            <div className={styles.newsPage + " page "}>
+                <Link1 link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} href='/news'/>
+                <h1 data-aos="fade-right" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</h1>
+                <div data-aos="fade-up"  className={styles.newsCont}>
+                    <PaginationCont news={1} handleChange={handleChange}  page={page}  Pagination={Pagination} />
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

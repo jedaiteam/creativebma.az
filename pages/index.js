@@ -10,6 +10,7 @@ import axios from 'axios'
 import Button from '../components/Button'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 export default function Home({students , news}) {
   const mobileImg = useMediaQuery('(max-width:750px)');
@@ -17,7 +18,6 @@ export default function Home({students , news}) {
   const getStudents3 = async () => {
     try {
         const resp = await axios.get('http://creativespark.testjed.me/');
-        console.log(resp.data);
     } catch (err) {
         // Handle Error Here
         console.error(err);
@@ -52,14 +52,19 @@ export default function Home({students , news}) {
 
 
   return (
-    <div  className={styles.homepage} >
+    <>
+      <Head>
+        <title>{langM === "AZ" && `Əsas səhifə` || langM === "EN" && `Homepage` || langM === "RU" && `Главная страница`}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <div  className={styles.homepage} >
 
 
         <div className={styles.enterance} >
             <div className={styles.enteranceText} data-aos="fade-left">
                 <h1 className={styles.titleTop + " title-big-desk mt50"}>{langM === "AZ" && `Creative Spark` || langM === "EN" && `Creative Spark` || langM === "RU" && `Creative Spark`}</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>{langM === "AZ" && `Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının  öyrədilməsi` || langM === 'EN' && `Teaching business skills to students and creative entrepreneurs` || langM === "RU" && `Обучение бизнес-навыкам студентов и творческих предпринимателей`}</h2>
-                <Link href="/about"><a className={stylesBtn.buttonEffect + " button-b-design"}>{langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
+                <Link href="/about"><a className={stylesBtn.buttonEffect + " button-b-design"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
                 
             </div>
             {desktopImg && <img  data-aos="fade-right" className={styles.enteranceImg} src="/notes.svg" alt="notes"/>}
@@ -77,7 +82,7 @@ export default function Home({students , news}) {
                 || langM === "RU" && `Creative Spark - это пятилетняя инициатива по поддержке международных университетов и созданию международных партнерств с целью развить предпринимательские навыки и креативную экономику в семи странах, включая Центральную Азию (Казахстан, Узбекистан, Кыргызстан), Южный Кавказ (Азербайджан, Армению, Грузию) и Украину при поддержке Соединенного Королевства. `}
                 
               </p>
-              <Link href="/about"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}>{langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
+              <Link href="/about"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
             </div>
           </div>
 
@@ -90,7 +95,7 @@ export default function Home({students , news}) {
               <img data-aos="fade-up" height='162' width='auto' src="/unec.svg" alt="azerbaijan-economy-university"/>
               <img data-aos="fade-up" src="/britishCouncil.svg" alt="british-council"/>
           </div>
-          <Link href="/partners"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}>{langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
+          <Link href="/partners"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
         </div>
 
         <div className={styles.studentsPart + " mt50" }  data-aos="fade-up">
@@ -98,7 +103,7 @@ export default function Home({students , news}) {
           <div className={styles.studentsElements}  data-aos="fade-up">
             {students3.map(student => <Student id={student.id} image={student.image} name={student.name_surname}/>)}
           </div>
-          <Link href="/students"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}>{langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
+          <Link href="/students"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
         </div>
 
         <div className={styles.bmaPart}  data-aos="fade-up">
@@ -109,7 +114,7 @@ export default function Home({students , news}) {
                 || langM === "EN" && `The Entrepreneurship Center of Baku Music Academy is a new program developed within the framework of Creative Spark: Higher Education Enterprise Programme funded by the British Council aimed at increasing awareness of creative and music entrepreneurship among students and graduates. The target is to turn ideas of young creative people into action providing motivation and support towards new career opportunities. ` 
                 || langM === "RU" && `Центр предпринимательства Бакинской музыкальной академии - это новая программа, разработанная в рамках программы Creative Spark: Higher Education Enterprise, финансируемой Британским Советом, направленная на повышение осведомленности о творческом и музыкальном предпринимательстве среди студентов и выпускников. Цель - превратить идеи молодых творческих людей в действия, обеспечивающие мотивацию и поддержку для открытия новых карьерных возможностей. `}
             </p>
-            <Link href="/staff"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}>{langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
+            <Link href="/staff"><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
           </div>
           <div data-aos="fade-left" className={styles.bmaImg}><img src="/bma.svg" alt=""/></div>
         </div>
@@ -120,10 +125,11 @@ export default function Home({students , news}) {
           <div className={styles.newsElements} data-aos="fade-up">
             {news3.map(news => <News id={news.id} title={news.title} content={news.content} image={news.img}/>)}
           </div>
-          <Link href="/news" ><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}>Hamısına Bax</button></Link>
+          <Link href="/news" ><button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Hamısına Bax` || langM === "EN" && `All` || langM === "RU" && `Читать далее`}</button></Link>
         </div>
 
     </div>
+    </>
   )
 }
 

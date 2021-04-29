@@ -95,7 +95,6 @@ function Navbar() {
     useEffect(() => {
        seturl(router.pathname)
     }, [router])
-    console.log(url)
 
     const zindexNavbar = {
         zIndex:1400
@@ -116,10 +115,10 @@ function Navbar() {
                         <Link href="/contact"><a id='contact' style={ url === '/contact' ? borderStyle : borderStyle1} className={'nav-text'}>{langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`}</a></Link>
                         <div className={styles.dropdown} onMouseLeave={() => langChangerMouseLeave2()}>
                             <button onClick={() => myFunction2(drop2)}  className={styles.mainBtn}>{langM} <ArrowLeftIcon/></button>
-                            {drop2 && <div id="drop-inside" className={styles.dropdownContent}>
-                                {langM == "AZ" ? "" : <a href='https://creativespark.testjed.me/locale/az' onClick={() => languageChanger(lang[0])}>{lang[0]}</a>}
-                                {langM == "EN" ? "" : <a href='https://creativespark.testjed.me/locale/en' onClick={() => languageChanger(lang[1])}>{lang[1]}</a>}
-                                {langM == "RU" ? "" : <a href='https://creativespark.testjed.me/locale/ru' onClick={() => languageChanger(lang[2])}> {lang[2]}</a>}
+                            {drop2 && <div id="drop-inside" className={styles.dropdownContent }>
+                                {langM == "AZ" ? "" : <a href='https://creativespark.testjed.me/locale/az'  onClick={() => languageChanger(lang[0])}>{lang[0]}</a>}
+                                {langM == "EN" ? "" : <a href='https://creativespark.testjed.me/locale/en'  onClick={() => languageChanger(lang[1])}>{lang[1]}</a>}
+                                {langM == "RU" ? "" : <a href='https://creativespark.testjed.me/locale/ru'  onClick={() => languageChanger(lang[2])}> {lang[2]}</a>}
                             </div>}
                         </div>
                     </div>

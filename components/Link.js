@@ -6,7 +6,7 @@ function Link1(props) {
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     
     return (
-        <div className={styles.link + " text"}><a href="/">{langM === "AZ" && `Əsas səhifə` || langM === "EN" && `Homepage` || langM === "RU" && `Главная страница`}</a> &#x2192;  <span className={styles.linkSelected}> <a href={`${props.href}`} >{props.link}</a> </span>  </div>
+        <div className={styles.link + " text"}><a href="/">{langM === "AZ" && `Əsas səhifə` || langM === "EN" && `Homepage` || langM === "RU" && `Главная страница`}</a> &#x2192;  <span className={styles.linkSelected}> <a href={`${props.href}`} >{props.link}</a> </span> { (props.link2 !== null && props.link2 !== undefined) && <> &#x2192;  <span className={styles.linkSelected}> {props.link2} </span></>}  </div>
     )
 }
 

@@ -1,60 +1,58 @@
 .contactPage
 {
+    .linksAndImg
+    {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 50px;
+    }
     .links
     {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 100%;
-
+        width: 500px;
+        height: 433px;
+        background-color: #D0E8F6;
+        box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.37);
+        padding-top: 40px;
+        padding-left: 50px;
         .part1
         {
             display: flex;
             flex-wrap: wrap;
+            flex-direction: column;
             row-gap: 30px;
-            width: 100%;
             justify-content: space-around;
-            a
-            {
-                width: 250px;
-                text-align: center;
-                align-items: center;
-            }
-        }
-        .part2
-        {
-            display: flex;
-            width: 100%;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            row-gap: 30px;
             img 
             {
-                filter: invert(1);
+                width: 34px;
             }
             a
             {
-                width: 250px;
+                width: 100%;
                 display: flex;
                 text-align: center;
                 align-items: center;
-                justify-content: center;
                 column-gap: 10px;
             }
         }
+        
     }
     .contactImg
     {
         display: flex;
         flex-wrap: wrap;
-        width: 100%;
         justify-content: space-around;
         row-gap: 30px;
+        margin-top: -10px;
         div 
         {
-            width: 400px;
-            height: 300px;
-            background-color: gray;
+            width: 520px;
+            height: 520px;
             border-radius: 40px;
         }
     }

@@ -4,6 +4,8 @@ import styles from '../../../styles/SelectedNews.module.scss'
 import Link from '../../../components/Link'
 import AOS from "aos";
 import "aos/dist/aos.css";
+import parse from 'html-react-parser';
+import Head from 'next/head'
 
 function selectednews({news}) {
     useEffect(() => {
@@ -23,27 +25,32 @@ function selectednews({news}) {
     var lang = ["AZ" , "EN" , "RU"]
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     return (
-        <div className={styles.selectedNewsPage + " page"}>
-            <Link link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}/>
-            <div className={styles.imgAndTitle + " mt30"}>
-                <div data-aos="fade-right"  style={imgHandle} className={styles.imgHandle + " img"}></div>
-                <div data-aos="fade-right" className={styles.titleAndDate}>
-                    <h1 className={styles.title + " title-e-desk"}> {news.title.replace(/(<([^>]+)>)/gi, "")}</h1>
-                    <p className={styles.date + " text"}> <img src="/calendar.svg" alt=""/> <span>{news.created_at.slice(0,10)}</span> </p>
+        <>
+            <Head>
+                <title>{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</title>
+            </Head>
+            <div className={styles.selectedNewsPage + " page"}>
+                <Link link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} link2={news.title.slice(0,30) + " ..."}/>
+                <div className={styles.imgAndTitle + " mt30"}>
+                    <div data-aos="fade-right"  style={imgHandle} className={styles.imgHandle + " img"}></div>
+                    <div data-aos="fade-right" className={styles.titleAndDate}>
+                        <h1 className={styles.title + " title-e-desk"}> {parse(`${news.title}`)}</h1>
+                        <p className={styles.date + " text"}> <img src="/calendar.svg" alt=""/> <span>{news.created_at.slice(0,10)}</span> </p>
+                    </div>
+                </div>
+
+                <div data-aos="fade-up" className="text mt50">
+                    <p className="text">
+                        {parse(`${news.content}`)}
+                    </p>
+                </div>
+
+                <div className={styles.imgs + " mt50 img"} >
+                    <div data-aos="fade-up"  className={styles.imgBottom + " img"} style={imgHandle2}></div>
+                    <div data-aos="fade-up"  className={styles.imgBottom + " img"} style={imgHandle3}></div>
                 </div>
             </div>
-
-            <div data-aos="fade-up" className="text mt50">
-                <p className="text">
-                    {news.content.replace(/(<([^>]+)>)/gi, "")}
-                </p>
-            </div>
-
-            <div className={styles.imgs + " mt50 img"} >
-                <div data-aos="fade-up"  className={styles.imgBottom + " img"} style={imgHandle2}></div>
-                <div data-aos="fade-up"  className={styles.imgBottom + " img"} style={imgHandle3}></div>
-            </div>
-        </div>
+        </>
     )
 }
 

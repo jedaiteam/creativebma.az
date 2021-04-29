@@ -15,7 +15,6 @@
     align-self: center;
     margin-top: 150px;
     // z-index: 1400;
-}
 .links 
 {
     display: flex;
@@ -43,4 +42,6 @@
     display: flex;
     column-gap: 54px;
     margin-top: 19px;
+    filter: invert(1);
+}
 }

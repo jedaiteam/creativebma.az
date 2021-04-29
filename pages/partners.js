@@ -4,7 +4,7 @@ import stylesBtn from '../styles/Button.module.scss'
 import Link from '../components/Link'
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import Head from 'next/head'
 function partners() { 
 
     useEffect(() => {
@@ -32,46 +32,52 @@ function partners() {
     
     
     return (
-        <div className={styles.partnersPage + " page "} >
-            <Link link={langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`} />
-            <h1 data-aos="fade-up" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</h1>
+        <>
+            <Head>
+                <title>{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</title>
+            </Head>
 
-            <div className={styles.partners}>
-                <div className={styles.partner}  >
-                    <div className={styles.imgTitle} data-aos="fade-right"><img src="/eastLondon.svg" alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `Şərq London Universiteti (UEL)` || langM === "EN" && `University of East London (UEL) ` || langM === "RU" && `Университет Восточного Лондона (UEL) `}</h2></div>
-                    <p className={styles.text + " text"} data-aos="fade-right">
-                        {!partner1check ? <div data-aos="fade-right">{partner1Long}</div>  : <div  data-aos="fade-right"> {partner1short}</div>}
-                    </p>
-                    <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner1check(!partner1check)}>{ partner1check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner1check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	} </button>
+            <div className={styles.partnersPage + " page "} >
+                <Link link={langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`} />
+                <h1 data-aos="fade-up" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</h1>
+
+                <div className={styles.partners}>
+                    <div className={styles.partner}  >
+                        <div className={styles.imgTitle} data-aos="fade-right"><img src="/eastLondon.svg" alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `Şərq London Universiteti (UEL)` || langM === "EN" && `University of East London (UEL) ` || langM === "RU" && `Университет Восточного Лондона (UEL) `}</h2></div>
+                        <p className={styles.text + " text"} data-aos="fade-right">
+                            {!partner1check ? <div data-aos="fade-right">{partner1Long}</div>  : <div  data-aos="fade-right"> {partner1short}</div>}
+                        </p>
+                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner1check(!partner1check)}>{ partner1check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner1check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	} </button>
+                    </div>
+
+                    <div className={styles.partner}>
+                        <div className={styles.imgTitle} data-aos="fade-right"><img src="/bakimusicacademy.svg" alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `Üzeyir Hacıbəyli adına Bakı Musiqi Akademiyası (BMA) ` || langM === "EN" && `Baku Music Academy named after Uzeyir Hajibeyli (BMA) ` || langM === "RU" && `Бакинская Музыкальная Академия имени Узеира Гаджибейли (БМА) `}</h2></div>
+                        <p className={styles.text + " text"} data-aos="fade-right">
+                            {!partner2check ? partner2Long : partner2short}
+                        </p>
+                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner2' onClick={() => setpartner2check(!partner2check)}>{ partner2check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner2check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
+                    </div>
+                    
+                    <div className={styles.partner}>
+                        <div className={styles.imgTitle} data-aos="fade-right"><img src="/unec.svg" width='118' height='auto' alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `Azərbaycan Dövlət İqtisad Universiteti (UNEC)` || langM === "EN" && `Azerbaijan State University of Economics (UNEC)  ` || langM === "RU" && `Азербайджанский Государственный Экономический Университет (UNEC)`}</h2></div>
+                        <p className={styles.text + " text"} data-aos="fade-right">
+                            {!partner3check ? partner3Long : partner3short}
+                        </p>
+                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner3check(!partner3check)}>{ partner3check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner3check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
+                    </div>
+
+                    <div className={styles.partner} >
+                        <div className={styles.imgTitle} data-aos="fade-right"><img src="/britishcouncil.svg" alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `British Council ` || langM === "EN" && `British Council ` || langM === "RU" && `British Council`} </h2></div>
+                        <p className={styles.text + " text"} data-aos="fade-right">
+                            {langM === "AZ" && `British Council, İngiltərənin mədəni əlaqələr və təhsil imkanlarını təmsil edən beynəlxalq təşkilatdır. Altı qitədə və 100-dən çox ölkədə fəaliyyət göstərərək beynəlxalq imkanlarını hər gün həyata keçirir. Haqqımızda daha çox məlumat əldə etmək üçün: https://www.britishcouncil.az/az/about ` 
+                            || langM === "EN" && `The British Council is the UK’s international organization for cultural relations and educational opportunities. We are on the ground in six continents and over 100 countries, bringing international opportunity to life, every day. Find out more about us. https://www.britishcouncil.az/en/about ` 
+                            || langM === "RU" && `Британский Совет – это международная организация, представляющая Великобританию в области культуры и образования. Мы работаем в более чем 100 странах на шести континентах, создавая возможности международного сотрудничества каждый день. Узнайте о нашей работе больше. https://www.britishcouncil.az/en/about `}
+                        </p>
+                    </div>
                 </div>
 
-                <div className={styles.partner}>
-                    <div className={styles.imgTitle} data-aos="fade-right"><img src="/bakimusicacademy.svg" alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `Üzeyir Hacıbəyli adına Bakı Musiqi Akademiyası (BMA) ` || langM === "EN" && `Baku Music Academy named after Uzeyir Hajibeyli (BMA) ` || langM === "RU" && `Бакинская Музыкальная Академия имени Узеира Гаджибейли (БМА) `}</h2></div>
-                    <p className={styles.text + " text"} data-aos="fade-right">
-                        {!partner2check ? partner2Long : partner2short}
-                    </p>
-                    <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner2' onClick={() => setpartner2check(!partner2check)}>{ partner2check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner2check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
-                </div>
-                
-                <div className={styles.partner}>
-                    <div className={styles.imgTitle} data-aos="fade-right"><img src="/unec.svg" width='118' height='auto' alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `Azərbaycan Dövlət İqtisad Universiteti (UNEC)` || langM === "EN" && `Azerbaijan State University of Economics (UNEC)  ` || langM === "RU" && `Азербайджанский Государственный Экономический Университет (UNEC)`}</h2></div>
-                    <p className={styles.text + " text"} data-aos="fade-right">
-                        {!partner3check ? partner3Long : partner3short}
-                    </p>
-                    <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner3check(!partner3check)}>{ partner3check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner3check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
-                </div>
-
-                <div className={styles.partner} >
-                    <div className={styles.imgTitle} data-aos="fade-right"><img src="/britishcouncil.svg" alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `British Council ` || langM === "EN" && `British Council ` || langM === "RU" && `British Council`} </h2></div>
-                    <p className={styles.text + " text"} data-aos="fade-right">
-                        {langM === "AZ" && `British Council, İngiltərənin mədəni əlaqələr və təhsil imkanlarını təmsil edən beynəlxalq təşkilatdır. Altı qitədə və 100-dən çox ölkədə fəaliyyət göstərərək beynəlxalq imkanlarını hər gün həyata keçirir. Haqqımızda daha çox məlumat əldə etmək üçün: https://www.britishcouncil.az/az/about ` 
-                        || langM === "EN" && `The British Council is the UK’s international organization for cultural relations and educational opportunities. We are on the ground in six continents and over 100 countries, bringing international opportunity to life, every day. Find out more about us. https://www.britishcouncil.az/en/about ` 
-                        || langM === "RU" && `Британский Совет – это международная организация, представляющая Великобританию в области культуры и образования. Мы работаем в более чем 100 странах на шести континентах, создавая возможности международного сотрудничества каждый день. Узнайте о нашей работе больше. https://www.britishcouncil.az/en/about `}
-                    </p>
-                </div>
             </div>
-
-        </div>
+        </>
     )
 }
 

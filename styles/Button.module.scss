@@ -40,7 +40,7 @@ $color: #FA7167;
     }
   }
 }
-$color2: #B0D9F0;
+$color2: #5c6eb7;
 
 .buttonEffect2 {
   display: flex;
@@ -48,7 +48,7 @@ $color2: #B0D9F0;
   align-items: center;
   overflow: hidden;
   border-radius: 10rem;
-  color: #32448A;
+  color: white;
   transition: all .3s;
   position: relative;
   overflow: hidden;
@@ -71,12 +71,12 @@ $color2: #B0D9F0;
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: darken($color2, 15%);
+    background-color: #b0d9f0;
     transition: all .3s;
     z-index: -1;
   }
   &:hover {
-    color: #fff;
+    color: #5c6eb7;
     &:before {
       width: 100%;
     }
