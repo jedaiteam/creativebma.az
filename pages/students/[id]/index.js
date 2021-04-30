@@ -209,7 +209,7 @@ function index({student}) {
                 lessonType : values.lessonType
             }
             axios.post('https://creativespark.testjed.me/api/hire-teacher', data )
-                .then(res => console.log(res.data))
+                .then(res => res.status === 200 && handleClose2())
         }
         
         const initialValues2 = {
