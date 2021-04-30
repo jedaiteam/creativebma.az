@@ -9,6 +9,9 @@ function NotFound() {
         AOS.init();
         AOS.refresh();
       }, [])
+    var lang = ["AZ" , "EN" , "RU"]
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+    
     return (
         <>
             <Head>
