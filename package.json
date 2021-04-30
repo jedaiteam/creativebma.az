@@ -27,7 +27,7 @@
     "react-reveal": "^1.2.2",
     "react-select": "^4.3.0",
     "react-text-mask": "^5.4.3",
-    "react-toastify": "^7.0.3",
+    "react-toastify": "^7.0.4",
     "sass": "^1.32.8",
     "yup": "^0.32.9"
   }

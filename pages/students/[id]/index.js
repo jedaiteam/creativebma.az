@@ -34,6 +34,7 @@ import axios from 'axios';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -50,9 +51,14 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 //Material UI 
-const phoneNumberMask = ["(","+","9","9","4",")"," ","0",/\d/,/\d/,"-",/\d/,/\d/,/\d/,"-",/\d/,/\d/,"-",/\d/,/\d/,];
+const phoneNumberMask = ["+","9","9","4", /\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,];
+const timeMask = [/[0-1]/ , /\d/ , ":", /[0-6]/, /\d/,];
 
 function index({student}) {
+    // const notify = () => toast.info("Sorğunuz göndərildi!");
+    var lang = ["AZ" , "EN" , "RU"]
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+
     useEffect(() => {
         AOS.init();
         AOS.refresh();
@@ -100,6 +106,7 @@ function index({student}) {
 
 
     //Notify
+        const notify = () => toast.info("Hesabınız müvəffəqiyyətlə yaradıldı!");
         const notifySend = () => toast.info("Sorğunuz müvəffəqiyyətlə göndərildi!");
     //Notify
 
@@ -143,80 +150,84 @@ function index({student}) {
             setMusicianType(value.value)
         }
         const [eventDate, seteventDate] = useState('04/19/2021')
-        const [eventTime, seteventTime] = useState('04/19/2021')
+        const [eventTime, seteventTime] = useState('12:00')
     //Onchange
-
-        const phoneRegExp = /([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}/
-        const onSubmit =  (values) => {
-            setloader(true)
-            const dt = new FormData()
-            dt.append('name' , values.name)
-            dt.append('email' , values.email)
-            dt.append('phone' , values.phone.slice(1,14))
-            dt.append('password' , values.password)
-            dt.append('birthdate' , eventDate)
-            dt.append('birthdate' , eventTime)
-            dt.append('musicType' , musicType)
-            dt.append('eventType' , eventType)
-            dt.append('address' , values.address)
-            dt.append('company' , values.company)
-            if (profilePhoto !== null) {
-                dt.append('profilePhoto' , profilePhoto)
-            }
-            dt.append('auth_type' , authT)
-            axios.post('https://jsonplaceholder.typicode.com/posts', dt , headers)
-            // .then(res => (setloader(false) , console.log(res.data) ,  res.status === 200 && (localStorage.setItem("LoginUserData" , JSON.stringify(res.data)) ,  notify() ,  handleOpen() ) ) ) 
-            // .catch(err => (setloader(false) , setError(true)) )
-            .then(res => console.log(res.data))
-        }
-        
+        const [request, setrequest] = useState(false)
+        const phoneRegExp = /^\+[1-9]{1}[0-9]{1,14}$/
         const initialValues = {
             name:'',
             email:'',
             phone:'',
             address:'',
             company:'',
+            notes: '',
             eventTime:'',
         }
+        const onSubmit =  (values) => {
+            notify()
+            const data = {
+                user_id : id,
+                fullname : values.name,
+                email : values.email,
+                tel : values.phone,
+                tedbir_tarix : eventDate,
+                tedbir_nov : eventType,
+                tedbir_vaxt : values.eventTime,
+                musiqi_janr : musicType,
+                musiqi_nov : musicianType,
+                tedbir_unvan  : values.address,
+                teskilat : values.company,
+                qeyd : values.notes,
+            }
+            // axios.post('https://jsonplaceholder.typicode.com/posts',data)
+            //     .then(res => console.log(res))
+            axios.post('https://creativespark.testjed.me/api/hire-student',data)
+                .then(res => (  res.status === 200 && ( handleClose()  , setrequest(true)) ) ) 
+        }
+        
+        notifySend()
+        notifySend()
+        notifySend()
+        notifySend()
 
         const validationSchema = yup.object({
-            name: yup.string().required('Ad, Soyad daxil edin'),
-            phone:  yup.string().matches(phoneRegExp, 'Telefon nömrəsini düzgün daxil edin').required('Telefon nömrənizi daxil edin'),
-            email: yup.string().email('Elektron poçtunuzu düzgün daxil edin').required('Elektron poçtunuzu daxil edin'),
-            address: yup.string().required('Ünvanınızı daxil edin'),
-            eventTime: yup.string().required('Tədbir saatını daxil edin'),
+            name: yup.string().required(langM === "AZ" && `Ad, Soyadınızı daxil edin` || langM === "EN" && `Enter your first and last name` || langM === "RU" && `Введите ваше имя и фамилию`),
+            phone:  yup.string().matches(phoneRegExp, (langM === "AZ" && `Telefon nömrəsini düzgün daxil edin` || langM === "EN" && `Enter the phone number correctly` || langM === "RU" && `Введите номер телефона правильно`)).required(langM === "AZ" && `Telefon nömrənizi daxil edin` || langM === "EN" && `Enter your phone number` || langM === "RU" && `Введите свой номер телефона`),
+            email: yup.string().email(langM === "AZ" && `Elektron poçtunuzu düzgün daxil edin` || langM === "EN" && `Enter your email correctly` || langM === "RU" && `Введите свой адрес электронной почты правильно`).required(langM === "AZ" && `Elektron poçtunuzu daxil edin` || langM === "EN" && `Enter your email` || langM === "RU" && `Введите адрес электронной почты`),
+            address: yup.string().required(langM === "AZ" && `Ünvanınızı daxil edin` || langM === "EN" && `Enter your address` || langM === "RU" && `Введите ваш адрес`),
+            eventTime: yup.string().required(langM === "AZ" && `Tədbir saatını daxil edin` || langM === "EN" && `Enter the event time` || langM === "RU" && `Введите время события`),
         })
     //Formik1
 
     //Formik2
         const onSubmit2 =  (values) => {
-            setloader(true)
-            const dt = new FormData()
-            dt.append('name' , values.name)
-            dt.append('email' , values.email)
-            dt.append('phone' , values.phone.slice(1,14))
-            axios.post('https://nehra.az/public/api/login', dt , headers)
-            .then(res => (setloader(false) , console.log(res.data) ,  res.status === 200 && (localStorage.setItem("LoginUserData" , JSON.stringify(res.data)) ,  notify() ,  handleOpen() ) ) ) 
-            .catch(err => (setloader(false) , setError(true)) )
+            const data = { 
+                user_id: id,
+                name : values.name2,
+                email : values.email2,
+                phone : values.phone2,
+                lessonType : values.lessonType
+            }
+            axios.post('https://creativespark.testjed.me/api/hire-teacher', data )
+                .then(res => console.log(res.data))
         }
         
         const initialValues2 = {
-            name:'',
-            email:'',
-            phone:'',
-            work:'',
+            name2:'',
+            email2:'',
+            phone2:'',
+            lessonType:'',
         }
 
         const validationSchema2 = yup.object({
-            name: yup.string().required('Ad, Soyad daxil edin'),
-            phone:  yup.string().matches(phoneRegExp, 'Telefon nömrəsini düzgün daxil edin').required('Telefon nömrənizi daxil edin'),
-            email: yup.string().email('Elektron poçtunuzu düzgün daxil edin').required('Elektron poçtunuzu daxil edin'),
-            work: yup.string().required('Dərsin növünü daxil edin'),
+            name2: yup.string().required(langM === "AZ" && `Ad, Soyadınızı daxil edin` || langM === "EN" && `Enter your first and last name` || langM === "RU" && `Введите ваше имя и фамилию`),
+            phone2:  yup.string().matches(phoneRegExp, (langM === "AZ" && `Telefon nömrəsini düzgün daxil edin` || langM === "EN" && `Enter the phone number correctly` || langM === "RU" && `Введите номер телефона правильно`)).required(langM === "AZ" && `Telefon nömrənizi daxil edin` || langM === "EN" && `Enter your phone number` || langM === "RU" && `Введите свой номер телефона`),
+            email2: yup.string().email(langM === "AZ" && `Elektron poçtunuzu düzgün daxil edin` || langM === "EN" && `Enter your email correctly` || langM === "RU" && `Введите свой адрес электронной почты правильно`).required(langM === "AZ" && `Elektron poçtunuzu daxil edin` || langM === "EN" && `Enter your email` || langM === "RU" && `Введите адрес электронной почты`),
+            lessonType: yup.string().required(langM === "AZ" && `Dərsin növünü daxil edin` || langM === "EN" && `Enter the type of lesson` || langM === "RU" && `Введите тип урока`),
         })
     //Formik2
 
-    var lang = ["AZ" , "EN" , "RU"]
-    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+
     return (
         <>
             <Head>
@@ -227,8 +238,8 @@ function index({student}) {
                 {
                     buttonsMQ  &&
                     <div data-aos="fade-right" className={styles.buttonsCont}>
-                        <button className={stylesBtn.buttonEffect + " button-text"} onClick={handleOpen}>İfaçı işə götür</button>
-                        <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>Şəxsi müəllim işə götür</button>
+                        <button className={stylesBtn.buttonEffect + " button-text"} onClick={handleOpen}>{langM === "AZ" && `İfaçı işə götür` || langM === "EN" && `Hire a performer` || langM === "RU" && `Нанять исполнителя`}</button>
+                        <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>{langM === "AZ" && `Şəxsi müəllim işə götür` || langM === "EN" && `Hire a private tutor` || langM === "RU" && `Нанять частного репетитора`}</button>
                     </div>
                 }
                 <div className={styles.imgAndAbout + " mt20"}>
@@ -243,8 +254,8 @@ function index({student}) {
                     {
                         !buttonsMQ  &&
                         <div data-aos="fade-down" className={styles.buttonsCont}>
-                            <button className={stylesBtn.buttonEffect + " button-text"} onClick={handleOpen}>İfaçı işə götür</button>
-                            <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>Şəxsi müəllim işə götür</button>
+                            <button className={stylesBtn.buttonEffect + " button-text"} onClick={handleOpen}>{langM === "AZ" && `İfaçı işə götür` || langM === "EN" && `Hire a performer` || langM === "RU" && `Нанять исполнителя`}</button>
+                            <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>{langM === "AZ" && `Şəxsi müəllim işə götür` || langM === "EN" && `Hire a private tutor` || langM === "RU" && `Нанять частного репетитора`}</button>
                         </div>
                     }
                     <div className={styles.textAbout}>
@@ -277,33 +288,33 @@ function index({student}) {
                     <Fade in={open} >
                         <div className={styles.modalHireWorker}>
                             <button className={styles.closeButton} onClick={handleClose}>&#10006;</button>
-                            <h2 className={styles.titleModal + " title-e-desk "}>Hire a performer for a one-time event</h2>
-                            <h3 className={styles.subTitleModal + " top-title-b"}>If you want to hire a musician for a special event, please complete this form.</h3>
+                            <h2 className={styles.titleModal + " title-e-desk "}>{langM === "AZ" && `Birdəfəlik tədbir üçün ifaçı çağırın` || langM === "EN" && `Hire a performer for a one-time event` || langM === "RU" && `Нанять исполнителя на разовое мероприятие`}</h2>
+                            <h3 className={styles.subTitleModal + " top-title-b"}>{langM === "AZ" && `Xüsusi bir tədbir üçün bir musiqiçi işə götürmək istəyirsinizsə, zəhmət olmazsa bu formu doldurun.` || langM === "EN" && `If you want to hire a musician for a special event, please complete this form.` || langM === "RU" && `Если вы хотите нанять музыканта для особого мероприятия, заполните эту форму.`}</h3>
                             <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} validateOnChange={true} validateOnBlur={false}>
-                                <Form  className={styles.formCont + ' mt20'} method="post" action="">
+                                <Form  className={styles.formCont + ' mt20'} method="POST" action="">
                                     <div className={styles.inputCont}>
-                                        <label htmlFor="name" className={styles.label + " text"}>Ad, Soyad*</label>
-                                        <Field className={styles.input + " text"} name='name' placeholder="Ad, Soyad" type="text"/>
+                                        <label htmlFor="name" className={styles.label + " text"}>{langM === "AZ" && `Ad, Soyad*` || langM === "EN" && `First name and last name*` || langM === "RU" && `Имя и фамилия*`}</label>
+                                        <Field className={styles.input + " text"} name='name' placeholder={langM === "AZ" && `Ad, Soyad*` || langM === "EN" && `First name and last name*` || langM === "RU" && `Имя и фамилия*`} type="text"/>
                                         <p className={styles.error + " text"}><ErrorMessage name='name'/></p>
                                     </div>
                                     
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="phone" className={styles.label + " text"}>Telefon*</label>
-                                        <Field className={styles.input + " text"} name="phone" render={({ field }) => ( <MaskedInput className={styles.input + " text"} {...field} mask={phoneNumberMask} id="phone" placeholder="Enter phone number" type="text" />)}/>
+                                        <label  htmlFor="phone" className={styles.label + " text"}>{langM === "AZ" && `Telefon*` || langM === "EN" && `Phone*` || langM === "RU" && `Телефон*`}</label>
+                                        <Field className={styles.input + " text"} name="phone" render={({ field }) => ( <MaskedInput className={styles.input + " text"} {...field} mask={phoneNumberMask} id="phone" placeholder={langM === "AZ" && `Telefon*` || langM === "EN" && `Phone*` || langM === "RU" && `Телефон*`} type="text" />)}/>
                                         <p className={styles.error + " text"}><ErrorMessage name='phone'/></p>
                                     </div>
                                     
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="email" className={styles.label + " text"}>Email*</label>
+                                        <label  htmlFor="email" className={styles.label + " text"}>{langM === "AZ" && `Elektron poçt*` || langM === "EN" && `Email*` || langM === "RU" && `Электронное письмо*`}</label>
                                         <Field className={styles.input + " text"} name='email' placeholder="creativespark@info.az" type="text"/>
                                         <p className={styles.error + " text"}><ErrorMessage name='email'/></p>
                                     </div>
                                     
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="eventDate" className={styles.label + " text"}>Tədbir tarixi*</label>
+                                        <label  htmlFor="eventDate" className={styles.label + " text"}>{langM === "AZ" && `Tədbir tarixi*` || langM === "EN" && `Event date *` || langM === "RU" && `Дата события *`}</label>
                                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                                             <DatePicker
-                                                label="Tədbir tarixi seçin"
+                                                label={langM === "AZ" && `Tədbir tarixi*` || langM === "EN" && `Event date *` || langM === "RU" && `Дата события *`}
                                                 value={eventDate}
                                                 onChange={(newValue) => {
                                                     seteventDate(newValue);
@@ -314,43 +325,50 @@ function index({student}) {
                                         <p className={styles.error + " text"}></p>
                                     </div>
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="eventTime" className={styles.label + " text"}>Tədbir saatı*</label>
-                                        <Field className={styles.input + " text"} name='eventTime' placeholder="Tədbir Saatı" type="text"/>
+                                        <label  htmlFor="eventTime" className={styles.label + " text"}>{langM === "AZ" && `Tədbir saatı*` || langM === "EN" && `Event time*` || langM === "RU" && `Время события*`}</label>
+                                         <Field className={styles.input + " text"} name="eventTime" render={({ field }) => ( 
+                                         <MaskedInput
+                                          className={styles.input + " text"} 
+                                          {...field} 
+                                          mask={timeMask} 
+                                          id="phone" 
+                                          placeholder={langM === "AZ" && `Tədbir saatı*` || langM === "EN" && `Event time*` || langM === "RU" && `Время события*`} 
+                                          type="text" />)}/>
                                         <p className={styles.error + " text"}><ErrorMessage name='eventTime'/></p>
                                     </div>
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="eventType" className={styles.label + " text"}>Tədbirin növü*</label>
+                                        <label  htmlFor="eventType" className={styles.label + " text"}>{langM === "AZ" && `Tədbirin növü*` || langM === "EN" && `Type of event *` || langM === "RU" && `Тип мероприятия*`}</label>
                                         <Select options={optionsTypeOfEvent} defaultValue={optionsTypeOfEvent[0]} onChange={eventTypeChange} placeholder='Tədbirin növü seçin'/> 
                                         {/* <Field className={styles.input + " text"} placeholder="Ad, Soyad" type="text"/> */}
                                         <p className={styles.error + " text"}></p>
                                     </div>
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="eventLocation" className={styles.label + " text"}>Tədbiri ünvanı*</label>
-                                        <Field className={styles.input + " text"}  name='address' placeholder="Tədbir Ünvanı" type="text"/>
+                                        <label  htmlFor="eventLocation" className={styles.label + " text"}>{langM === "AZ" && `Tədbiri ünvanı*` || langM === "EN" && `Event address*` || langM === "RU" && `Адрес мероприятия*`}</label>
+                                        <Field className={styles.input + " text"}  name='address' placeholder={langM === "AZ" && `Tədbiri ünvanı*` || langM === "EN" && `Event address*` || langM === "RU" && `Адрес мероприятия*`} type="text"/>
                                         <p className={styles.error + " text"}><ErrorMessage name='address'/></p>
                                     </div>
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="musicType" className={styles.label + " text"}>Musiqi janrı*</label>
+                                        <label  htmlFor="musicType" className={styles.label + " text"}>{langM === "AZ" && `Musiqi janrı*` || langM === "EN" && `Music *` || langM === "RU" && `Музыкальный жанр*`}</label>
                                         <Select options={optionsTypeOfMusic} defaultValue={optionsTypeOfMusic[0]} onChange={musicTypeChange} />
                                         <p className={styles.error + " text"}></p>
                                     </div>
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="musicianType" className={styles.label + " text"}>Musiqiçilərin növləri*</label>
-                                        <Select options={optionsTypeOfMusician} defaultValue={optionsTypeOfMusician[0]} onChange={musicianTypeChange} placeholder='Musiqiçi növü seçin'/>
+                                        <label  htmlFor="musicianType" className={styles.label + " text"}>{langM === "AZ" && `Musiqiçilərin növləri*` || langM === "EN" && `Types of musicians*` || langM === "RU" && `Типы музыкантов*`}</label>
+                                        <Select options={optionsTypeOfMusician} defaultValue={optionsTypeOfMusician[0]} onChange={musicianTypeChange} placeholder={langM === "AZ" && `Musiqiçilərin növləri*` || langM === "EN" && `Types of musicians*` || langM === "RU" && `Типы музыкантов*`}/>
                                         <p className={styles.error + " text"}></p>
                                     </div>
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="eventDate" className={styles.label + " text"}>Təşkilat <span className='text16'>(Bir təşkilatla əlaqəli olsanız)</span></label>
+                                        <label  htmlFor="eventDate" className={styles.label + " text"}>{langM === "AZ" && `Təşkilat` || langM === "EN" && `Company` || langM === "RU" && `Компания`} <span className='text16'>(Bir təşkilatla əlaqəli olsanız)</span></label>
                                         <Field className={styles.input + " text"} name='company' placeholder="Təşkilatın adı" type="text"/>
                                         <p className={styles.error + " text"}></p>
                                     </div>
 
                                     <div className={styles.inputCont + " " + styles.inputNotesCont}>
-                                        <label  htmlFor="notes" className={styles.label + " text"}>Qeydlər</label>
-                                        <textarea className={styles.inputNotes  + " text"} placeholder="Ad, Soyad" type="text"/>
+                                        <label  htmlFor="notes" className={styles.label + " text"}>{langM === "AZ" && `Qeydlər` || langM === "EN" && `Notes` || langM === "RU" && `Заметки`}</label>
+                                        <Field as='textarea' className={styles.inputNotes  + " text"} name='notes' placeholder={langM === "AZ" && `Qeydlər` || langM === "EN" && `Notes` || langM === "RU" && `Заметки`} type="text"/>
                                         <p className={styles.error + " text"}></p>
                                     </div>
-                                    <button type='submit' className={styles.buttonSubmit + " button-text mt30"}>Göndər</button>
+                                    <button type='submit' className={styles.buttonSubmit + " button-text mt30"}>{langM === "AZ" && `Göndər` || langM === "EN" && `Submit` || langM === "RU" && `Представлять на рассмотрение`}</button>
                                 </Form>
                             </Formik>
                         </div>
@@ -366,36 +384,36 @@ function index({student}) {
                     <Fade in={open2} >
                         <div className={styles.modalHireWorker}>
                             <button className={styles.closeButton} onClick={handleClose2}>&#10006;</button>
-                            <h2 className={styles.titleModal + " title-e-desk "}>Hire a private teacher </h2>
-                            <h3 className={styles.subTitleModal + " top-title-b"}>If you want to hire a private teacher, please complete this form.</h3>
+                            <h2 className={styles.titleModal + " title-e-desk "}>{langM === "AZ" && `Hire a private teacher ` || langM === "EN" && `Şəxsi müəllim işə götürün` || langM === "RU" && `Нанять частного учителя`}</h2>
+                            <h3 className={styles.subTitleModal + " top-title-b"}>{langM === "AZ" && `Şəxsi müəllim işə götürmək istəyirsinizsə, zəhmət olmazsa bu formu doldurun.` || langM === "EN" && `If you want to hire a private teacher, please complete this form.` || langM === "RU" && `Если вы хотите нанять частного учителя, заполните эту форму.`}</h3>
                             <Formik initialValues={initialValues2} validationSchema={validationSchema2} onSubmit={onSubmit2} validateOnChange={true} validateOnBlur={false}>
                                 <Form  className={styles.formCont + ' mt20'} method="post" action="">
                                     <div className={styles.inputCont}>
-                                        <label htmlFor="name" className={styles.label + " text"}>Ad, Soyad*</label>
-                                        <Field className={styles.input + " text"} name='name' placeholder="Ad, Soyad" type="text"/>
-                                        <p className={styles.error + " text"}><ErrorMessage name='name'/></p>
+                                        <label htmlFor="name" className={styles.label + " text"}>{langM === "AZ" && `Ad, Soyad*` || langM === "EN" && `First name and last name*` || langM === "RU" && `Имя и фамилия*`}</label>
+                                        <Field className={styles.input + " text"} name='name2' placeholder={langM === "AZ" && `Ad, Soyad*` || langM === "EN" && `First name and last name*` || langM === "RU" && `Имя и фамилия*`} type="text"/>
+                                        <p className={styles.error + " text"}><ErrorMessage name='name2'/></p>
                                     </div>
                                     
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="phone" className={styles.label + " text"}>Telefon*</label>
-                                        <Field className={styles.input + " text"} name='phone' placeholder="+99455-999-99-99" type="text"/>
-                                        <p className={styles.error + " text"}><ErrorMessage name='phone'/></p>
+                                        <label  htmlFor="phone" className={styles.label + " text"}>{langM === "AZ" && `Telefon*` || langM === "EN" && `Phone*` || langM === "RU" && `Телефон*`}</label>
+                                        <Field className={styles.input + " text"} name="phone2" render={({ field }) => ( <MaskedInput className={styles.input + " text"} {...field} mask={phoneNumberMask} id="phone" placeholder={langM === "AZ" && `Telefon*` || langM === "EN" && `Phone*` || langM === "RU" && `Телефон*`} type="text" />)}/>
+                                        <p className={styles.error + " text"}><ErrorMessage name='phone2'/></p>
                                     </div>
                                     
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="email" className={styles.label + " text"}>Email*</label>
-                                        <Field className={styles.input + " text"} name='email' placeholder="creativespark@info.az" type="text"/>
-                                        <p className={styles.error + " text"}><ErrorMessage name='email'/></p>
+                                        <label  htmlFor="email" className={styles.label + " text"}>{langM === "AZ" && `Elektron poçt*` || langM === "EN" && `Email*` || langM === "RU" && `Электронное письмо*`}</label>
+                                        <Field className={styles.input + " text"} name='email2' placeholder="creativespark@info.az" type="text"/>
+                                        <p className={styles.error + " text"}><ErrorMessage name='email2'/></p>
                                     </div>
                                     
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="eventLocation" className={styles.label + " text"}>Tədbiri ünvanı*</label>
-                                        <Field className={styles.input + " text"}  name='address' placeholder="Dərsin növü" type="text"/>
-                                        <p className={styles.error + " text"}><ErrorMessage name='address'/></p>
+                                        <label  htmlFor="eventLocation" className={styles.label + " text"}>{langM === "AZ" && `Dərsin növü*` || langM === "EN" && `Course type*` || langM === "RU" && `Тип курса*`}</label>
+                                        <Field className={styles.input + " text"}  name='lessonType' placeholder={langM === "AZ" && `Dərsin növü*` || langM === "EN" && `Course type*` || langM === "RU" && `Тип курса*`} type="text"/>
+                                        <p className={styles.error + " text"}><ErrorMessage name='lessonType'/></p>
                                     </div>
                                 
-                                    <button className={styles.buttonSubmit + " button-text mt30"}>Göndər</button>
-                                    <p className="text-bottom"> If you are a BMA student or alumni and you want to be in the list of teachers, please email zulfiyya.shafiyeva@musicacademy.edu.az to get more information</p>
+                                    <button type='submit' className={styles.buttonSubmit + " button-text mt30"}>{langM === "AZ" && `Göndər` || langM === "EN" && `Submit` || langM === "RU" && `Представлять на рассмотрение`}</button>
+                                    <p className="text-bottom"> {langM === "AZ" && `Bir BMA tələbəsiniz və ya məzununuzsa və müəllimlər siyahısında olmaq istəyirsinizsə, daha çox məlumat almaq üçün zulfiyya.shafiyeva@musicacademy.edu.az elektron poçtuna göndərin.` || langM === "EN" && `If you are a BMA student or alumni and you want to be in the list of teachers, please email zulfiyya.shafiyeva@musicacademy.edu.az to get more information` || langM === "RU" && `Если вы студент или выпускник BMA и хотите быть в списке учителей, отправьте электронное письмо по адресу zulfiyya.shafiyeva@musicacademy.edu.az, чтобы получить дополнительную информацию.`}</p>
                                 </Form>
                             </Formik>
                         </div>
