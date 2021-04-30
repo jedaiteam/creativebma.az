@@ -67,7 +67,7 @@ function partners() {
                     </div>
 
                     <div className={styles.partner} >
-                        <div className={styles.imgTitle} data-aos="fade-right"><img src="/britishcouncil.svg" alt="East-London-Logo"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `British Council ` || langM === "EN" && `British Council ` || langM === "RU" && `British Council`} </h2></div>
+                        <div className={styles.imgTitle} data-aos="fade-right"><img  src="/britishcouncil.png" width='300px' alt="British-Council"/> <h2 className={'title-e-desk'}>{langM === "AZ" && `British Council ` || langM === "EN" && `British Council ` || langM === "RU" && `British Council`} </h2></div>
                         <p className={styles.text + " text"} data-aos="fade-right">
                             {langM === "AZ" && `British Council, İngiltərənin mədəni əlaqələr və təhsil imkanlarını təmsil edən beynəlxalq təşkilatdır. Altı qitədə və 100-dən çox ölkədə fəaliyyət göstərərək beynəlxalq imkanlarını hər gün həyata keçirir. Haqqımızda daha çox məlumat əldə etmək üçün: https://www.britishcouncil.az/az/about ` 
                             || langM === "EN" && `The British Council is the UK’s international organization for cultural relations and educational opportunities. We are on the ground in six continents and over 100 countries, bringing international opportunity to life, every day. Find out more about us. https://www.britishcouncil.az/en/about ` 
