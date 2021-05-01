@@ -17,7 +17,7 @@ export default function Home() {
   const desktopImg = useMediaQuery('(min-width:750px)');
   const getStudents3 = async () => {
     try {
-        const resp = await axios.get('http://creativespark.testjed.me/');
+        const resp = await axios.get('https://admin.creativebma.az/');
     } catch (err) {
         // Handle Error Here
         console.error(err);
@@ -41,22 +41,22 @@ export default function Home() {
   const [news3, setnews3] = useState([])
   const getDatas = async () => {
     if (langM === 'AZ') {
-      let response1 = await axios.get('https://creativespark.testjed.me/api/musicians-api-take-3')
-      let response2 = await axios.get('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
+      let response1 = await axios.get('https://admin.creativebma.az/api/musicians-api-take-3')
+      let response2 = await axios.get('https://admin.creativebma.az/api/blog-xeberler-take-3-api')
       setstudents3(response1.data)
       setnews3(response2.data)
     }
     else if(langM === 'EN')
     {
-      let response1 = await axios.get('https://creativespark.testjed.me/api/en/musicians-api-take-3')
-      let response2 = await axios.get('https://creativespark.testjed.me/api/en/blog-xeberler-take-3-api')
+      let response1 = await axios.get('https://admin.creativebma.az/api/en/musicians-api-take-3')
+      let response2 = await axios.get('https://admin.creativebma.az/api/en/blog-xeberler-take-3-api')
       setstudents3(response1.data)
       setnews3(response2.data)
     }
     else if(langM === 'RU') 
     {
-      let response1 = await axios.get('https://creativespark.testjed.me/api/ru/musicians-api-take-3')
-      let response2 = await axios.get('https://creativespark.testjed.me/api/ru/blog-xeberler-take-3-api')
+      let response1 = await axios.get('https://admin.creativebma.az/api/ru/musicians-api-take-3')
+      let response2 = await axios.get('https://admin.creativebma.az/api/ru/blog-xeberler-take-3-api')
       setstudents3(response1.data)
       setnews3(response2.data)
     }
@@ -152,8 +152,8 @@ export default function Home() {
 
 
 // export const getStaticProps = async (context) => {
-//   const res1 = await fetch('https://creativespark.testjed.me/api/musicians-api-take-3')
-//   const res2 = await fetch('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
+//   const res1 = await fetch('https://admin.creativebma.az/api/musicians-api-take-3')
+//   const res2 = await fetch('https://admin.creativebma.az/api/blog-xeberler-take-3-api')
 //   const students = await res1.json()
 //   const news = await res2.json()  
 //   return {

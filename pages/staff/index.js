@@ -17,22 +17,22 @@ function index() {
 
     const getDatas = async () => {
         if (langM === 'AZ') {
-            let response1 = await axios.get('https://creativespark.testjed.me/api/team-api')
-            let response2 = await axios.get('https://creativespark.testjed.me/api/blog-tedbirler-take-3-api')
+            let response1 = await axios.get('https://admin.creativebma.az/api/team-api')
+            let response2 = await axios.get('https://admin.creativebma.az/api/blog-tedbirler-take-3-api')
             setteam(response1.data)
             setevents(response2.data)
         }
         else if(langM === 'EN')
         {
-            let response1 = await axios.get('https://creativespark.testjed.me/api/en/team-api')
-            let response2 = await axios.get('https://creativespark.testjed.me/api/en/blog-tedbirler-take-3-api')
+            let response1 = await axios.get('https://admin.creativebma.az/api/en/team-api')
+            let response2 = await axios.get('https://admin.creativebma.az/api/en/blog-tedbirler-take-3-api')
             setteam(response1.data)
             setevents(response2.data)
         }
         else if(langM === 'RU') 
         {
-            let response1 = await axios.get('https://creativespark.testjed.me/api/ru/team-api')
-            let response2 = await axios.get('https://creativespark.testjed.me/api/ru/blog-tedbirler-take-3-api')
+            let response1 = await axios.get('https://admin.creativebma.az/api/ru/team-api')
+            let response2 = await axios.get('https://admin.creativebma.az/api/ru/blog-tedbirler-take-3-api')
             setteam(response1.data)
             setevents(response2.data)
         }
@@ -80,9 +80,9 @@ export default index
 
 
 // export const getStaticProps = async (context) => {
-//     const res = await fetch(`https://creativespark.testjed.me/api/team-api`)
+//     const res = await fetch(`https://admin.creativebma.az/api/team-api`)
 //     const teams = await res.json()
-//     const res1 = await fetch(`https://creativespark.testjed.me/api/blog-tedbirler-take-3-api`)
+//     const res1 = await fetch(`https://admin.creativebma.az/api/blog-tedbirler-take-3-api`)
 //     const events = await res1.json()
 //     return {
 //         props:{teams , events}

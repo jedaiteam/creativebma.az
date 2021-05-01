@@ -34,9 +34,9 @@ function Footer() {
             <hr className={styles.footerHr}/>
 
             <div className={styles.social}> 
-                <a href="#"><img src="/instagram.png" alt=""/></a>
-                <a href="#"><img src="/whatsapp.png" alt=""/></a>
-                <a href="#"><img src="/facebook.png" alt=""/></a>
+                <a href="https://www.instagram.com/baki_musiqi_akademiyasi/"><img src="/instagram.png" alt=""/></a>
+                <a href="https://www.google.com/maps/place/98+%D1%83%D0%BB.+%D0%A8%D0%B0%D0%BC%D1%81%D0%B8+%D0%91%D0%B0%D0%B4%D0%B0%D0%BB%D0%B1%D0%B5%D0%B9%D0%BB%D0%B8,+Baku/@40.3784901,49.8449671,17z/data=!3m1!4b1!4m5!3m4!1s0x40307da7b536bd7b:0xf752205a661abf77!8m2!3d40.3784901!4d49.8471558"><img width='30px' src="/Location.png" alt=""/></a>
+                <a href="https://m.facebook.com/baku.music.academy/"><img src="/facebook.png" alt=""/></a>
             </div>
 
         </footer>

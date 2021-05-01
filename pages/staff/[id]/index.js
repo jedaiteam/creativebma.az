@@ -13,7 +13,7 @@ function index({staff}) {
       }, [])
 
     const imgHandle = {
-        backgroundImage: `url('http://creativespark.testjed.me${staff.image}')`
+        backgroundImage: `url('https://admin.creativebma.az/${staff.image}')`
     }
 
     var lang = ["AZ" , "EN" , "RU"]
@@ -60,7 +60,7 @@ export default index
 
 
 export const getServerSideProps  = async (context) => {
-    const res = await fetch(`https://creativespark.testjed.me/public/api/team-api/${context.params.id}`)
+    const res = await fetch(`https://admin.creativebma.az/api/team-api/${context.params.id}`)
     console.log(res)
     const staff = await res.json()
     return {

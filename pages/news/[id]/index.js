@@ -14,13 +14,13 @@ function selectednews({news}) {
       }, [])
 
     const imgHandle = {
-        backgroundImage:`url(https://creativespark.testjed.me/${news.img})`
+        backgroundImage:`url(https://admin.creativebma.az/${news.img})`
     }
     const imgHandle2 = {
-        backgroundImage:`url(https://creativespark.testjed.me/${news.image_1})`
+        backgroundImage:`url(https://admin.creativebma.az/${news.image_1})`
     }
     const imgHandle3 = {
-        backgroundImage:`url(https://creativespark.testjed.me/${news.image_2})`
+        backgroundImage:`url(https://admin.creativebma.az/${news.image_2})`
     }
     var lang = ["AZ" , "EN" , "RU"]
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
@@ -68,7 +68,7 @@ export default selectednews
 //   }
 
 export const getServerSideProps = async (context) => {
-    const res = await fetch(`https://creativespark.testjed.me/api/blog-api/${context.params.id}`)
+    const res = await fetch(`https://admin.creativebma.az/api/blog-api/${context.params.id}`)
     const news = await res.json()
     return {
         props:{news}

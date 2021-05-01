@@ -75,7 +75,7 @@ function index({student}) {
     const { id } = router.query
     const [studentData, setstudentData] = useState(student)
     const studentImg = {
-        backgroundImage:`url(https://creativespark.testjed.me${studentData?.image})`
+        backgroundImage:`url(https://admin.creativebma.az/${studentData?.image})`
     }
 
 
@@ -183,8 +183,8 @@ function index({student}) {
             }
             // axios.post('https://jsonplaceholder.typicode.com/posts',data)
             //     .then(res => console.log(res))
-            axios.post('https://creativespark.testjed.me/api/hire-student',data)
-                .then(res => (  res.status === 200 && ( handleClose()  , setrequest(true)) ) ) 
+            axios.post('https://admin.creativebma.az/api/hire-student',data)
+                .then(res => (  res.status === 200 && ( handleClose()  , setrequest(true) , console.log(res.data)) ) ) 
         }
         
         
@@ -203,12 +203,12 @@ function index({student}) {
             handleClickT()
             const data = { 
                 user_id: id,
-                name : values.name2,
+                fullname : values.name2,
                 email : values.email2,
-                phone : values.phone2,
-                lessonType : values.lessonType
+                tel : values.phone2,
+                axtar_ders : values.lessonType
             }
-            axios.post('https://creativespark.testjed.me/api/hire-teacher', data )
+            axios.post('https://admin.creativebma.az/api/hire-teacher', data )
                 .then(res => res.status === 200 && handleClose2())
         }
         
@@ -471,7 +471,7 @@ export default index
 
 
 export const getServerSideProps = async (context) => {
-    const res = await fetch(`https://creativespark.testjed.me/api/musicians-api/${context.params.id}`)
+    const res = await fetch(`https://admin.creativebma.az/api/musicians-api/${context.params.id}`)
     const student = await res.json()
     return {
         props:{student}

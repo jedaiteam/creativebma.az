@@ -14,12 +14,12 @@ function index({student}) {
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
     const [Pagination, setPagination] = useState([])
     const [page, setPage] = React.useState(1);
-    const [url, seturl] = useState(langM === 'AZ' && `https://creativespark.testjed.me/api/musicians-api?page=${page}` || langM === 'EN' && `https://creativespark.testjed.me/api/en/musicians-api?page=${page}`  || langM === 'RU' && `https://creativespark.testjed.me/api/ru/musicians-api?page=${page}`) 
+    const [url, seturl] = useState(langM === 'AZ' && `https://admin.creativebma.az/api/musicians-api?page=${page}` || langM === 'EN' && `https://admin.creativebma.az/api/en/musicians-api?page=${page}`  || langM === 'RU' && `https://admin.creativebma.az/api/ru/musicians-api?page=${page}`) 
     
     const handleChange = (event, value) => {
         setPage(value);
-        seturl(langM === 'AZ' && `https://creativespark.testjed.me/api/musicians-api?page=${page}` || langM === 'EN' && `https://creativespark.testjed.me/api/en/musicians-api?page=${page}`  || langM === 'RU' && `https://creativespark.testjed.me/api/ru/musicians-api?page=${page}`)
-        axios.get(langM === 'AZ' && `https://creativespark.testjed.me/api/musicians-api?page=${value}` || langM === 'EN' && `https://creativespark.testjed.me/api/en/musicians-api?page=${value}`  || langM === 'RU' && `https://creativespark.testjed.me/api/ru/musicians-api?page=${value}`)
+        seturl(langM === 'AZ' && `https://admin.creativebma.az/api/musicians-api?page=${page}` || langM === 'EN' && `https://admin.creativebma.az/api/en/musicians-api?page=${page}`  || langM === 'RU' && `https://admin.creativebma.az/api/ru/musicians-api?page=${page}`)
+        axios.get(langM === 'AZ' && `https://admin.creativebma.az/api/musicians-api?page=${value}` || langM === 'EN' && `https://admin.creativebma.az/api/en/musicians-api?page=${value}`  || langM === 'RU' && `https://admin.creativebma.az/api/ru/musicians-api?page=${value}`)
             .then(res =>(setPagination(res.data) , console.log(res.data)))    
     };
 
@@ -27,17 +27,17 @@ function index({student}) {
 
     const getDatas = async () => {
         if (langM === 'AZ') {
-          let response1 = await axios.get('https://creativespark.testjed.me/api/musicians-api?page=1')
+          let response1 = await axios.get('https://admin.creativebma.az/api/musicians-api?page=1')
           setPagination(response1.data)
         }
         else if(langM === 'EN')
         {
-          let response1 = await axios.get('https://creativespark.testjed.me/api/en/musicians-api?page=1')
+          let response1 = await axios.get('https://admin.creativebma.az/api/en/musicians-api?page=1')
           setPagination(response1.data)
         }
         else if(langM === 'RU') 
         {
-          let response1 = await axios.get('https://creativespark.testjed.me/api/ru/musicians-api?page=1')
+          let response1 = await axios.get('https://admin.creativebma.az/api/ru/musicians-api?page=1')
           setPagination(response1.data)
         }
         else{}
@@ -71,7 +71,7 @@ export default index
 
 
 export const getStaticProps = async (context) => {
-    const res = await fetch(`https://creativespark.testjed.me/api/musicians-api?page=1`)
+    const res = await fetch(`https://admin.creativebma.az/api/musicians-api?page=1`)
     const student = await res.json()
     return {
         props:{student}
