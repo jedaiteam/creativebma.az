@@ -6,14 +6,18 @@ import Link from '../../../components/Link'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import MaskedInput from "react-text-mask";
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 //Formik
 import {Formik , Form , Field, ErrorMessage} from "formik"
 import * as yup from 'yup';
 //Formik
+import MuiAlert from '@material-ui/lab/Alert';
 
 //Toast
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-nextjs-toast'
 //Toast
 
 //Select 
@@ -34,7 +38,6 @@ import axios from 'axios';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
 const useStyles = makeStyles((theme) => ({
     modal: {
       display: 'flex',
@@ -52,10 +55,10 @@ const useStyles = makeStyles((theme) => ({
   
 //Material UI 
 const phoneNumberMask = ["+","9","9","4", /\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,/\d/,];
-const timeMask = [/[0-1]/ , /\d/ , ":", /[0-6]/, /\d/,];
+const timeMask = [/[0-1]/ , /\d/ , ":", /[0-5]/, /\d/,];
 
 function index({student}) {
-    // const notify = () => toast.info("Sorğunuz göndərildi!");
+
     var lang = ["AZ" , "EN" , "RU"]
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
 
@@ -106,8 +109,7 @@ function index({student}) {
 
 
     //Notify
-        const notify = () => toast.info("Hesabınız müvəffəqiyyətlə yaradıldı!");
-        const notifySend = () => toast.info("Sorğunuz müvəffəqiyyətlə göndərildi!");
+        
     //Notify
 
 
@@ -164,7 +166,7 @@ function index({student}) {
             eventTime:'',
         }
         const onSubmit =  (values) => {
-            notify()
+            handleClickT()
             const data = {
                 user_id : id,
                 fullname : values.name,
@@ -185,10 +187,7 @@ function index({student}) {
                 .then(res => (  res.status === 200 && ( handleClose()  , setrequest(true)) ) ) 
         }
         
-        notifySend()
-        notifySend()
-        notifySend()
-        notifySend()
+        
 
         const validationSchema = yup.object({
             name: yup.string().required(langM === "AZ" && `Ad, Soyadınızı daxil edin` || langM === "EN" && `Enter your first and last name` || langM === "RU" && `Введите ваше имя и фамилию`),
@@ -201,6 +200,7 @@ function index({student}) {
 
     //Formik2
         const onSubmit2 =  (values) => {
+            handleClickT()
             const data = { 
                 user_id: id,
                 name : values.name2,
@@ -228,11 +228,28 @@ function index({student}) {
     //Formik2
 
 
+    //Toastify
+    const [opentoast, setOpentoast] = React.useState(false);
+
+    const handleClickT = () => {
+        setOpentoast(true);
+    };
+
+    const handleCloseT = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+        setOpentoast(false);
+    };
+
+    //Toastify
+
     return (
         <>
             <Head>
                 <title>{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</title>
             </Head>
+            
             <div className={styles.singleStudentPage + " page"}>
                 <Link link={langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`} href='/students' link2={studentData?.name_surname}/>
                 {
@@ -358,8 +375,8 @@ function index({student}) {
                                         <p className={styles.error + " text"}></p>
                                     </div>
                                     <div className={styles.inputCont}>
-                                        <label  htmlFor="eventDate" className={styles.label + " text"}>{langM === "AZ" && `Təşkilat` || langM === "EN" && `Company` || langM === "RU" && `Компания`} <span className='text16'>(Bir təşkilatla əlaqəli olsanız)</span></label>
-                                        <Field className={styles.input + " text"} name='company' placeholder="Təşkilatın adı" type="text"/>
+                                        <label  htmlFor="eventDate" className={styles.label + " text"}>{langM === "AZ" && `Təşkilat` || langM === "EN" && `Company` || langM === "RU" && `Компания`} <span className='text16'>{langM === "AZ" && `(Bir təşkilatla əlaqəli olsanız)` || langM === "EN" && `(If you are affiliated with an organization)` || langM === "RU" && `(Если вы связаны с организацией)`}</span></label>
+                                        <Field className={styles.input + " text"} name='company' placeholder={langM === "AZ" && `Təşkilat` || langM === "EN" && `Company` || langM === "RU" && `Компания`} type="text"/>
                                         <p className={styles.error + " text"}></p>
                                     </div>
 
@@ -384,7 +401,7 @@ function index({student}) {
                     <Fade in={open2} >
                         <div className={styles.modalHireWorker}>
                             <button className={styles.closeButton} onClick={handleClose2}>&#10006;</button>
-                            <h2 className={styles.titleModal + " title-e-desk "}>{langM === "AZ" && `Hire a private teacher ` || langM === "EN" && `Şəxsi müəllim işə götürün` || langM === "RU" && `Нанять частного учителя`}</h2>
+                            <h2 className={styles.titleModal + " title-e-desk "}>{langM === "AZ" && `Şəxsi müəllim işə götürün` || langM === "EN" && `Hire a private teacher ` || langM === "RU" && `Нанять частного учителя`}</h2>
                             <h3 className={styles.subTitleModal + " top-title-b"}>{langM === "AZ" && `Şəxsi müəllim işə götürmək istəyirsinizsə, zəhmət olmazsa bu formu doldurun.` || langM === "EN" && `If you want to hire a private teacher, please complete this form.` || langM === "RU" && `Если вы хотите нанять частного учителя, заполните эту форму.`}</h3>
                             <Formik initialValues={initialValues2} validationSchema={validationSchema2} onSubmit={onSubmit2} validateOnChange={true} validateOnBlur={false}>
                                 <Form  className={styles.formCont + ' mt20'} method="post" action="">
@@ -419,6 +436,20 @@ function index({student}) {
                         </div>
                     </Fade>
                 </Modal>
+                <Snackbar 
+                    open={opentoast} 
+                    autoHideDuration={2500} 
+                    onClose={handleCloseT}
+                    anchorOrigin={{
+                        vertical:'bottom',
+                        horizontal:'right'
+                    }}                        
+                >
+                    <MuiAlert elevation={6} open={opentoast} onClose={handleCloseT} variant="filled"  >
+                        Sorğunuz Göndərilmişdir!
+                    </MuiAlert>
+                </Snackbar>
+
     {/* Modal and Forms */}{/* Modal and Forms */}{/* Modal and Forms */}
             </div>
         </>

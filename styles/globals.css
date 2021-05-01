@@ -107,6 +107,20 @@ button:focus
     font-size: 48px;
     color: white
 }
+@media screen and (max-width:900px) {
+    .title-w-desk
+    {
+        font-size: 30px !important;
+    }
+    .title-b-desk
+    {
+        font-size: 30px !important;
+    }
+    .title-e-desk
+    {
+        font-size: 30px !important;
+    }
+}
 .title-b-desk
 {
     font-family: 'Nunito';
