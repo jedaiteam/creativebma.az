@@ -11,6 +11,10 @@ $color: #FA7167;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  svg 
+  {
+    transition: 0.5s;
+  }
   &:after {
     content: '';
     position: absolute;
@@ -35,6 +39,12 @@ $color: #FA7167;
   }
   &:hover {
     color: #fff;
+    svg 
+    {
+      margin-left: 5px;
+      transform: rotate(90deg);
+      transition: 0.5s;
+    }
     &:before {
       width: 100%;
     }

@@ -9,6 +9,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Router from 'next/router'
 import { useRouter } from 'next/router'
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
+import axios from 'axios';
 
 const stylesForSwiper = makeStyles({
     list: {
@@ -37,6 +38,8 @@ function Navbar() {
         if (typeof window !== "undefined") {
             sessionStorage.setItem('lang' , lang)
         }
+        // axios.post('https://creativespark.testjed.me/api/multilang' , { name: 'lang' , value:'ru'})
+        //     .then(res => console.log(res))
         window.location.reload()
     }
     const langChangerMouseLeave2 = () => {
@@ -109,7 +112,7 @@ function Navbar() {
     }, [router])
 
     const zindexNavbar = {
-        zIndex: zindex ? 1 : 1400
+        zIndex: zindex ? 100 : 1400
     }
     return (
         <header style={zindexNavbar} className={styles.navbar}>
@@ -128,9 +131,9 @@ function Navbar() {
                         <div className={styles.dropdown} onMouseLeave={() => langChangerMouseLeave2()}>
                             <button onClick={() => myFunction2(drop2)}  className={styles.mainBtn}>{langM} <ArrowLeftIcon/></button>
                             {drop2 && <div id="drop-inside" className={styles.dropdownContent }>
-                                {langM == "AZ" ? "" : <a href='https://creativespark.testjed.me/locale/az'  onClick={() => languageChanger(lang[0])}>{lang[0]}</a>}
-                                {langM == "EN" ? "" : <a href='https://creativespark.testjed.me/locale/en'  onClick={() => languageChanger(lang[1])}>{lang[1]}</a>}
-                                {langM == "RU" ? "" : <a href='https://creativespark.testjed.me/locale/ru'  onClick={() => languageChanger(lang[2])}> {lang[2]}</a>}
+                                {langM == "AZ" ? "" : <button  onClick={() => languageChanger(lang[0])}>{lang[0]}</button>}
+                                {langM == "EN" ? "" : <button  onClick={() => languageChanger(lang[1])}>{lang[1]}</button>}
+                                {langM == "RU" ? "" : <button  onClick={() => languageChanger(lang[2])}> {lang[2]}</button>}
                             </div>}
                         </div>
                     </div>

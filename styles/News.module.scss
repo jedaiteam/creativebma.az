@@ -4,6 +4,12 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    @media screen and (max-width:476px) {
+        .newsImgStyle
+        {
+            width: 300px !important;
+        }
+    }
     .newsImgStyle
     {
         margin-top: 30px;

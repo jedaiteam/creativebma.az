@@ -4,7 +4,7 @@ import Router from 'next/router'
 import NProgress from 'nprogress'
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { useEffect, useState } from 'react';
-
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 
 const  Layout = ({children}) => {
     const [loader, setloader] = useState(false)
@@ -35,13 +35,18 @@ const  Layout = ({children}) => {
         NProgress.done()
     }
     
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
     return (
         <div id='root'>
             {loader && <div className='pageProgress'><LinearProgress value={progress}/></div>}
             <Navbar/>
-            <div>
-                {children}
-            </div>
+              <div>
+                  {children}
+              </div>
+              <button onClick={topFunction} className='scrollToTop'><ArrowDropUpIcon/></button>
             <Footer/>
         </div>
     );

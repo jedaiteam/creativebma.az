@@ -13,6 +13,9 @@
         z-index: 2;
         margin-left: 50px;
         cursor: pointer;
+        @media screen and (max-width:1000px) {
+            margin-left: 0px;
+        }
     }
     nav 
     {
@@ -24,6 +27,9 @@
             background-image: url('../public/navbar.svg');
             background-size: cover;
             background-position: 0px 0px;
+            @media screen and (max-width:1000px) {
+                background-position: -200px 0px;
+            }
             height: 950px;
             background-repeat: no-repeat;
         }
@@ -89,7 +95,7 @@
                 border: 1px solid #42539b;
                 border-radius: 5px;
                 overflow: hidden;
-                a 
+                button 
                 {
                     background-color: #fff;
                     border: none;
@@ -111,5 +117,6 @@
         display: flex; 
         z-index: 2;
         align-items: center;
+        margin-right: 15px;
     }
 }

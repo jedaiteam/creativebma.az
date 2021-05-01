@@ -12,7 +12,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
-export default function Home({students , news}) {
+export default function Home() {
   const mobileImg = useMediaQuery('(max-width:750px)');
   const desktopImg = useMediaQuery('(min-width:750px)');
   const getStudents3 = async () => {
@@ -37,13 +37,30 @@ export default function Home({students , news}) {
   var lang = ["AZ" , "EN" , "RU"]
   const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
   
-  const [students3, setstudents3] = useState([students])
-  const [news3, setnews3] = useState([news])
+  const [students3, setstudents3] = useState([])
+  const [news3, setnews3] = useState([])
   const getDatas = async () => {
-    const response1 = await axios.get('https://creativespark.testjed.me/api/musicians-api-take-3')
-    const response2 = await axios.get('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
-    setstudents3(response1.data)
-    setnews3(response2.data)
+    if (langM === 'AZ') {
+      let response1 = await axios.get('https://creativespark.testjed.me/api/musicians-api-take-3')
+      let response2 = await axios.get('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
+      setstudents3(response1.data)
+      setnews3(response2.data)
+    }
+    else if(langM === 'EN')
+    {
+      let response1 = await axios.get('https://creativespark.testjed.me/api/en/musicians-api-take-3')
+      let response2 = await axios.get('https://creativespark.testjed.me/api/en/blog-xeberler-take-3-api')
+      setstudents3(response1.data)
+      setnews3(response2.data)
+    }
+    else if(langM === 'RU') 
+    {
+      let response1 = await axios.get('https://creativespark.testjed.me/api/ru/musicians-api-take-3')
+      let response2 = await axios.get('https://creativespark.testjed.me/api/ru/blog-xeberler-take-3-api')
+      setstudents3(response1.data)
+      setnews3(response2.data)
+    }
+    else{}
   }
   useEffect(() => {
     getDatas()
@@ -65,7 +82,6 @@ export default function Home({students , news}) {
                 <h1 className={styles.titleTop + " title-big-desk mt50"}>{langM === "AZ" && `Creative Spark` || langM === "EN" && `Creative Spark` || langM === "RU" && `Creative Spark`}</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>{langM === "AZ" && `Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının  öyrədilməsi` || langM === 'EN' && `Teaching business skills to students and creative entrepreneurs` || langM === "RU" && `Обучение бизнес-навыкам студентов и творческих предпринимателей`}</h2>
                 <Link href="/about"><a className={stylesBtn.buttonEffect + " button-b-design"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
-                
             </div>
             {desktopImg && <img  data-aos="fade-right" className={styles.enteranceImg} src="/notes.svg" alt="notes"/>}
             {mobileImg   && <img  data-aos="fade-left"  className={styles.enteranceImg} src="/mobileNotes.svg" alt="notes-mobile-version"/>}
@@ -135,13 +151,13 @@ export default function Home({students , news}) {
 
 
 
-export const getStaticProps = async (context) => {
-  const res1 = await fetch('https://creativespark.testjed.me/api/musicians-api-take-3')
-  const res2 = await fetch('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
-  const students = await res1.json()
-  const news = await res2.json()  
-  return {
-      props:{students , news}
-  }
-}
+// export const getStaticProps = async (context) => {
+//   const res1 = await fetch('https://creativespark.testjed.me/api/musicians-api-take-3')
+//   const res2 = await fetch('https://creativespark.testjed.me/api/blog-xeberler-take-3-api')
+//   const students = await res1.json()
+//   const news = await res2.json()  
+//   return {
+//       props:{students , news}
+//   }
+// }
 

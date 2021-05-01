@@ -5,7 +5,7 @@ import Student from '../components/Student'
 import News from '../components/News'
 function PaginationCont(props) {
     
-    const [numberOfVacancy] = useState(16)
+    const [numberOfVacancy] = useState(12)
     
     if(props.student === 1){
         var elements = [props?.Pagination?.data?.map((student ,index) => <Student id={student.id} image={student.image} name={student.name_surname}/>)] 
@@ -15,7 +15,7 @@ function PaginationCont(props) {
         var elements = [props?.Pagination?.data?.map((news ,index) => <News id={news.id} image={news.img} title={news.title} content={news.content} />)] 
     }
     
-    var count = Math.ceil(props?.Pagination?.meta?.total / numberOfVacancy)
+    var count = Math.ceil(props?.Pagination?.total / numberOfVacancy)
     var indexOfLastPost = (props.page) * numberOfVacancy
     var indexOfFirstPost = indexOfLastPost - numberOfVacancy
     var currentPosts = elements

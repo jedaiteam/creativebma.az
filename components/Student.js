@@ -8,9 +8,9 @@ function Student(props) {
         backgroundImage: `url(https://creativespark.testjed.me/${props.image})`
     }
     return (
-        <Link href={`/students/${props.id}`}> 
+        <Link key={props.id} href={`/students/${props.id}`}> 
             <div key={props.id} className={styles.studentCont}>
-                <div style={studentImg} className={styles.studentImgStyle + ' img'}></div>
+                <div  style={studentImg} className={styles.studentImgStyle + ' img'}></div>
                 <p className={styles.name + " text"}>{props.name}</p>
                 <p className={styles.job + " text"}>{props?.type}</p>
             </div>

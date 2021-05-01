@@ -15,16 +15,27 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 0px -80px;
+        @media screen and (max-width:1000px) {
+            background-position: -200px -80px;
+        }
         height: 950px;
-
         .enteranceText
         {
             display: flex;
             flex-direction: column;
-            row-gap: 40px;
             margin-top: 80px;
             margin-left: 10%;
             z-index: 2;
+            .enteranceSubTitle
+            {
+                margin-left: 50px;
+                margin-top: 0px;
+            }
+            a 
+            {
+                margin-left: 50px !important;
+                margin-top: 30px;
+            }
             @media screen and (max-width:1000px) {
                 .titleTop
                 {
@@ -37,6 +48,10 @@
         {
             position: absolute;
             right: 0;
+
+            @media screen and (min-width:1450px) {
+                height: 946px;
+            }
             @media screen and (max-width:950px) {
                 height: 746px;
             }
@@ -72,6 +87,7 @@
             @media screen and (max-width:1292px) {
                 width: 90%;
                 margin-top: 30px;
+                margin-left: 0px;
                 justify-content: center;
             }
         }
@@ -223,6 +239,9 @@
     } 
     //news
 
-
+    .buttonHome
+    {
+        background-color: red !important;
+    }
 
 }

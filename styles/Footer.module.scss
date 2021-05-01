@@ -22,6 +22,10 @@
     column-gap: 35px;
     justify-content: center;
     row-gap: 10px;
+    @media screen and(max-width:900px) {
+        width: 90%;
+        margin-top: 10px;
+    }
 }
 .footerHr
 {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import styles from '../../styles/NewsPage.module.scss'
-import Link1 from '../../components/Link'
+import Link from '../../components/Link'
 import News from '../../components/News'
 import PaginationCont from '../../components/PaginationCont'
 import axios from 'axios'
@@ -14,28 +14,51 @@ function news({news}) {
         AOS.init();
         AOS.refresh();
       }, [])
-
-    const [Pagination, setPagination] = useState(news)
+    var lang = ["AZ" , "EN" , "RU"]
+    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+    const [Pagination, setPagination] = useState()
     const [page, setPage] = React.useState(1);
-    const [url, seturl] = useState(`http://jobday.testjed.me/api/vacancies-api?page=${page}`) 
-    
+    const [url, seturl] = useState(langM === 'AZ' && `https://creativespark.testjed.me/api/blog-api?page=${page}${page}` || langM === 'EN' && `https://creativespark.testjed.me/api/en/blog-api?page=${page}`  || langM === 'RU' && `https://creativespark.testjed.me/api/ru/blog-api?page=${page}`) 
     const handleChange = (event, value) => {
         setPage(value);
-        seturl(`http://jobday.testjed.me/api/vacancies-api?page=${value}`)
-        axios.get(`http://jobday.testjed.me/api/vacancies-api?page=${value}`)
+        seturl(langM === 'AZ' && `https://creativespark.testjed.me/api/blog-api?page=${value}` || langM === 'EN' && `https://creativespark.testjed.me/api/en/blog-api?page=${value}`  || langM === 'RU' && `https://creativespark.testjed.me/api/ru/blog-api?page=${value}`)
+        axios.get(langM === 'AZ' && `https://creativespark.testjed.me/api/blog-api?page=${value}` || langM === 'EN' && `https://creativespark.testjed.me/api/en/blog-api?page=${value}`  || langM === 'RU' && `https://creativespark.testjed.me/api/ru/blog-api?page=${value}`)
             .then(res =>(setPagination(res.data)))    
     };
 
-    var lang = ["AZ" , "EN" , "RU"]
-    const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+    const getDatas = async () => {
+        if (langM === 'AZ') {
+          let response1 = await axios.get('https://creativespark.testjed.me/api/blog-api?page=1')
+          setPagination(response1.data)
+        }
+        else if(langM === 'EN')
+        {
+          let response1 = await axios.get('https://creativespark.testjed.me/api/en/blog-api?page=1')
+          setPagination(response1.data)
+        }
+        else if(langM === 'RU') 
+        {
+          let response1 = await axios.get('https://creativespark.testjed.me/api/ru/blog-api?page=1')
+          setPagination(response1.data)
+        }
+        else{}
+    }
     
+    useEffect(() => {
+        getDatas()
+        AOS.init();
+        AOS.refresh();
+      }, [])
+
+
+
     return (
         <>
             <Head>
                 <title> {langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} </title>    
             </Head>
             <div className={styles.newsPage + " page "}>
-                <Link1 link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} href='/news'/>
+                <Link link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} href='/news'/>
                 <h1 data-aos="fade-right" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</h1>
                 <div data-aos="fade-up"  className={styles.newsCont}>
                     <PaginationCont news={1} handleChange={handleChange}  page={page}  Pagination={Pagination} />
@@ -49,10 +72,10 @@ export default news
 
 
 
-export const getStaticProps = async (context) => {
-    const res = await fetch(`https://creativespark.testjed.me/api/blog-api?page=1`)
-    const news = await res.json()
-    return {
-        props:{news}
-    }
-}
+// export const getStaticProps = async (context) => {
+//     const res = await fetch(`https://creativespark.testjed.me/api/blog-api?page=1`)
+//     const news = await res.json()
+//     return {
+//         props:{news}
+//     }
+// }

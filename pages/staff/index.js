@@ -6,15 +6,45 @@ import News from '../../components/News'
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Head from 'next/head'
+import axios from 'axios'
 
-function index({teams , events}) {
-    useEffect(() => {
-        AOS.init();
-        AOS.refresh();
-      }, [])
-
+function index() {
     var lang = ["AZ" , "EN" , "RU"]
     const [langM, setlangM] = useState(typeof window !== "undefined" && (sessionStorage.getItem('lang') === null ? lang[0] : sessionStorage.getItem('lang')))
+    
+    const [team, setteam] = useState([])
+    const [events, setevents] = useState([])
+
+    const getDatas = async () => {
+        if (langM === 'AZ') {
+            let response1 = await axios.get('https://creativespark.testjed.me/api/team-api')
+            let response2 = await axios.get('https://creativespark.testjed.me/api/blog-tedbirler-take-3-api')
+            setteam(response1.data)
+            setevents(response2.data)
+        }
+        else if(langM === 'EN')
+        {
+            let response1 = await axios.get('https://creativespark.testjed.me/api/en/team-api')
+            let response2 = await axios.get('https://creativespark.testjed.me/api/en/blog-tedbirler-take-3-api')
+            setteam(response1.data)
+            setevents(response2.data)
+        }
+        else if(langM === 'RU') 
+        {
+            let response1 = await axios.get('https://creativespark.testjed.me/api/ru/team-api')
+            let response2 = await axios.get('https://creativespark.testjed.me/api/ru/blog-tedbirler-take-3-api')
+            setteam(response1.data)
+            setevents(response2.data)
+        }
+        else{}
+    }
+
+    useEffect(() => {
+        getDatas()
+        AOS.init();
+        AOS.refresh();
+    }, [])
+    
     return (
         <>
             <Head>
@@ -31,7 +61,7 @@ function index({teams , events}) {
                 <div className={styles.staffCont + " mt50"}>
                     <h2 data-aos="fade-left" className={styles.aboutTitle + " title-b-desk  pageTitle "}>{langM === "AZ" && `Əməkdaşlar` || langM === "EN" && `Staff` || langM === "RU" && `Персонал`} </h2>
                     <div data-aos="fade-right" className={styles.staffs}>
-                        {teams.map(student => <Staff id={student.id} image={student.image} name={student.name_surname}/>)}
+                        {team.map(student => <Staff id={student.id} image={student.image} name={student.name_surname}/>)}
                     </div>
                 </div>
                 <div className={styles.staffCont + " mt100"}>
@@ -49,12 +79,12 @@ export default index
 
 
 
-export const getStaticProps = async (context) => {
-    const res = await fetch(`https://creativespark.testjed.me/api/team-api`)
-    const teams = await res.json()
-    const res1 = await fetch(`https://creativespark.testjed.me/api/blog-tedbirler-take-3-api`)
-    const events = await res1.json()
-    return {
-        props:{teams , events}
-    }
-}
+// export const getStaticProps = async (context) => {
+//     const res = await fetch(`https://creativespark.testjed.me/api/team-api`)
+//     const teams = await res.json()
+//     const res1 = await fetch(`https://creativespark.testjed.me/api/blog-tedbirler-take-3-api`)
+//     const events = await res1.json()
+//     return {
+//         props:{teams , events}
+//     }
+// }
