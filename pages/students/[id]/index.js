@@ -117,12 +117,12 @@ function index({student}) {
     //Formik1
     //Onchange
         const optionsTypeOfEvent = [
-            { value: 'wedding', label: 'Wedding' },
-            { value: 'birthday', label: 'Birthday' },
-            { value: 'proposal', label: 'Proposal' },
-            { value: 'party', label: 'Party' },
-            { value: 'recital', label: 'Recital' },
-            { value: 'other', label: 'Other' },
+            { value: 'wedding', label: (langM === "AZ" && `Nişan və toy məclisi` || langM === "EN" && `Wedding` || langM === "RU" && `Свадьба`) },
+            { value: 'birthday', label: (langM === "AZ" && `Ad günü` || langM === "EN" && `Birthday` || langM === "RU" && `День рождения`)},
+            { value: 'proposal', label: (langM === "AZ" && `Təklif` || langM === "EN" && `Proposal` || langM === "RU" && `Предложение`) },
+            { value: 'party', label: (langM === "AZ" && `Ziyafət` || langM === "EN" && `Party` || langM === "RU" && `Вечеринка`) },
+            { value: 'recital', label: (langM === "AZ" && `Konsert` || langM === "EN" && `Recital` || langM === "RU" && `Сольный концерт`)  },
+            { value: 'other', label: (langM === "AZ" && `Digər` || langM === "EN" && `Other` || langM === "RU" && `Другой`)  },
         ]
         const [eventType, seteventType] = useState(optionsTypeOfEvent[1].value)
         const eventTypeChange = (value) => {
@@ -130,10 +130,10 @@ function index({student}) {
         }
     //Onchange
         const optionsTypeOfMusic = [
-            { value: 'classical', label: 'Classical' },
-            { value: 'Jazz', label: 'Jazz' },
-            { value: 'pop', label: 'Pop' },
-            { value: 'other', label: 'Other' },
+            { value: 'classical', label: (langM === "AZ" && `Klassik` || langM === "EN" && `Classical` || langM === "RU" && `Классический`) },
+            { value: 'Jazz', label: (langM === "AZ" && `Caz` || langM === "EN" && `Jazz` || langM === "RU" && `Джаз`) },
+            { value: 'pop', label: (langM === "AZ" && `Pop` || langM === "EN" && `Pop` || langM === "RU" && `Поп`) },
+            { value: 'other', label: (langM === "AZ" && `Digər` || langM === "EN" && `Other` || langM === "RU" && `Другой`)}
         ]
         const [musicType, setMusicType] = useState(optionsTypeOfMusic[0].value)
         const musicTypeChange = (value) => {
@@ -141,9 +141,9 @@ function index({student}) {
         }
     //Onchange
         const optionsTypeOfMusician = [
-            { value: 'wedding', label: 'Piano' },
-            { value: 'birthday', label: 'Classical string quartet' },
-            { value: 'proposal', label: 'Voice and piano' },
+            { value: 'Piano', label: (langM === "AZ" && `Piano` || langM === "EN" && `Piano` || langM === "RU" && `Пианино`) },
+            { value: 'Classical string quartet', label: (langM === "AZ" && `Klassik simli kvartet` || langM === "EN" && `Classical string quartet` || langM === "RU" && `Классический струнный квартет`) },
+            { value: 'Voice and piano', label: (langM === "AZ" && `Səs və fortepiano` || langM === "EN" && `Voice and piano` || langM === "RU" && `Voice and piano`)},
         ]
         const [musicianType, setMusicianType] = useState(optionsTypeOfEvent[0].value)
         const musicianTypeChange = (value) => {

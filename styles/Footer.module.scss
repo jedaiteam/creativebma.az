@@ -26,6 +26,14 @@
         width: 90%;
         margin-top: 10px;
     }
+    a 
+    {
+        &:hover
+        {
+            transition: 0.2s;
+            color: #FA7167;
+        }
+    }
 }
 .footerHr
 {

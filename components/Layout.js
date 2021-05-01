@@ -39,6 +39,7 @@ const  Layout = ({children}) => {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
     }
+    
     return (
         <div id='root'>
             {loader && <div className='pageProgress'><LinearProgress value={progress}/></div>}
@@ -46,7 +47,7 @@ const  Layout = ({children}) => {
               <div>
                   {children}
               </div>
-              <button onClick={topFunction} className='scrollToTop'><ArrowDropUpIcon/></button>
+              <button id='scrollTop' onClick={topFunction} className='scrollToTop'><ArrowDropUpIcon/></button>
             <Footer/>
         </div>
     );
