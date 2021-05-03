@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 function Student(props) {
     const studentImg = {
-        backgroundImage: `url(https://creativespark.testjed.me/${props.image})`
+        backgroundImage: `url(https://admin.creativebma.az/${props.image})`
     }
     return (
         <Link key={props.id} href={`/students/${props.id}`}> 

@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 function News(props) {
     const newsImg = {
-        backgroundImage: `url(https://creativespark.testjed.me/${props.image})`
+        backgroundImage: `url(https://admin.creativebma.az/${props.image})`
     }
     return (
         <Link href={`/news/${props.id}`}> 
