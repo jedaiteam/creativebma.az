@@ -51,7 +51,7 @@ function about() {
                     <br/>
                     {langM === "AZ" && `2. Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının öyrədilməsi, ideyaların təqdim edilməsi, biznesin qurulması, əqlimülkiyyətin qorunması və kredit xətlərinin təmin edilməsi mövzusunda təlim paketlərinin təklif olunması. ` 
                             || langM === "EN" && `2. Delivering enterprise skills training packages to students and creative entrepreneurs, ranging from pitching ideas and starting a business, to protecting intellectual property and securing credit lines. ` 
-                            || langM === "RU" && `2. Предоставление студентам и творческим предпринимателям программ обучения предпринимательским навыкам, начиная от подачи идей и открытия бизнеса до защиты интеллектуальной собственности и обеспечения кредитных линий. `}
+                            || langM === "RU" && `2. Предоставление студентам и творческим предпринимателям программы обучения предпринимательским навыкам, начиная от подачи идей и открытия бизнеса до защиты интеллектуальной собственности и обеспечения кредитных линий. `}
                     <br/>
                     <br/>
                     {langM === "AZ" && `3. İngilis dilini öyrənmə proqramının, rəqəmsal tədris materiallarının, o cümlədən, təlim platformalarının, onlayn kursların və geniş kütlə üçün açıq olan onlayn kursların (MOOC) sahibkarlar üçün ingilis dili səviyyəsində təklif edilməsi. ` 
