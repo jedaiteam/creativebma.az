@@ -39,7 +39,7 @@ function about() {
 
                 <div className={styles.aboutPar2}>
                     <p className={styles.text + ' text'}  data-aos="fade-right">
-                        {langM === "AZ" && `Proqramın üç əsas elementdən ibarətdir: ` 
+                        {langM === "AZ" && `Proqram üç əsas elementdən ibarətdir: ` 
                             || langM === "EN" && `The programme has three key elements: ` 
                             || langM === "RU" && `Программа состоит из трех основных элементов: `}
                     <br/>
