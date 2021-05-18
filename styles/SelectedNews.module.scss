@@ -1,5 +1,9 @@
 .selectedNewsPage
 {
+    background-image: url('../public/page-item-right.png') ,  url('../public/page-item-left.png') ;
+    background-position: right 0px , left bottom 0px;
+    background-repeat: no-repeat , no-repeat;
+    background-size: 400px auto , 400px auto ;
     .imgAndTitle
     {
         width: 100%;

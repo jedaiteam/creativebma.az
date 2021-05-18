@@ -43,7 +43,7 @@ function partners() {
                         <p className={styles.text + " text"} data-aos="fade-right">
                             {!partner1check ? <div data-aos="fade-right">{partner1Long}</div>  : <div  data-aos="fade-right"> {partner1short}</div>}
                         </p>
-                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner1check(!partner1check)}>{ partner1check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner1check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	} </button>
+                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner1check(!partner1check)}>{ partner1check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Скрыть`) }  {partner1check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	} </button>
                     </div>
 
                     <div className={styles.partner}>
@@ -51,7 +51,7 @@ function partners() {
                         <p className={styles.text + " text"} data-aos="fade-right">
                             {!partner2check ? partner2Long : partner2short}
                         </p>
-                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner2' onClick={() => setpartner2check(!partner2check)}>{ partner2check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner2check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
+                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner2' onClick={() => setpartner2check(!partner2check)}>{ partner2check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Скрыть`) }  {partner2check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
                     </div>
                     
                     <div className={styles.partner}>
@@ -59,7 +59,7 @@ function partners() {
                         <p className={styles.text + " text"} data-aos="fade-right">
                             {!partner3check ? partner3Long : partner3short}
                         </p>
-                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner3check(!partner3check)}>{ partner3check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Спрятать`) }  {partner3check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
+                        <button data-aos="fade-up" className={stylesBtn.buttonEffect + " button-text"} id='partner1' onClick={() => setpartner3check(!partner3check)}>{ partner3check ? (langM === "AZ" && `Daha ətraflı` || langM === "EN" && `More About` || langM === "RU" && `Читать далее`) : (langM === "AZ" && `Daha az` || langM === "EN" && `Hide` || langM === "RU" && `Скрыть`) }  {partner3check ? (<span>&nbsp; &nbsp; &#x2193;</span>) : (<span>&nbsp; &nbsp; &uarr;</span>)	}</button>
                     </div>
 
                     <div className={styles.partner} >

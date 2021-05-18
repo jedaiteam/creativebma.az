@@ -79,7 +79,7 @@ export default function Home() {
 
         <div className={styles.enterance} >
             <div className={styles.enteranceText} data-aos="fade-left">
-                <h1 className={styles.titleTop + " title-big-desk mt50"}>{langM === "AZ" && `Creative Spark` || langM === "EN" && `Creative Spark` || langM === "RU" && `Creative Spark`}</h1>
+                <h1 className={styles.titleTop + " title-big-desk mt50"}>{langM === "AZ" && `BMACreative Spark` || langM === "EN" && `BMACreative Spark` || langM === "RU" && `BMACreative Spark`}</h1>
                 <h2 className={styles.enteranceSubTitle + " top-title-w"}>{langM === "AZ" && `Tələbələrə və yaradıcı sahibkarlara biznes bacarıqlarının  öyrədilməsi` || langM === 'EN' && `Teaching business skills to students and creative entrepreneurs` || langM === "RU" && `Обучение бизнес-навыкам студентов и творческих предпринимателей`}</h2>
                 <Link href="/about"><a className={stylesBtn.buttonEffect + " button-b-design"}><KeyboardArrowRightIcon/> {langM === "AZ" && `Haqqımızda` || langM === "EN" && `About Us` || langM === "RU" && `О нас`}</a></Link>
             </div>
