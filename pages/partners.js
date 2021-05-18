@@ -34,7 +34,7 @@ function partners() {
             </Head>
 
             <div className={styles.partnersPage + " page "} >
-                <Link link={langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`} />
+                <Link link={langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`} href="/partners"/>
                 <h1 data-aos="fade-up" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Partnyorlar` || langM === "EN" && `Partners` || langM === "RU" && `Партнеры`}</h1>
 
                 <div className={styles.partners}>

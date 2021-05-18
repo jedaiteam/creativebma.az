@@ -251,7 +251,7 @@ function index({student}) {
             </Head>
             
             <div className={styles.singleStudentPage + " page"}>
-                <Link link={langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`} href='/students' link2={studentData?.name_surname}/>
+                <Link link={langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`} href='/students' link2={studentData?.name_surname} href="/students"/>
                 {
                     buttonsMQ  &&
                     <div data-aos="fade-right" className={styles.buttonsCont}>

@@ -30,7 +30,7 @@ function selectednews({news}) {
                 <title>{langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`}</title>
             </Head>
             <div className={styles.selectedNewsPage + " page"}>
-                <Link link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} link2={news.title.slice(0,30) + " ..."}/>
+                <Link link={langM === "AZ" && `Xəbərlər` || langM === "EN" && `News` || langM === "RU" && `Новости`} href="/news" link2={news.title.slice(0,30) + " ..."}/>
                 <div className={styles.imgAndTitle + " mt30"}>
                     <div data-aos="fade-right"  style={imgHandle} className={styles.imgHandle + " img"}></div>
                     <div data-aos="fade-right" className={styles.titleAndDate}>

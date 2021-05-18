@@ -56,7 +56,7 @@ function index({student}) {
                 <title>{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</title>
             </Head>
             <div className={styles.studentsPage + " page "}>
-                <Link link={langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}/>
+                <Link link={langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`} href="/students"/>
                 <h1 data-aos="fade-up" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Tələbələr` || langM === "EN" && `Students` || langM === "RU" && `Студенты`}</h1>
                 <div data-aos="fade-up"  className={styles.studentsCont}>
                     <PaginationCont student={1} handleChange={handleChange}  page={page}   Pagination={Pagination} />

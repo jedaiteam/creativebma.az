@@ -24,7 +24,7 @@ function index({staff}) {
                 <title>{langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`}</title>
             </Head>
             <div className={styles.selectedStaffPage + " page"}>
-                <Link link={langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`} link2={staff.name_surname}/>
+                <Link link={langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`} href="/staff" link2={staff.name_surname}/>
                 <div className={styles.imgAndAbout + " mt50"}>
                     <div  data-aos="fade-right"   className={styles.imgHandle + " img"} style={imgHandle}></div>
                     <div  data-aos="fade-right"   className={styles.textAbout + " text"}>

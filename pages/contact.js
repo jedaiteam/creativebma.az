@@ -24,7 +24,7 @@ function contact() {
             </Head>
 
             <div className={styles.contactPage + " page "}>
-                <Link link={langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`} />
+                <Link link={langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`} href="/contact"/>
                 <h1 className={styles.bmaTitle + " title-b-desk  pageTitle"} data-aos="fade-up">{langM === "AZ" && `Əlaqə` || langM === "EN" && `Contact` || langM === "RU" && `Контакт`}</h1>
                 
                 <div className={styles.linksAndImg}>
