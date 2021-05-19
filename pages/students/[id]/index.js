@@ -284,13 +284,13 @@ function index({student}) {
                             </>
                         }
                         <p  data-aos="fade-right"   className={styles.studentText + " text mt20"}>
-                            {parse(`${studentData?.content}`)}
+                            {parse(`${studentData?.content !== null && studentData?.content }`)}
                         </p>
                     </div>
                 </div>
                 <div   className={styles.studentText2 + " text mt30"}>
                     <p className="text" data-aos="fade-up">
-                        {parse(`${studentData?.content2}`)}
+                        {parse(`${studentData?.content2 !== null && studentData?.content2}`)}
                     </p>
                 </div>
                 
