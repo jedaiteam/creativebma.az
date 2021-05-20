@@ -243,7 +243,6 @@ function index({student}) {
     };
 
     //Toastify
-    console.log(student);
 
     const backImage1 = {
         backgroundImage: `url(https://admin.creativebma.az//${student.content_image1})`,
