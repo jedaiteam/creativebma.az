@@ -184,7 +184,7 @@ function index({student}) {
             // axios.post('https://jsonplaceholder.typicode.com/posts',data)
             //     .then(res => console.log(res))
             axios.post('https://admin.creativebma.az/api/hire-student',data)
-                .then(res => (  res.status === 200 && ( handleClose()  , setrequest(true) , console.log(res.data)) ) ) 
+                .then(res => (  res.status === 200 && ( handleClose()  , setrequest(true) ) ) ) 
         }
         
         
@@ -243,7 +243,21 @@ function index({student}) {
     };
 
     //Toastify
+    console.log(student);
 
+    const backImage1 = {
+        backgroundImage: `url(https://admin.creativebma.az//${student.content_image1})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'top center',
+        backgroundRepeat: 'no-repeat'
+    }
+    const backImage2 = {
+        backgroundImage: `url(https://admin.creativebma.az/${student.content_image2})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'top center',
+        backgroundRepeat: 'no-repeat'
+    }
+    
     return (
         <>
             <Head>
@@ -294,6 +308,12 @@ function index({student}) {
                     </p>
                 </div>
                 
+
+                <div className={styles.videoImg} >
+                    {(student.content_image1 !== null  &&  student.content_image1 !== undefined && student.content_image1 !== "") && <div className={styles.studentDownImg} style={backImage1}></div>}
+                    {(student.content_video !== null   &&  student.content_video  !== undefined && student.content_video  !== "") &&  <iframe className={styles.video} src={`https://www.youtube.com/embed/${student.content_video}`} width="420" height="315"></iframe>}
+                    {(student.content_image2 !== null  &&  student.content_image2 !== undefined && student.content_image2 !== "") && <div className={styles.studentDownImg} style={backImage2}></div>}
+                </div>
                 
 
 
@@ -457,17 +477,6 @@ function index({student}) {
 }
 
 export default index
-
-// export async function getStaticPaths() {
-//     const res = await fetch('http://creativespark.testjed.me/api/musicians-api/')
-//     const users = await res.json()
-//     console.log(users)
-//     const paths = users.data.map((user) => ({
-//       params: { id: user.id.toString() },
-//     }))
-  
-//     return { paths, fallback: false }
-//   }
 
 
 export const getServerSideProps = async (context) => {

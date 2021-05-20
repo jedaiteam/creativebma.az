@@ -210,5 +210,37 @@
             }
         }
     }
+    .videoImg
+    {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 50px;
+        div 
+        {
+            border-radius: 10px;
+            width: 30%;
+            height: 350px;
+            transition: 0.5s box-shadow;
+            &:hover 
+            {
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                cursor: pointer;
+            }
+        }
+        iframe
+        {
+            width: 33%;
+            border: none;
+            height: 350px;
+            transition: 0.5s box-shadow;
+            border-radius: 10px;
 
+            &:hover 
+            {
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+                cursor: pointer;
+            }
+        }
+    }
 }
