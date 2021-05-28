@@ -311,7 +311,10 @@ function index({student}) {
                 <div className={styles.videoImg} >
                     {(student.content_image1 !== null  &&  student.content_image1 !== undefined && student.content_image1 !== "") && <div className={styles.studentDownImg} style={backImage1}></div>}
                     {(student.content_video !== null   &&  student.content_video  !== undefined && student.content_video  !== "") &&  <iframe className={styles.video} src={`https://www.youtube.com/embed/${student.content_video}`} width="420" height="315"></iframe>}
-                    {(student.content_image2 !== null  &&  student.content_image2 !== undefined && student.content_image2 !== "") && <div className={styles.studentDownImg} style={backImage2}></div>}
+                </div>
+                <div className={styles.videoImg} >
+                    {(student.content_image2 !== null  &&  student.content_image1 !== undefined && student.content_image1 !== "") && <div className={styles.studentDownImg} style={backImage1}></div>}
+                    {(student.content_video2 !== null   &&  student.content_video2  !== undefined && student.content_video2  !== "") &&  <iframe className={styles.video} src={`https://www.youtube.com/embed/${student.content_video2}`} width="420" height="315"></iframe>}
                 </div>
                 
 
