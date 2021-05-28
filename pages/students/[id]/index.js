@@ -247,13 +247,13 @@ function index({student}) {
     const backImage1 = {
         backgroundImage: `url(https://admin.creativebma.az//${student.content_image1})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'top center',
+        backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat'
     }
     const backImage2 = {
         backgroundImage: `url(https://admin.creativebma.az/${student.content_image2})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'top center',
+        backgroundPosition: 'center center',
         backgroundRepeat: 'no-repeat'
     }
     
