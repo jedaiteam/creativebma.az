@@ -272,6 +272,7 @@ function index({student}) {
                         <button className={stylesBtn.buttonEffect2 + "  button-blue-text mt20"} onClick={handleOpen2}>{langM === "AZ" && `Şəxsi müəllim işə götür` || langM === "EN" && `Hire a private tutor` || langM === "RU" && `Нанять частного репетитора`}</button>
                     </div>
                 }
+                
                 <div className={styles.imgAndAbout + " mt20"}>
                     <div data-aos="fade-right" className={styles.studentAvatar + " img"} style={studentImg}></div>
                     {
@@ -301,6 +302,7 @@ function index({student}) {
                         </p>
                     </div>
                 </div>
+
                 <div   className={styles.studentText2 + " text mt30"}>
                     <p className="text" data-aos="fade-up">
                         {parse(`${studentData?.content2 !== null && studentData?.content2}`)}

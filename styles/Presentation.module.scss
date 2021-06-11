@@ -1,0 +1,82 @@
+.presentationCard
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    @media screen and (max-width:476px) {
+        .pptImgStyle
+        {
+            width: 300px !important;
+        }
+    }
+    .pptImgStyle
+    {
+        margin-top: 30px;
+        width: 440px;
+        height: 250px;
+        border-radius: 30px;
+        transition: 0.4s;
+        overflow: hidden;
+        .pptOverlay
+        {
+            width: 100%;
+            height: 100%;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .downloadPpt
+            {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                opacity: 0;
+                transition: 0.3s;
+                pointer-events: none;
+                svg 
+                {
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+        }
+
+        &:hover
+        {
+            .downloadPpt
+            {
+                opacity: 1;
+                pointer-events: all;
+            }
+            .pptOverlay
+            {   
+                background-color: rgba(0, 0, 0, 0.5);
+            }  
+            transform: scale(1.05);
+            transition: 0.4s;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        }
+    }
+    .text
+    {
+        margin-top: 30px;
+        text-align: center;
+        font-weight: 700;
+        width: auto;
+    }
+    .name
+    {
+        text-align: center;
+        font-weight: 500;
+        width: 240px;
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 18px;
+    }
+}
