@@ -39,7 +39,7 @@ function Footer() {
                 <a href="https://m.facebook.com/baku.music.academy/"><img src="/facebook.png" alt=""/></a>
             </div>
 
-            <a className={styles.developedBy} href="https://jedai.az/az"><p className='text'>Site by</p>  <img width='107.22px' height='20px' src="/jedai-logo.png" alt="" /></a>
+            <a className={styles.developedBy} href="https://jedai.az/az" target='blank'><p className='text'>Site by</p>  <img width='107.22px' height='20px' src="/jedai-logo.png" alt="" /></a>
         </footer>
     )
 }
