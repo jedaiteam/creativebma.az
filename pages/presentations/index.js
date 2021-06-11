@@ -37,7 +37,7 @@ function Presentations({news}) {
                 <title> {langM === "AZ" && `Təqdimatlar` || langM === "EN" && `Presentations` || langM === "RU" && `Презентаций`} </title>    
             </Head>
             <div className={styles.newsPage + " page "}>
-                <Link link={langM === "AZ" && `Təqdimatlar` || langM === "EN" && `Presentations` || langM === "RU" && `Презентаций`} href='/presentations'/>
+                <Link link={langM === "AZ" && `BMA sahibkarlıq mərkəzi` || langM === "EN" && `BMA Entrepreneurship Center` || langM === "RU" && `Центр предпринимательства BMA`} link2={langM === "AZ" && `Təqdimatlar` || langM === "EN" && `Presentations` || langM === "RU" && `Презентаций`} href='/staff'/>
                 <h1 data-aos="fade-right" className={styles.aboutTitle + " title-b-desk  pageTitle"} >{langM === "AZ" && `Təqdimatlar` || langM === "EN" && `Presentations` || langM === "RU" && `Презентаций`}</h1>
                 <div data-aos="fade-up"  className={styles.newsCont}>
                     {presentations.map(value => <PresentationCard number={value.id}  name={value.name} title={value.title} link={value.link}/>)}
