@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{langM === "AZ" && `CreativeSpark` || langM === "EN" && `CreativeSpark` || langM === "RU" && `CreativeSpark`}</title>
+        <title>{langM === "AZ" && `Creative Spark` || langM === "EN" && `Creative Spark` || langM === "RU" && `Creative Spark`}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div  className={styles.homepage} >
