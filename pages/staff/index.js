@@ -52,7 +52,7 @@ function index() {
     
     const presentations = [
         { id: 1 , name:"by Osman Mustafazadə" , title:"Guess the classical music" , link:'https://admin.creativebma.az/public/uploads/ppt1.pptx'},
-        { id: 2 , name:"by Alexei Sultanova" , title:"The Pianist who played his own rules" , link:'https://admin.creativebma.az/public/uploads/ppt2.pptx'},
+        { id: 2 , name:"by Nazrin Babayeva" , title:"The Pianist who played his own rules" , link:'https://admin.creativebma.az/public/uploads/ppt2.pptx'},
         { id: 3 , name:"by Müjgan Məmmədli" , title:"The Photos in history" , link:'https://admin.creativebma.az/public/uploads/ppt3.pptx'},
     ]
 

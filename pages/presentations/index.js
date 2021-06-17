@@ -23,12 +23,12 @@ function Presentations({news}) {
 
     const presentations = [
         { id: 1 , name:"by Osman Mustafazadə" , title:"Guess the classical music" , link:'https://admin.creativebma.az/public/uploads/ppt1.pptx'},
-        { id: 2 , name:"by Alexei Sultanova" , title:"The Pianist who played his own rules" , link:'https://admin.creativebma.az/public/uploads/ppt2.pptx'},
+        { id: 2 , name:"by Nazrin Babayeva" , title:"The Pianist who played his own rules" , link:'https://admin.creativebma.az/public/uploads/ppt2.pptx'},
         { id: 3 , name:"by Müjgan Məmmədli" , title:"The Photos in history" , link:'https://admin.creativebma.az/public/uploads/ppt3.pptx'},
         { id: 4 , name:"by Gular Babayeva" , title:"Education system in Finland" , link:'https://admin.creativebma.az/public/uploads/ppt4.pptx'},
         { id: 5 , name:"by Gunel Ismayilova" , title:"Sign Language" , link:'https://admin.creativebma.az/public/uploads/ppt5.pptx'},
         { id: 6 , name:"by Elnura Sadigova" , title:"The Butterfly Effect" , link:'https://admin.creativebma.az/public/uploads/ppt6.pptx'},
-        { id: 7 , name:"by Subhan Rustamov" , title:"The Most important innvations of the last 50 years" , link:'https://admin.creativebma.az/public/uploads/ppt7.pptx'}
+        { id: 7 , name:"by Subhan Rustamov & Kamran Talibli" , title:"The Most important innvations of the last 50 years" , link:'https://admin.creativebma.az/public/uploads/ppt7.pptx'}
     ]
 
     return (
