@@ -1,2 +1,2 @@
-User-agent: Google
+User-agent: *
 Disallow:
